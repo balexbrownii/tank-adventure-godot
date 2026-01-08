@@ -40,4 +40,11 @@ func on_talk_to() -> void:
 	await C.player.say("The fire crackles in response.")
 
 
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I can't pick up fire! That would hurt!")
+	await C.player.say("Even I know that.")
+
+
 #endregion
