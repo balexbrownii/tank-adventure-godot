@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://game/rooms/caribbean_raft/hotspots/hotspot_oar.gd" id="6_oar"]
 [ext_resource type="Script" path="res://game/rooms/caribbean_raft/hotspots/hotspot_life_jacket.gd" id="7_life_jacket"]
 [ext_resource type="Script" path="res://game/rooms/caribbean_raft/hotspots/hotspot_case_file.gd" id="8_case_file"]
-[ext_resource type="Texture2D" path="res://assets/images/backgrounds/forest-interactive.png" id="9_background"]
+[ext_resource type="Texture2D" path="res://assets/images/backgrounds/caribbean_raft.png" id="9_background"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_1"]
 vertices = PackedVector2Array(200, 450, 1080, 450, 1080, 650, 200, 650)

@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://game/rooms/oak_tree_camp/hotspots/hotspot_mini_donuts.gd" id="5_mini_donuts"]
 [ext_resource type="Script" path="res://game/rooms/oak_tree_camp/hotspots/hotspot_spinach_leaves.gd" id="6_spinach_leaves"]
 [ext_resource type="Script" path="res://game/rooms/oak_tree_camp/hotspots/hotspot_deer_saddle.gd" id="7_deer_saddle"]
-[ext_resource type="Texture2D" path="res://assets/images/backgrounds/forest-interactive.png" id="8_background"]
+[ext_resource type="Texture2D" path="res://assets/images/backgrounds/oak_tree_camp.png" id="8_background"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_1"]
 vertices = PackedVector2Array(50, 350, 1230, 350, 1230, 680, 50, 680)

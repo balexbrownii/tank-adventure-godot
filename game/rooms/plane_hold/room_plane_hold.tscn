@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://game/rooms/plane_hold/hotspots/hotspot_instruction_card.gd" id="5_card"]
 [ext_resource type="Script" path="res://game/rooms/plane_hold/hotspots/hotspot_deer_latch.gd" id="6_latch"]
 [ext_resource type="Script" path="res://game/rooms/plane_hold/hotspots/hotspot_loose_baggage.gd" id="7_baggage"]
-[ext_resource type="Texture2D" path="res://assets/images/backgrounds/village.png" id="8_background"]
+[ext_resource type="Texture2D" path="res://assets/images/backgrounds/plane_hold.png" id="8_background"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_1"]
 vertices = PackedVector2Array(50, 350, 1230, 350, 1230, 680, 50, 680)

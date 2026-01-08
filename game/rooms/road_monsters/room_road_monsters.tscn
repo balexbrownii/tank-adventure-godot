@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://game/rooms/road_monsters/hotspots/hotspot_donut_sign.gd" id="6_donut"]
 [ext_resource type="Script" path="res://game/rooms/road_monsters/hotspots/hotspot_leaking_pump.gd" id="7_pump"]
 [ext_resource type="Script" path="res://game/rooms/road_monsters/hotspots/hotspot_spark_source.gd" id="8_spark"]
-[ext_resource type="Texture2D" path="res://assets/images/backgrounds/village.png" id="9_background"]
+[ext_resource type="Texture2D" path="res://assets/images/backgrounds/road_monsters.png" id="9_background"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_1"]
 vertices = PackedVector2Array(50, 350, 1230, 350, 1230, 680, 50, 680)

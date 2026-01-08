@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://game/rooms/ditch_hideout/hotspots/hotspot_moonlight_gap.gd" id="5_moonlight"]
 [ext_resource type="Script" path="res://game/rooms/ditch_hideout/hotspots/hotspot_loose_roots.gd" id="6_roots"]
 [ext_resource type="Script" path="res://game/rooms/ditch_hideout/hotspots/hotspot_small_puddle.gd" id="7_puddle"]
-[ext_resource type="Texture2D" path="res://assets/images/backgrounds/forest-interactive.png" id="8_background"]
+[ext_resource type="Texture2D" path="res://assets/images/backgrounds/ditch_hideout.png" id="8_background"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_1"]
 vertices = PackedVector2Array(50, 350, 1230, 350, 1230, 680, 50, 680)

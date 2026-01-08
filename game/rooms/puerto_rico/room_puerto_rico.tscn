@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://game/rooms/puerto_rico/hotspots/hotspot_back_dock.gd" id="5_back_dock"]
 [ext_resource type="Script" path="res://game/rooms/puerto_rico/hotspots/hotspot_boat.gd" id="6_boat"]
 [ext_resource type="Script" path="res://game/rooms/puerto_rico/hotspots/hotspot_camera.gd" id="7_camera"]
-[ext_resource type="Texture2D" path="res://assets/images/backgrounds/village.png" id="8_background"]
+[ext_resource type="Texture2D" path="res://assets/images/backgrounds/puerto_rico.png" id="8_background"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_1"]
 vertices = PackedVector2Array(50, 350, 1230, 350, 1230, 680, 50, 680)

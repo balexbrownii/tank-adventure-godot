@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://game/rooms/wanted_camp/hotspots/hotspot_river_path.gd" id="7_river_path"]
 [ext_resource type="Script" path="res://game/rooms/wanted_camp/hotspots/hotspot_vine_coil.gd" id="8_vine_coil"]
 [ext_resource type="Script" path="res://game/rooms/wanted_camp/hotspots/hotspot_rock_pile.gd" id="9_rock_pile"]
-[ext_resource type="Texture2D" path="res://assets/images/backgrounds/forest-interactive.png" id="10_background"]
+[ext_resource type="Texture2D" path="res://assets/images/backgrounds/wanted_camp.png" id="10_background"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_default"]
 size = Vector2(150, 100)

@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://game/rooms/florida_airport/hotspots/hotspot_airport_entrance.gd" id="5_entrance"]
 [ext_resource type="Script" path="res://game/rooms/florida_airport/hotspots/hotspot_maintenance_door.gd" id="6_maintenance"]
 [ext_resource type="Script" path="res://game/rooms/florida_airport/hotspots/hotspot_luggage_carts.gd" id="7_carts"]
-[ext_resource type="Texture2D" path="res://assets/images/backgrounds/village.png" id="8_background"]
+[ext_resource type="Texture2D" path="res://assets/images/backgrounds/florida_airport.png" id="8_background"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_1"]
 vertices = PackedVector2Array(50, 350, 1230, 350, 1230, 680, 50, 680)

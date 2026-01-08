@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://game/rooms/morning_miracle/hotspots/hotspot_numb_leg.gd" id="3_numb_leg"]
 [ext_resource type="Script" path="res://game/rooms/morning_miracle/hotspots/hotspot_rock_marker.gd" id="4_rock_marker"]
 [ext_resource type="Script" path="res://game/rooms/morning_miracle/hotspots/hotspot_backpack_strap.gd" id="5_backpack"]
-[ext_resource type="Texture2D" path="res://assets/images/backgrounds/forest-interactive.png" id="6_background"]
+[ext_resource type="Texture2D" path="res://assets/images/backgrounds/morning_miracle.png" id="6_background"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_1"]
 vertices = PackedVector2Array(50, 350, 1230, 350, 1230, 680, 50, 680)

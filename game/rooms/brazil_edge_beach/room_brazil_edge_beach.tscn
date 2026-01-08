@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://game/rooms/brazil_edge_beach/hotspots/hotspot_cloth_scrap.gd" id="5_cloth_scrap"]
 [ext_resource type="Script" path="res://game/rooms/brazil_edge_beach/hotspots/hotspot_car_trailer.gd" id="6_car_trailer"]
 [ext_resource type="Script" path="res://game/rooms/brazil_edge_beach/hotspots/hotspot_waterline.gd" id="7_waterline"]
-[ext_resource type="Texture2D" path="res://assets/images/backgrounds/forest-interactive.png" id="8_background"]
+[ext_resource type="Texture2D" path="res://assets/images/backgrounds/brazil_edge_beach.png" id="8_background"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_1"]
 vertices = PackedVector2Array(50, 350, 1230, 350, 1230, 680, 50, 680)

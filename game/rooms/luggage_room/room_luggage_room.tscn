@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://game/rooms/luggage_room/hotspots/hotspot_barcode_station.gd" id="5_barcode"]
 [ext_resource type="Script" path="res://game/rooms/luggage_room/hotspots/hotspot_deer_suitcase.gd" id="6_deer"]
 [ext_resource type="Script" path="res://game/rooms/luggage_room/hotspots/hotspot_zippers.gd" id="7_zippers"]
-[ext_resource type="Texture2D" path="res://assets/images/backgrounds/village.png" id="8_background"]
+[ext_resource type="Texture2D" path="res://assets/images/backgrounds/luggage_room.png" id="8_background"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_1"]
 vertices = PackedVector2Array(50, 350, 1230, 350, 1230, 680, 50, 680)

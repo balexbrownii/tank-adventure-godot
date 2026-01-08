@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://game/rooms/space_drift/hotspots/hotspot_floating_debris.gd" id="4_debris"]
 [ext_resource type="Script" path="res://game/rooms/space_drift/hotspots/hotspot_donut_scent_trail.gd" id="5_donut"]
 [ext_resource type="Script" path="res://game/rooms/space_drift/hotspots/hotspot_case_file_overlay.gd" id="6_case_file"]
-[ext_resource type="Texture2D" path="res://assets/images/backgrounds/forest-interactive.png" id="7_background"]
+[ext_resource type="Texture2D" path="res://assets/images/backgrounds/space_drift.png" id="7_background"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_1"]
 vertices = PackedVector2Array(50, 350, 1230, 350, 1230, 680, 50, 680)

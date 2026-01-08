@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://game/rooms/pig_deer_crossing/hotspots/hotspot_motorcycle_parked.gd" id="5_motorcycle"]
 [ext_resource type="Script" path="res://game/rooms/pig_deer_crossing/hotspots/hotspot_supplies_pouch.gd" id="6_supplies"]
 [ext_resource type="Script" path="res://game/rooms/pig_deer_crossing/hotspots/hotspot_oak_tree.gd" id="7_oak"]
-[ext_resource type="Texture2D" path="res://assets/images/backgrounds/forest-interactive.png" id="8_background"]
+[ext_resource type="Texture2D" path="res://assets/images/backgrounds/pig_deer_crossing.png" id="8_background"]
 [ext_resource type="PackedScene" uid="uid://pig_character_tscn" path="res://game/characters/pig/character_pig.tscn" id="9_char_pig"]
 [ext_resource type="PackedScene" uid="uid://mrsnuggles_tscn" path="res://game/characters/mr_snuggles/character_mr_snuggles.tscn" id="10_char_snuggles"]
 

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://csqg4qth40fwr" path="res://game/rooms/brazil_forest/room_brazil_forest.gd" id="1_qrvbs"]
 [ext_resource type="PackedScene" uid="uid://dte0k62okq15s" path="res://game/characters/tank/character_tank.tscn" id="2_305fl"]
 [ext_resource type="PackedScene" uid="uid://dqbxb5s0oimww" path="res://game/rooms/brazil_forest/walkable_areas/ground/walkable_area_ground.tscn" id="2_e0o23"]
-[ext_resource type="Texture2D" uid="uid://vh3vm4ykgye6" path="res://assets/images/backgrounds/forest-interactive.png" id="4_niygp"]
+[ext_resource type="Texture2D" uid="uid://vh3vm4ykgye6" path="res://assets/images/backgrounds/brazil_forest.png" id="4_niygp"]
 
 [node name="RoomBrazilForest" type="Node2D"]
 script = ExtResource("1_qrvbs")

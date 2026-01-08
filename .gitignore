@@ -28,3 +28,4 @@ Thumbs.db
 .env
 .vercel
 .env*.local
+.asset_venv/

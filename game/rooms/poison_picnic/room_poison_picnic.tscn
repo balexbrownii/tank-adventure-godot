@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://game/rooms/poison_picnic/hotspots/hotspot_sap_smear.gd" id="4_sap_smear"]
 [ext_resource type="Script" path="res://game/rooms/poison_picnic/hotspots/hotspot_trail_fork.gd" id="5_trail_fork"]
 [ext_resource type="Script" path="res://game/rooms/poison_picnic/hotspots/hotspot_birds_overhead.gd" id="6_birds_overhead"]
-[ext_resource type="Texture2D" path="res://assets/images/backgrounds/forest-interactive.png" id="7_background"]
+[ext_resource type="Texture2D" path="res://assets/images/backgrounds/poison_picnic.png" id="7_background"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_1"]
 vertices = PackedVector2Array(50, 350, 1230, 350, 1230, 680, 50, 680)

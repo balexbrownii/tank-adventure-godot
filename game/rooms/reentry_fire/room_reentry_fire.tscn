@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://game/rooms/reentry_fire/hotspots/hotspot_road_sign.gd" id="4_sign"]
 [ext_resource type="Script" path="res://game/rooms/reentry_fire/hotspots/hotspot_donut_box.gd" id="5_donut"]
 [ext_resource type="Script" path="res://game/rooms/reentry_fire/hotspots/hotspot_police_siren.gd" id="6_siren"]
-[ext_resource type="Texture2D" path="res://assets/images/backgrounds/forest-interactive.png" id="7_background"]
+[ext_resource type="Texture2D" path="res://assets/images/backgrounds/reentry_fire.png" id="7_background"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_1"]
 vertices = PackedVector2Array(50, 350, 1230, 350, 1230, 680, 50, 680)

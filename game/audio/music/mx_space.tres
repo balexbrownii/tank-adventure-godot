@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="AudioCueMusic" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://addons/popochiu/engine/audio_manager/audio_cue_music.gd" id="1_script"]
+[ext_resource type="AudioStreamWAV" path="res://assets/audio/music/theme_space.wav" id="2_audio"]
+
+[resource]
+script = ExtResource("1_script")
+audio = ExtResource("2_audio")
+loop = true
+is_2d = false
+can_play_simultaneous = false
+pitch = 0.0
+volume = -6.0
+rnd_pitch = Vector2(0, 0)
+rnd_volume = Vector2(0, 0)
+max_distance = 2000
+bus = "Music"
