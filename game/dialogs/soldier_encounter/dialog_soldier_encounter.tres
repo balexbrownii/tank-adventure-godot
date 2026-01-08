@@ -1,0 +1,36 @@
+[gd_resource type="Resource" load_steps=6 format=3 uid="uid://n67x8nrtqwx3m"]
+
+[ext_resource type="Script" path="res://game/dialogs/soldier_encounter/dialog_soldier_encounter.gd" id="1_script"]
+
+[sub_resource type="Resource" id="Resource_opt1"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "fight_them"
+text = "Fight them! (BRAWN)"
+visible = true
+disabled = false
+
+[sub_resource type="Resource" id="Resource_opt2"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "bacon_lure"
+text = "Use bacon crumbs as a lure (BRAINS)"
+visible = true
+disabled = false
+
+[sub_resource type="Resource" id="Resource_opt3"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "bacon_guardians"
+text = "Declare them Bacon Guardians! (BIZARRE)"
+visible = true
+disabled = false
+
+[sub_resource type="Resource" id="Resource_opt4"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "surrender"
+text = "I... don't know."
+visible = true
+disabled = false
+
+[resource]
+script = ExtResource("1_script")
+script_name = "SoldierEncounter"
+options = [SubResource("Resource_opt1"), SubResource("Resource_opt2"), SubResource("Resource_opt3"), SubResource("Resource_opt4")]

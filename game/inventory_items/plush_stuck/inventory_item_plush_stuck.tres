@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PopochiuInventoryItemData" load_steps=2 format=3 uid="uid://dp0k6nrtqwx9a"]
+
+[ext_resource type="Script" path="res://game/inventory_items/plush_stuck/inventory_item_plush_stuck.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+script_name = "PlushStuck"
+scene = "res://game/inventory_items/plush_stuck/inventory_item_plush_stuck.tscn"
+description = "A plushie stuck to my back. New friend!"

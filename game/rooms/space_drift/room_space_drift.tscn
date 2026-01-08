@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3 uid="uid://cqp8d3m7x0tpk"]
+
+[ext_resource type="Script" path="res://game/rooms/space_drift/room_space_drift.gd" id="1_room"]
+[ext_resource type="Script" path="res://game/rooms/space_drift/hotspots/hotspot_earth.gd" id="2_earth"]
+[ext_resource type="Script" path="res://game/rooms/space_drift/hotspots/hotspot_starfield.gd" id="3_starfield"]
+[ext_resource type="Script" path="res://game/rooms/space_drift/hotspots/hotspot_floating_debris.gd" id="4_debris"]
+[ext_resource type="Script" path="res://game/rooms/space_drift/hotspots/hotspot_donut_scent_trail.gd" id="5_donut"]
+[ext_resource type="Script" path="res://game/rooms/space_drift/hotspots/hotspot_case_file_overlay.gd" id="6_case_file"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_walkable"]
+size = Vector2(1920, 200)
+
+[node name="RoomSpaceDrift" type="Node2D"]
+script = ExtResource("1_room")
+
+[node name="WalkableAreas" type="Node2D" parent="."]
+
+[node name="WalkableArea" type="Node2D" parent="WalkableAreas"]
+
+[node name="Perimeter" type="NavigationRegion2D" parent="WalkableAreas/WalkableArea"]
+
+[node name="Props" type="Node2D" parent="."]
+
+[node name="Hotspots" type="Node2D" parent="."]
+
+[node name="HotspotEarth" type="Area2D" parent="Hotspots"]
+position = Vector2(200, 400)
+script = ExtResource("2_earth")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotEarth"]
+shape = SubResource("RectangleShape2D_walkable")
+
+[node name="HotspotStarfield" type="Area2D" parent="Hotspots"]
+position = Vector2(960, 100)
+script = ExtResource("3_starfield")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotStarfield"]
+shape = SubResource("RectangleShape2D_walkable")
+
+[node name="HotspotFloatingDebris" type="Area2D" parent="Hotspots"]
+position = Vector2(1400, 300)
+script = ExtResource("4_debris")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotFloatingDebris"]
+shape = SubResource("RectangleShape2D_walkable")
+
+[node name="HotspotDonutScentTrail" type="Area2D" parent="Hotspots"]
+position = Vector2(600, 500)
+script = ExtResource("5_donut")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotDonutScentTrail"]
+shape = SubResource("RectangleShape2D_walkable")
+
+[node name="HotspotCaseFileOverlay" type="Area2D" parent="Hotspots"]
+position = Vector2(1200, 500)
+script = ExtResource("6_case_file")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotCaseFileOverlay"]
+shape = SubResource("RectangleShape2D_walkable")
+
+[node name="Regions" type="Node2D" parent="."]
+
+[node name="Markers" type="Node2D" parent="."]
+
+[node name="Characters" type="Node2D" parent="."]

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="PopochiuDialogData" load_steps=2 format=3 uid="uid://b7n8kp4m6qzxa"]
+
+[ext_resource type="Script" path="res://game/dialogs/take_leaves/dialog_take_leaves.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+script_name = "TakeLeaves"
+options = [
+	{
+		"id": "take",
+		"text": "Yes, gather the leaves",
+		"visible": true,
+		"disabled": false
+	},
+	{
+		"id": "leave",
+		"text": "No, leave them for now",
+		"visible": true,
+		"disabled": false
+	}
+]

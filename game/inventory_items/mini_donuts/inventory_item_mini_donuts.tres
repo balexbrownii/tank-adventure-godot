@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PopochiuInventoryItemData" load_steps=2 format=3 uid="uid://my9k5nrtqwx8j"]
+
+[ext_resource type="Script" path="res://game/inventory_items/mini_donuts/inventory_item_mini_donuts.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+script_name = "MiniDonuts"
+scene = "res://game/inventory_items/mini_donuts/inventory_item_mini_donuts.tscn"
+description = "Mini donuts. Tiny and delicious."

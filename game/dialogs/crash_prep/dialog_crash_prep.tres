@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="PopochiuDialogData" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://game/dialogs/crash_prep/dialog_crash_prep.gd" id="1_script"]
+
+[sub_resource type="Resource" id="opt_full_prep"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "full_prep"
+text = "Full emergency prep - vests, straps, secure everything! (Brains)"
+visible_in_list = true
+disabled = false
+
+[sub_resource type="Resource" id="opt_human_shield"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "human_shield"
+text = "I'LL be the seatbelt! Hold everyone tight! (Brawn)"
+visible_in_list = true
+disabled = false
+
+[sub_resource type="Resource" id="opt_calm_deer"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "calm_deer"
+text = "Calm Mr. Snuggles with breathing exercises (Bizarre)"
+visible_in_list = true
+disabled = false
+
+[sub_resource type="Resource" id="opt_panic"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "panic"
+text = "I... I feel warm... *freeze*"
+visible_in_list = true
+disabled = false
+
+[resource]
+script = ExtResource("1_script")
+script_name = "CrashPrep"
+options = [SubResource("opt_full_prep"), SubResource("opt_human_shield"), SubResource("opt_calm_deer"), SubResource("opt_panic")]

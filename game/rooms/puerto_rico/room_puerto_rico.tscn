@@ -1,0 +1,91 @@
+[gd_scene load_steps=9 format=3 uid="uid://puertorico13k8n"]
+
+[ext_resource type="Script" path="res://game/rooms/puerto_rico/room_puerto_rico.gd" id="1_room"]
+[ext_resource type="Script" path="res://game/rooms/puerto_rico/hotspots/hotspot_motel_desk.gd" id="2_motel_desk"]
+[ext_resource type="Script" path="res://game/rooms/puerto_rico/hotspots/hotspot_vending_machine.gd" id="3_vending"]
+[ext_resource type="Script" path="res://game/rooms/puerto_rico/hotspots/hotspot_room_door.gd" id="4_room_door"]
+[ext_resource type="Script" path="res://game/rooms/puerto_rico/hotspots/hotspot_back_dock.gd" id="5_back_dock"]
+[ext_resource type="Script" path="res://game/rooms/puerto_rico/hotspots/hotspot_boat.gd" id="6_boat"]
+[ext_resource type="Script" path="res://game/rooms/puerto_rico/hotspots/hotspot_camera.gd" id="7_camera"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_default"]
+size = Vector2(150, 100)
+
+[node name="RoomPuertoRico" type="Node2D"]
+script = ExtResource("1_room")
+script_name = "PuertoRico"
+room_width = 640
+room_height = 360
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(320, 180)
+
+[node name="Hotspots" type="Node2D" parent="."]
+
+[node name="HotspotMotelDesk" type="Area2D" parent="Hotspots"]
+position = Vector2(150, 200)
+script = ExtResource("2_motel_desk")
+script_name = "MotelDesk"
+description = "Motel Desk"
+cursor = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotMotelDesk"]
+shape = SubResource("RectangleShape2D_default")
+
+[node name="HotspotVendingMachine" type="Area2D" parent="Hotspots"]
+position = Vector2(300, 180)
+script = ExtResource("3_vending")
+script_name = "VendingMachine"
+description = "Vending Machine"
+cursor = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotVendingMachine"]
+shape = SubResource("RectangleShape2D_default")
+
+[node name="HotspotRoomDoor" type="Area2D" parent="Hotspots"]
+position = Vector2(450, 180)
+script = ExtResource("4_room_door")
+script_name = "RoomDoor"
+description = "Room Door"
+cursor = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotRoomDoor"]
+shape = SubResource("RectangleShape2D_default")
+
+[node name="HotspotBackDock" type="Area2D" parent="Hotspots"]
+position = Vector2(550, 280)
+script = ExtResource("5_back_dock")
+script_name = "BackDock"
+description = "Back Dock"
+cursor = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotBackDock"]
+shape = SubResource("RectangleShape2D_default")
+
+[node name="HotspotBoat" type="Area2D" parent="Hotspots"]
+position = Vector2(500, 320)
+script = ExtResource("6_boat")
+script_name = "Boat"
+description = "Boat"
+cursor = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotBoat"]
+shape = SubResource("RectangleShape2D_default")
+
+[node name="HotspotCamera" type="Area2D" parent="Hotspots"]
+position = Vector2(380, 100)
+script = ExtResource("7_camera")
+script_name = "Camera"
+description = "Camera"
+cursor = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotCamera"]
+shape = SubResource("RectangleShape2D_default")
+
+[node name="Characters" type="Node2D" parent="."]
+
+[node name="Props" type="Node2D" parent="."]
+
+[node name="Markers" type="Node2D" parent="."]
+
+[node name="Regions" type="Node2D" parent="."]

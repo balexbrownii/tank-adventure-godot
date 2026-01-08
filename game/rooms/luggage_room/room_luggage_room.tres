@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://game/rooms/luggage_room/room_luggage_room_state.gd" id="1_state"]
+
+[resource]
+resource_name = "LuggageRoom"
+script = ExtResource("1_state")
+script_name = "LuggageRoom"
+scene = "res://game/rooms/luggage_room/room_luggage_room.tscn"

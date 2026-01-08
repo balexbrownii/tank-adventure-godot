@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="PopochiuDialogData" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://game/dialogs/get_room/dialog_get_room.gd" id="1_script"]
+
+[sub_resource type="Resource" id="opt_trade"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "trade"
+text = "Trade supplies for a room (Brains)"
+visible_in_list = true
+disabled = false
+
+[sub_resource type="Resource" id="opt_charm"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "charm"
+text = "Let Mr. Snuggles charm the clerk (Bizarre)"
+visible_in_list = true
+disabled = false
+
+[sub_resource type="Resource" id="opt_intimidate"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "intimidate"
+text = "Tank intimidates the clerk (Brawn)"
+visible_in_list = true
+disabled = false
+
+[sub_resource type="Resource" id="opt_leave"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "leave"
+text = "Forget it, we'll sleep outside"
+visible_in_list = true
+disabled = false
+
+[resource]
+script = ExtResource("1_script")
+script_name = "GetRoom"
+options = [SubResource("opt_trade"), SubResource("opt_charm"), SubResource("opt_intimidate"), SubResource("opt_leave")]

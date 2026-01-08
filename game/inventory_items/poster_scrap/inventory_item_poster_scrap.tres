@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PopochiuInventoryItemData" load_steps=2 format=3 uid="uid://h01r2nrtqwx7g"]
+
+[ext_resource type="Script" path="res://game/inventory_items/poster_scrap/inventory_item_poster_scrap.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+script_name = "PosterScrap"
+scene = "res://game/inventory_items/poster_scrap/inventory_item_poster_scrap.tscn"
+description = "A corner of Tank's wanted poster."

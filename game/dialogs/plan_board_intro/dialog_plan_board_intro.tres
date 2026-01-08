@@ -1,0 +1,29 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://q24r9nrtqwx3r"]
+
+[ext_resource type="Script" path="res://game/dialogs/plan_board_intro/dialog_plan_board_intro.gd" id="1_script"]
+
+[sub_resource type="Resource" id="Resource_opt1"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "sounds_good"
+text = "Sounds good! Let's go!"
+visible = true
+disabled = false
+
+[sub_resource type="Resource" id="Resource_opt2"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "any_dangers"
+text = "What dangers should we expect?"
+visible = true
+disabled = false
+
+[sub_resource type="Resource" id="Resource_opt3"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "why_canada"
+text = "Why are we going to Canada again?"
+visible = true
+disabled = false
+
+[resource]
+script = ExtResource("1_script")
+script_name = "PlanBoardIntro"
+options = [SubResource("Resource_opt1"), SubResource("Resource_opt2"), SubResource("Resource_opt3")]

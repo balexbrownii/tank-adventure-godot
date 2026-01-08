@@ -1,0 +1,29 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://dialog_cones1"]
+
+[ext_resource type="Script" path="res://game/dialogs/take_cones/dialog_take_cones.gd" id="1_script"]
+
+[sub_resource type="Resource" id="Resource_opt1"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "take_cones"
+text = "Take the cones"
+visible = true
+disabled = false
+
+[sub_resource type="Resource" id="Resource_opt2"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "use_here"
+text = "Use them to redirect traffic right now"
+visible = true
+disabled = false
+
+[sub_resource type="Resource" id="Resource_opt3"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "leave"
+text = "Leave them alone"
+visible = true
+disabled = false
+
+[resource]
+script = ExtResource("1_script")
+script_name = "TakeCones"
+options = [SubResource("Resource_opt1"), SubResource("Resource_opt2"), SubResource("Resource_opt3")]

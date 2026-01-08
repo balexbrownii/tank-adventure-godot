@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dm8r2qp4k6hya"]
+
+[ext_resource type="Script" path="res://game/inventory_items/leaf_blanket/inventory_item_leaf_blanket.gd" id="1_script"]
+
+[node name="InventoryItemLeafBlanket" type="Node2D"]
+script = ExtResource("1_script")

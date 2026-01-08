@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://clipboard14k8n9"]
+
+[ext_resource type="Script" path="res://game/inventory_items/clipboard/inventory_item_clipboard.gd" id="1_script"]
+
+[node name="Clipboard" type="TextureRect"]
+script = ExtResource("1_script")
+script_name = "Clipboard"
+description = "Clipboard"

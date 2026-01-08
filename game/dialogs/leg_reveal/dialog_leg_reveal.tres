@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="PopochiuDialogData" load_steps=2 format=3 uid="uid://c6m8kp4n7rzxa"]
+
+[ext_resource type="Script" path="res://game/dialogs/leg_reveal/dialog_leg_reveal.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+script_name = "LegReveal"
+options = [
+	{
+		"id": "examine_pile",
+		"text": "(Brains) Examine the leaf pile carefully",
+		"visible": true,
+		"disabled": false
+	},
+	{
+		"id": "pretend_struggle",
+		"text": "(Brawn) Dramatically struggle to stand!",
+		"visible": true,
+		"disabled": false
+	},
+	{
+		"id": "scream_miracle",
+		"text": "(Bizarre) Scream 'MIRACLE!' repeatedly",
+		"visible": true,
+		"disabled": false
+	},
+	{
+		"id": "give_up",
+		"text": "Give up and accept my fate...",
+		"visible": true,
+		"disabled": false
+	}
+]

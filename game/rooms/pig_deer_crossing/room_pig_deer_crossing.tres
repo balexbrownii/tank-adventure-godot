@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="PopochiuRoomData" load_steps=2 format=3 uid="uid://iu5k1nrtqwx4f"]
+
+[ext_resource type="Script" path="res://game/rooms/pig_deer_crossing/room_pig_deer_crossing_state.gd" id="1_state"]
+
+[resource]
+script = ExtResource("1_state")
+script_name = "PigDeerCrossing"
+scene = "res://game/rooms/pig_deer_crossing/room_pig_deer_crossing.tscn"

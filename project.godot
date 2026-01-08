@@ -12,26 +12,65 @@ config_version=5
 
 config/name="Tank's Great Adventure"
 config/description="A point-and-click adventure game featuring Tank, a martial artist, and her companions Pig and Mr. Snuggles on a quest through Brazil."
-run/main_scene="res://game/rooms/brazil_forest/brazil_forest.tscn"
-config/features=PackedStringArray("4.3", "GL Compatibility")
+run/main_scene="res://game/rooms/brazil_forest/room_brazil_forest.tscn"
+config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameState="*res://game/autoloads/game_state.gd"
+TankVision="*res://game/autoloads/tank_vision.gd"
+WordManager="*res://game/autoloads/word_manager.gd"
+PanelManager="*res://game/autoloads/panel_manager.gd"
+Globals="*res://game/popochiu_globals.gd"
+Cursor="*res://addons/popochiu/engine/cursor/cursor.tscn"
+E="*res://addons/popochiu/engine/popochiu.tscn"
+R="*res://game/autoloads/r.gd"
+C="*res://game/autoloads/c.gd"
+I="*res://game/autoloads/i.gd"
+D="*res://game/autoloads/d.gd"
+A="*res://game/autoloads/a.gd"
+G="*res://addons/popochiu/engine/interfaces/i_graphic_interface.gd"
 
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/size/window_width_override=1280
+window/size/window_height_override=720
 window/stretch/mode="canvas_items"
-window/stretch/aspect="keep"
+window/stretch/aspect="expand"
 
-[autoload]
+[editor_plugins]
 
-GameManager="*res://game/autoloads/game_manager.gd"
+enabled=PackedStringArray("res://addons/popochiu/editor/gizmos/plugin.cfg", "res://addons/popochiu/editor/importers/plugin.cfg", "res://addons/popochiu/plugin.cfg")
 
 [input]
 
 click={
 "deadzone": 0.5,
-"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false)]
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
+}
+popochiu-interact={
+&"deadzone": 0.5,
+&"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
+}
+popochiu-look={
+&"deadzone": 0.5,
+&"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":2,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
+}
+popochiu-skip={
+&"deadzone": 0.5,
+&"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194305,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+toggle_vision={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194306,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
 }
 
 [rendering]

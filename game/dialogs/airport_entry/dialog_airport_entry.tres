@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="PopochiuDialogData" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://game/dialogs/airport_entry/dialog_airport_entry.gd" id="1_script"]
+
+[sub_resource type="Resource" id="opt_disguise"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "disguise"
+text = "Use the vest and clipboard disguise (Brains)"
+visible_in_list = true
+disabled = false
+
+[sub_resource type="Resource" id="opt_distraction"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "distraction"
+text = "Create a diversion - save people from luggage carts! (Brawn)"
+visible_in_list = true
+disabled = false
+
+[sub_resource type="Resource" id="opt_support_deer"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "support_deer"
+text = "Mr. Snuggles is an Emotional Support Deer (Bizarre)"
+visible_in_list = true
+disabled = false
+
+[sub_resource type="Resource" id="opt_just_walk"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "just_walk"
+text = "Just walk in confidently!"
+visible_in_list = true
+disabled = false
+
+[resource]
+script = ExtResource("1_script")
+script_name = "AirportEntry"
+options = [SubResource("opt_disguise"), SubResource("opt_distraction"), SubResource("opt_support_deer"), SubResource("opt_just_walk")]

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://ht4k0nrtqwx3e"]
+
+[ext_resource type="Script" path="res://game/dialogs/take_donuts_reentry/dialog_take_donuts_reentry.gd" id="1_script"]
+
+[sub_resource type="Resource" id="Resource_opt1"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "take_them"
+text = "Take the donuts!"
+visible = true
+disabled = false
+
+[sub_resource type="Resource" id="Resource_opt2"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "leave_them"
+text = "Leave them (WHY?!)"
+visible = true
+disabled = false
+
+[resource]
+script = ExtResource("1_script")
+script_name = "TakeDonutsReentry"
+options = [SubResource("Resource_opt1"), SubResource("Resource_opt2")]

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dijfbatyc54nc"]
+
+[ext_resource type="Script" path="res://game/rooms/brazil_forest/room_brazil_forest_state.gd" id="1_dsn23"]
+
+[resource]
+resource_name = "BrazilForest"
+script = ExtResource("1_dsn23")
+script_name = "BrazilForest"
+scene = "res://game/rooms/brazil_forest/room_brazil_forest.tscn"

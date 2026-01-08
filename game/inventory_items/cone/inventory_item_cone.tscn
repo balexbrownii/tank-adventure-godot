@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cone1scene"]
+
+[ext_resource type="Script" path="res://game/inventory_items/cone/inventory_item_cone.gd" id="1_item"]
+
+[node name="InventoryItemCone" type="TextureRect"]
+script = ExtResource("1_item")
+script_name = "Cone"
+description = "An orange traffic cone"

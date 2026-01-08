@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://map1scene"]
+
+[ext_resource type="Script" path="res://game/inventory_items/map_flyer/inventory_item_map_flyer.gd" id="1_item"]
+
+[node name="InventoryItemMapFlyer" type="TextureRect"]
+script = ExtResource("1_item")
+script_name = "MapFlyer"
+description = "A gas station map flyer"

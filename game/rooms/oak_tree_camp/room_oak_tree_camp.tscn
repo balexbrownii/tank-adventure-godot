@@ -1,0 +1,73 @@
+[gd_scene load_steps=8 format=3 uid="uid://ly0m5nrtqwx9n"]
+
+[ext_resource type="Script" path="res://game/rooms/oak_tree_camp/room_oak_tree_camp.gd" id="1_room"]
+[ext_resource type="Script" path="res://game/rooms/oak_tree_camp/hotspots/hotspot_oak_tree.gd" id="2_oak_tree"]
+[ext_resource type="Script" path="res://game/rooms/oak_tree_camp/hotspots/hotspot_camp_spot.gd" id="3_camp_spot"]
+[ext_resource type="Script" path="res://game/rooms/oak_tree_camp/hotspots/hotspot_plan_board.gd" id="4_plan_board"]
+[ext_resource type="Script" path="res://game/rooms/oak_tree_camp/hotspots/hotspot_mini_donuts.gd" id="5_mini_donuts"]
+[ext_resource type="Script" path="res://game/rooms/oak_tree_camp/hotspots/hotspot_spinach_leaves.gd" id="6_spinach_leaves"]
+[ext_resource type="Script" path="res://game/rooms/oak_tree_camp/hotspots/hotspot_deer_saddle.gd" id="7_deer_saddle"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_default"]
+size = Vector2(150, 100)
+
+[node name="RoomOakTreeCamp" type="Node2D"]
+script = ExtResource("1_room")
+
+[node name="WalkableAreas" type="Node2D" parent="."]
+
+[node name="WalkableArea" type="Node2D" parent="WalkableAreas"]
+
+[node name="Perimeter" type="NavigationRegion2D" parent="WalkableAreas/WalkableArea"]
+
+[node name="Props" type="Node2D" parent="."]
+
+[node name="Hotspots" type="Node2D" parent="."]
+
+[node name="HotspotOakTree" type="Area2D" parent="Hotspots"]
+position = Vector2(600, 200)
+script = ExtResource("2_oak_tree")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotOakTree"]
+shape = SubResource("RectangleShape2D_default")
+
+[node name="HotspotCampSpot" type="Area2D" parent="Hotspots"]
+position = Vector2(500, 400)
+script = ExtResource("3_camp_spot")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotCampSpot"]
+shape = SubResource("RectangleShape2D_default")
+
+[node name="HotspotPlanBoard" type="Area2D" parent="Hotspots"]
+position = Vector2(300, 350)
+script = ExtResource("4_plan_board")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotPlanBoard"]
+shape = SubResource("RectangleShape2D_default")
+
+[node name="HotspotMiniDonuts" type="Area2D" parent="Hotspots"]
+position = Vector2(700, 450)
+script = ExtResource("5_mini_donuts")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotMiniDonuts"]
+shape = SubResource("RectangleShape2D_default")
+
+[node name="HotspotSpinachLeaves" type="Area2D" parent="Hotspots"]
+position = Vector2(750, 480)
+script = ExtResource("6_spinach_leaves")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotSpinachLeaves"]
+shape = SubResource("RectangleShape2D_default")
+
+[node name="HotspotDeerSaddle" type="Area2D" parent="Hotspots"]
+position = Vector2(850, 420)
+script = ExtResource("7_deer_saddle")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotDeerSaddle"]
+shape = SubResource("RectangleShape2D_default")
+
+[node name="Regions" type="Node2D" parent="."]
+
+[node name="Markers" type="Node2D" parent="."]
+
+[node name="Characters" type="Node2D" parent="."]

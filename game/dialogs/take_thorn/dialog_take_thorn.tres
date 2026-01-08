@@ -1,0 +1,22 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://z89j0nrtqwx5y"]
+
+[ext_resource type="Script" path="res://game/dialogs/take_thorn/dialog_take_thorn.gd" id="1_script"]
+
+[sub_resource type="Resource" id="Resource_opt1"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "take_it"
+text = "Take the thorn"
+visible = true
+disabled = false
+
+[sub_resource type="Resource" id="Resource_opt2"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "leave_it"
+text = "Leave it alone"
+visible = true
+disabled = false
+
+[resource]
+script = ExtResource("1_script")
+script_name = "TakeThorn"
+options = [SubResource("Resource_opt1"), SubResource("Resource_opt2")]

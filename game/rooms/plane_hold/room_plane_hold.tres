@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://game/rooms/plane_hold/room_plane_hold_state.gd" id="1_state"]
+
+[resource]
+resource_name = "PlaneHold"
+script = ExtResource("1_state")
+script_name = "PlaneHold"
+scene = "res://game/rooms/plane_hold/room_plane_hold.tscn"

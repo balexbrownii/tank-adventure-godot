@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqbxb5s0oimww"]
+
+[ext_resource type="Script" uid="uid://cb6u5hvwsa4qg" path="res://game/rooms/brazil_forest/walkable_areas/ground/walkable_area_ground.gd" id="1_y8hql"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_y8hql"]
+vertices = PackedVector2Array(-605, 342, -748, 231, -371, 136, -383, 231, 350, 337, -28, 255, 194, 63, 321, 41, -62, 126)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5), PackedInt32Array(6, 7, 4, 5, 8)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(194, 63, 321, 41, 350, 337, -605, 342, -748, 231, -371, 136, -383, 231, -28, 255, -62, 126)])
+agent_radius = 0.0
+
+[node name="Ground" type="Node2D"]
+position = Vector2(640, 360)
+script = ExtResource("1_y8hql")
+script_name = "Ground"
+description = "Ground"
+interaction_polygon = [PackedVector2Array(194, 63, 321, 41, 350, 337, -605, 342, -748, 231, -371, 136, -383, 231, -28, 255, -62, 126)]
+
+[node name="Perimeter" type="NavigationRegion2D" parent="."]
+visible = false
+modulate = Color(0, 1, 0, 1)
+navigation_polygon = SubResource("NavigationPolygon_y8hql")

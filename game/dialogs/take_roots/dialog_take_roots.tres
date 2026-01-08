@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="PopochiuDialogData" load_steps=2 format=3 uid="uid://c9n7kp5x8rzya"]
+
+[ext_resource type="Script" path="res://game/dialogs/take_roots/dialog_take_roots.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+script_name = "TakeRoots"
+options = [
+	{
+		"id": "take",
+		"text": "Yes, pull some roots",
+		"visible": true,
+		"disabled": false
+	},
+	{
+		"id": "leave",
+		"text": "No, leave them be",
+		"visible": true,
+		"disabled": false
+	}
+]

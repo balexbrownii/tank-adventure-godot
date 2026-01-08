@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://game/rooms/puerto_rico/room_puerto_rico_state.gd" id="1_state"]
+
+[resource]
+resource_name = "PuertoRico"
+script = ExtResource("1_state")
+script_name = "PuertoRico"
+scene = "res://game/rooms/puerto_rico/room_puerto_rico.tscn"

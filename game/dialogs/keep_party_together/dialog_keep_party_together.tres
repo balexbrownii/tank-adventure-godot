@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="PopochiuDialogData" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://game/dialogs/keep_party_together/dialog_keep_party_together.gd" id="1_script"]
+
+[sub_resource type="Resource" id="opt_use_rope"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "use_rope"
+text = "Tie the suitcases together with rope (Brains)"
+visible_in_list = true
+disabled = false
+
+[sub_resource type="Resource" id="opt_follow_sound"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "follow_sound"
+text = "Follow Mr. Snuggles' tapping sounds (Bizarre)"
+visible_in_list = true
+disabled = false
+
+[sub_resource type="Resource" id="opt_stop_belt"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "stop_belt"
+text = "Shoulder-barge the belt to stop it (Brawn)"
+visible_in_list = true
+disabled = false
+
+[sub_resource type="Resource" id="opt_do_nothing"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "do_nothing"
+text = "Panic and do nothing!"
+visible_in_list = true
+disabled = false
+
+[resource]
+script = ExtResource("1_script")
+script_name = "KeepPartyTogether"
+options = [SubResource("opt_use_rope"), SubResource("opt_follow_sound"), SubResource("opt_stop_belt"), SubResource("opt_do_nothing")]

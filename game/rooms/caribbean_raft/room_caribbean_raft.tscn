@@ -1,0 +1,102 @@
+[gd_scene load_steps=10 format=3 uid="uid://crf12k8nv2q3x"]
+
+[ext_resource type="Script" path="res://game/rooms/caribbean_raft/room_caribbean_raft.gd" id="1_room"]
+[ext_resource type="Script" path="res://game/rooms/caribbean_raft/hotspots/hotspot_fog_wall.gd" id="2_fog_wall"]
+[ext_resource type="Script" path="res://game/rooms/caribbean_raft/hotspots/hotspot_moon.gd" id="3_moon"]
+[ext_resource type="Script" path="res://game/rooms/caribbean_raft/hotspots/hotspot_stars.gd" id="4_stars"]
+[ext_resource type="Script" path="res://game/rooms/caribbean_raft/hotspots/hotspot_sound_cues.gd" id="5_sound_cues"]
+[ext_resource type="Script" path="res://game/rooms/caribbean_raft/hotspots/hotspot_oar.gd" id="6_oar"]
+[ext_resource type="Script" path="res://game/rooms/caribbean_raft/hotspots/hotspot_life_jacket.gd" id="7_life_jacket"]
+[ext_resource type="Script" path="res://game/rooms/caribbean_raft/hotspots/hotspot_case_file.gd" id="8_case_file"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_default"]
+size = Vector2(150, 100)
+
+[node name="RoomCaribbeanRaft" type="Node2D"]
+script = ExtResource("1_room")
+script_name = "CaribbeanRaft"
+room_width = 640
+room_height = 360
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(320, 180)
+
+[node name="Hotspots" type="Node2D" parent="."]
+
+[node name="HotspotFogWall" type="Area2D" parent="Hotspots"]
+position = Vector2(100, 180)
+script = ExtResource("2_fog_wall")
+script_name = "FogWall"
+description = "Fog Wall"
+cursor = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotFogWall"]
+shape = SubResource("RectangleShape2D_default")
+
+[node name="HotspotMoon" type="Area2D" parent="Hotspots"]
+position = Vector2(480, 60)
+script = ExtResource("3_moon")
+script_name = "Moon"
+description = "Moon"
+cursor = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotMoon"]
+shape = SubResource("RectangleShape2D_default")
+
+[node name="HotspotStars" type="Area2D" parent="Hotspots"]
+position = Vector2(320, 50)
+script = ExtResource("4_stars")
+script_name = "Stars"
+description = "Stars"
+cursor = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotStars"]
+shape = SubResource("RectangleShape2D_default")
+
+[node name="HotspotSoundCues" type="Area2D" parent="Hotspots"]
+position = Vector2(540, 180)
+script = ExtResource("5_sound_cues")
+script_name = "SoundCues"
+description = "Sound Cues"
+cursor = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotSoundCues"]
+shape = SubResource("RectangleShape2D_default")
+
+[node name="HotspotOar" type="Area2D" parent="Hotspots"]
+position = Vector2(250, 280)
+script = ExtResource("6_oar")
+script_name = "Oar"
+description = "Oar"
+cursor = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotOar"]
+shape = SubResource("RectangleShape2D_default")
+
+[node name="HotspotLifeJacket" type="Area2D" parent="Hotspots"]
+position = Vector2(400, 250)
+script = ExtResource("7_life_jacket")
+script_name = "LifeJacket"
+description = "Life Jacket"
+cursor = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotLifeJacket"]
+shape = SubResource("RectangleShape2D_default")
+
+[node name="HotspotCaseFile" type="Area2D" parent="Hotspots"]
+position = Vector2(180, 320)
+script = ExtResource("8_case_file")
+script_name = "CaseFile"
+description = "Case File"
+cursor = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotCaseFile"]
+shape = SubResource("RectangleShape2D_default")
+
+[node name="Characters" type="Node2D" parent="."]
+
+[node name="Props" type="Node2D" parent="."]
+
+[node name="Markers" type="Node2D" parent="."]
+
+[node name="Regions" type="Node2D" parent="."]

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://helmet1scene"]
+
+[ext_resource type="Script" path="res://game/inventory_items/helmet/inventory_item_helmet.gd" id="1_item"]
+
+[node name="InventoryItemHelmet" type="TextureRect"]
+script = ExtResource("1_item")
+script_name = "Helmet"
+description = "A protective helmet"

@@ -1,0 +1,76 @@
+[gd_scene load_steps=8 format=3 uid="uid://lf1w7xz2yghia"]
+
+[ext_resource type="Script" path="res://game/rooms/brazil_edge_beach/room_brazil_edge_beach.gd" id="1_room"]
+[ext_resource type="Script" path="res://game/rooms/brazil_edge_beach/hotspots/hotspot_beach.gd" id="2_beach"]
+[ext_resource type="Script" path="res://game/rooms/brazil_edge_beach/hotspots/hotspot_driftwood.gd" id="3_driftwood"]
+[ext_resource type="Script" path="res://game/rooms/brazil_edge_beach/hotspots/hotspot_vine_rope.gd" id="4_vine_rope"]
+[ext_resource type="Script" path="res://game/rooms/brazil_edge_beach/hotspots/hotspot_cloth_scrap.gd" id="5_cloth_scrap"]
+[ext_resource type="Script" path="res://game/rooms/brazil_edge_beach/hotspots/hotspot_car_trailer.gd" id="6_car_trailer"]
+[ext_resource type="Script" path="res://game/rooms/brazil_edge_beach/hotspots/hotspot_waterline.gd" id="7_waterline"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_default"]
+size = Vector2(150, 100)
+
+[node name="RoomBrazilEdgeBeach" type="Node2D"]
+script = ExtResource("1_room")
+
+[node name="WalkableAreas" type="Node2D" parent="."]
+
+[node name="WalkableArea" type="Node2D" parent="WalkableAreas"]
+
+[node name="Perimeter" type="NavigationRegion2D" parent="WalkableAreas/WalkableArea"]
+
+[node name="Props" type="Node2D" parent="."]
+
+[node name="Hotspots" type="Node2D" parent="."]
+
+[node name="HotspotBeach" type="Area2D" parent="Hotspots"]
+position = Vector2(400, 400)
+script = ExtResource("2_beach")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotBeach"]
+shape = SubResource("RectangleShape2D_default")
+
+[node name="HotspotDriftwood" type="Area2D" parent="Hotspots"]
+position = Vector2(200, 350)
+script = ExtResource("3_driftwood")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotDriftwood"]
+shape = SubResource("RectangleShape2D_default")
+
+[node name="HotspotVineRope" type="Area2D" parent="Hotspots"]
+position = Vector2(150, 280)
+script = ExtResource("4_vine_rope")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotVineRope"]
+shape = SubResource("RectangleShape2D_default")
+
+[node name="HotspotClothScrap" type="Area2D" parent="Hotspots"]
+position = Vector2(600, 320)
+script = ExtResource("5_cloth_scrap")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotClothScrap"]
+shape = SubResource("RectangleShape2D_default")
+
+[node name="HotspotCarTrailer" type="Area2D" parent="Hotspots"]
+position = Vector2(650, 400)
+script = ExtResource("6_car_trailer")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotCarTrailer"]
+shape = SubResource("RectangleShape2D_default")
+
+[node name="HotspotWaterline" type="Area2D" parent="Hotspots"]
+position = Vector2(400, 500)
+script = ExtResource("7_waterline")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotWaterline"]
+shape = SubResource("RectangleShape2D_default")
+
+[node name="Regions" type="Node2D" parent="."]
+
+[node name="Markers" type="Node2D" parent="."]
+
+[node name="TankStart" type="Marker2D" parent="Markers"]
+position = Vector2(400, 380)
+
+[node name="Characters" type="Node2D" parent="."]

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cone1item"]
+
+[ext_resource type="Script" path="res://game/inventory_items/cone/inventory_item_cone_state.gd" id="1_state"]
+
+[resource]
+resource_name = "Cone"
+script = ExtResource("1_state")
+script_name = "Cone"
+description = "An orange traffic cone"
+scene = "res://game/inventory_items/cone/inventory_item_cone.tscn"

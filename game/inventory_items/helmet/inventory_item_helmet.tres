@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://helmet1item"]
+
+[ext_resource type="Script" path="res://game/inventory_items/helmet/inventory_item_helmet_state.gd" id="1_state"]
+
+[resource]
+resource_name = "Helmet"
+script = ExtResource("1_state")
+script_name = "Helmet"
+description = "A protective helmet from a police car"
+scene = "res://game/inventory_items/helmet/inventory_item_helmet.tscn"

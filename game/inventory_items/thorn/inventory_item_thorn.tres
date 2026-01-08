@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PopochiuInventoryItemData" load_steps=2 format=3 uid="uid://s12c3nrtqwx8r"]
+
+[ext_resource type="Script" path="res://game/inventory_items/thorn/inventory_item_thorn.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+script_name = "Thorn"
+scene = "res://game/inventory_items/thorn/inventory_item_thorn.tscn"
+description = "A sharp thorn. Nature's tiny sword."

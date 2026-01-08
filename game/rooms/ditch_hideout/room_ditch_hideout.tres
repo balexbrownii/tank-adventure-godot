@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="PopochiuRoomData" load_steps=2 format=3 uid="uid://cdf7k9m2xh3pq"]
+
+[ext_resource type="Script" path="res://game/rooms/ditch_hideout/room_ditch_hideout_state.gd" id="1_state"]
+
+[resource]
+script = ExtResource("1_state")
+script_name = "DitchHideout"
+scene = "res://game/rooms/ditch_hideout/room_ditch_hideout.tscn"

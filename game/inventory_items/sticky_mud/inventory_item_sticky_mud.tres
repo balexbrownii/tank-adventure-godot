@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PopochiuInventoryItemData" load_steps=2 format=3 uid="uid://u34e5nrtqwx0t"]
+
+[ext_resource type="Script" path="res://game/inventory_items/sticky_mud/inventory_item_sticky_mud.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+script_name = "StickyMud"
+scene = "res://game/inventory_items/sticky_mud/inventory_item_sticky_mud.tscn"
+description = "Super sticky mud. Natural adhesive."

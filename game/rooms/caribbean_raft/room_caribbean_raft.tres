@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://game/rooms/caribbean_raft/room_caribbean_raft_state.gd" id="1_state"]
+
+[resource]
+resource_name = "CaribbeanRaft"
+script = ExtResource("1_state")
+script_name = "CaribbeanRaft"
+scene = "res://game/rooms/caribbean_raft/room_caribbean_raft.tscn"

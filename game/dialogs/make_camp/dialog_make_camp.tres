@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="PopochiuDialogData" load_steps=2 format=3 uid="uid://c4m7kp9x5rnya"]
+
+[ext_resource type="Script" path="res://game/dialogs/make_camp/dialog_make_camp.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+script_name = "MakeCamp"
+options = [
+	{
+		"id": "use_leaves",
+		"text": "Use leaves as a blanket",
+		"visible": true,
+		"disabled": false
+	},
+	{
+		"id": "craft_better",
+		"text": "(Brains) Craft a leaf wrap with roots",
+		"visible": true,
+		"disabled": false
+	},
+	{
+		"id": "punch_ground",
+		"text": "(Brawn) Punch the ground soft!",
+		"visible": true,
+		"disabled": false
+	},
+	{
+		"id": "skip_camp",
+		"text": "Sleep is for the weak!",
+		"visible": true,
+		"disabled": false
+	}
+]

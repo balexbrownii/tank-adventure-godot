@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PopochiuInventoryItemData" load_steps=2 format=3 uid="uid://ck8m3nrpqtwx9"]
+
+[ext_resource type="Script" path="res://game/inventory_items/motorcycle_key/inventory_item_motorcycle_key.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+script_name = "MotorcycleKey"
+scene = "res://game/inventory_items/motorcycle_key/inventory_item_motorcycle_key.tscn"
+description = "A motorcycle key. Jangly."

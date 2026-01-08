@@ -1,0 +1,22 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://bk2m8nrpqtw93"]
+
+[ext_resource type="Script" path="res://game/dialogs/take_debris/dialog_take_debris.gd" id="1_script"]
+
+[sub_resource type="Resource" id="Resource_opt1"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "take_it"
+text = "Take the space treasure!"
+visible = true
+disabled = false
+
+[sub_resource type="Resource" id="Resource_opt2"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "leave_it"
+text = "Leave it floating"
+visible = true
+disabled = false
+
+[resource]
+script = ExtResource("1_script")
+script_name = "TakeDebris"
+options = [SubResource("Resource_opt1"), SubResource("Resource_opt2")]

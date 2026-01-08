@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PopochiuInventoryItemData" load_steps=2 format=3 uid="uid://wq2h8jk3lrst0"]
+
+[ext_resource type="Script" path="res://game/inventory_items/shell_whistle/inventory_item_shell_whistle.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+script_name = "ShellWhistle"
+scene = "res://game/inventory_items/shell_whistle/inventory_item_shell_whistle.tscn"
+description = "A conch shell. Makes a loud honking sound."

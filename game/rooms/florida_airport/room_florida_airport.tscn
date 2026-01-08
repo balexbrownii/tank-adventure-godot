@@ -1,0 +1,91 @@
+[gd_scene load_steps=9 format=3 uid="uid://floridaairport14"]
+
+[ext_resource type="Script" path="res://game/rooms/florida_airport/room_florida_airport.gd" id="1_room"]
+[ext_resource type="Script" path="res://game/rooms/florida_airport/hotspots/hotspot_dock.gd" id="2_dock"]
+[ext_resource type="Script" path="res://game/rooms/florida_airport/hotspots/hotspot_car.gd" id="3_car"]
+[ext_resource type="Script" path="res://game/rooms/florida_airport/hotspots/hotspot_tree_line.gd" id="4_trees"]
+[ext_resource type="Script" path="res://game/rooms/florida_airport/hotspots/hotspot_airport_entrance.gd" id="5_entrance"]
+[ext_resource type="Script" path="res://game/rooms/florida_airport/hotspots/hotspot_maintenance_door.gd" id="6_maintenance"]
+[ext_resource type="Script" path="res://game/rooms/florida_airport/hotspots/hotspot_luggage_carts.gd" id="7_carts"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_default"]
+size = Vector2(150, 100)
+
+[node name="RoomFloridaAirport" type="Node2D"]
+script = ExtResource("1_room")
+script_name = "FloridaAirport"
+room_width = 640
+room_height = 360
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(320, 180)
+
+[node name="Hotspots" type="Node2D" parent="."]
+
+[node name="HotspotDock" type="Area2D" parent="Hotspots"]
+position = Vector2(80, 300)
+script = ExtResource("2_dock")
+script_name = "Dock"
+description = "Dock"
+cursor = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotDock"]
+shape = SubResource("RectangleShape2D_default")
+
+[node name="HotspotCar" type="Area2D" parent="Hotspots"]
+position = Vector2(200, 280)
+script = ExtResource("3_car")
+script_name = "Car"
+description = "Car"
+cursor = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotCar"]
+shape = SubResource("RectangleShape2D_default")
+
+[node name="HotspotTreeLine" type="Area2D" parent="Hotspots"]
+position = Vector2(350, 200)
+script = ExtResource("4_trees")
+script_name = "TreeLine"
+description = "Tree Line"
+cursor = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotTreeLine"]
+shape = SubResource("RectangleShape2D_default")
+
+[node name="HotspotAirportEntrance" type="Area2D" parent="Hotspots"]
+position = Vector2(500, 150)
+script = ExtResource("5_entrance")
+script_name = "AirportEntrance"
+description = "Airport Entrance"
+cursor = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotAirportEntrance"]
+shape = SubResource("RectangleShape2D_default")
+
+[node name="HotspotMaintenanceDoor" type="Area2D" parent="Hotspots"]
+position = Vector2(580, 220)
+script = ExtResource("6_maintenance")
+script_name = "MaintenanceDoor"
+description = "Maintenance Door"
+cursor = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotMaintenanceDoor"]
+shape = SubResource("RectangleShape2D_default")
+
+[node name="HotspotLuggageCarts" type="Area2D" parent="Hotspots"]
+position = Vector2(420, 280)
+script = ExtResource("7_carts")
+script_name = "LuggageCarts"
+description = "Luggage Carts"
+cursor = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotLuggageCarts"]
+shape = SubResource("RectangleShape2D_default")
+
+[node name="Characters" type="Node2D" parent="."]
+
+[node name="Props" type="Node2D" parent="."]
+
+[node name="Markers" type="Node2D" parent="."]
+
+[node name="Regions" type="Node2D" parent="."]

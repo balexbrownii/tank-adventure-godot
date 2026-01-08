@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="PopochiuRoomData" load_steps=2 format=3 uid="uid://b0mqx2rkvydtc"]
+
+[ext_resource type="Script" path="res://game/rooms/space_drift/room_space_drift_state.gd" id="1_state"]
+
+[resource]
+script = ExtResource("1_state")
+script_name = "SpaceDrift"
+scene = "res://game/rooms/space_drift/room_space_drift.tscn"

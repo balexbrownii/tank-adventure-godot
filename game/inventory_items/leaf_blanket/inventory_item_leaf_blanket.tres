@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="PopochiuInventoryItemData" load_steps=2 format=3 uid="uid://c5xm8qp3v7nka"]
+
+[ext_resource type="Script" path="res://game/inventory_items/leaf_blanket/inventory_item_leaf_blanket.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+script_name = "LeafBlanket"
+scene = "res://game/inventory_items/leaf_blanket/inventory_item_leaf_blanket.tscn"

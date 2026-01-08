@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="PopochiuRoomData" load_steps=2 format=3 uid="uid://q90a1nrtqwx6p"]
+
+[ext_resource type="Script" path="res://game/rooms/werewolf_chase/room_werewolf_chase_state.gd" id="1_state"]
+
+[resource]
+script = ExtResource("1_state")
+script_name = "WerewolfChase"
+scene = "res://game/rooms/werewolf_chase/room_werewolf_chase.tscn"

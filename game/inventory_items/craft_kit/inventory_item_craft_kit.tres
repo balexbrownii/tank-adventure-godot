@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PopochiuInventoryItemData" load_steps=2 format=3 uid="uid://kw7k3nrtqwx6h"]
+
+[ext_resource type="Script" path="res://game/inventory_items/craft_kit/inventory_item_craft_kit.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+script_name = "CraftKit"
+scene = "res://game/inventory_items/craft_kit/inventory_item_craft_kit.tscn"
+description = "Pig's craft kit. For combining things."

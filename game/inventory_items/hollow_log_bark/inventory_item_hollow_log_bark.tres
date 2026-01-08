@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PopochiuInventoryItemData" load_steps=2 format=3 uid="uid://w56g7nrtqwx2v"]
+
+[ext_resource type="Script" path="res://game/inventory_items/hollow_log_bark/inventory_item_hollow_log_bark.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+script_name = "HollowLogBark"
+scene = "res://game/inventory_items/hollow_log_bark/inventory_item_hollow_log_bark.tscn"
+description = "Curved bark from a log. Useful container."

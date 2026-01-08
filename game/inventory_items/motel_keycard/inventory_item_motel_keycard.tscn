@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://motelkeycard13k"]
+
+[ext_resource type="Script" path="res://game/inventory_items/motel_keycard/inventory_item_motel_keycard.gd" id="1_script"]
+
+[node name="MotelKeycard" type="TextureRect"]
+script = ExtResource("1_script")
+script_name = "MotelKeycard"
+description = "Motel Keycard"

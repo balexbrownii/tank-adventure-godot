@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="PopochiuDialogData" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://game/dialogs/fog_navigation/dialog_fog_navigation.gd" id="1_script"]
+
+[sub_resource type="Resource" id="opt_follow_sounds"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "follow_sounds"
+text = "Listen for birds (Sound navigation)"
+visible_in_list = true
+disabled = false
+
+[sub_resource type="Resource" id="opt_read_stars"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "read_stars"
+text = "Let Pig read the stars (Star navigation)"
+visible_in_list = true
+disabled = false
+
+[sub_resource type="Resource" id="opt_yell_echo"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "yell_echo"
+text = "Yell 'LAND AHOY!' and listen for echoes"
+visible_in_list = true
+disabled = false
+
+[sub_resource type="Resource" id="opt_just_paddle"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "just_paddle"
+text = "Just paddle in a random direction!"
+visible_in_list = true
+disabled = false
+
+[resource]
+script = ExtResource("1_script")
+script_name = "FogNavigation"
+options = [SubResource("opt_follow_sounds"), SubResource("opt_read_stars"), SubResource("opt_yell_echo"), SubResource("opt_just_paddle")]

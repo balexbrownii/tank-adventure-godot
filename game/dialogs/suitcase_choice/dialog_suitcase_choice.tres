@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="PopochiuDialogData" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://game/dialogs/suitcase_choice/dialog_suitcase_choice.gd" id="1_script"]
+
+[sub_resource type="Resource" id="opt_rotate_text"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "rotate_text"
+text = "Try rotating and folding the tag text (Brains)"
+visible_in_list = true
+disabled = false
+
+[sub_resource type="Resource" id="opt_craft_tag"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "craft_tag"
+text = "Have Pig craft a new tag with stickers (Brains)"
+visible_in_list = true
+disabled = false
+
+[sub_resource type="Resource" id="opt_force_tags"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "force_tags"
+text = "Rip off tags and reattach by force (Brawn)"
+visible_in_list = true
+disabled = false
+
+[sub_resource type="Resource" id="opt_random_guess"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "random_guess"
+text = "Just pick a random suitcase!"
+visible_in_list = true
+disabled = false
+
+[resource]
+script = ExtResource("1_script")
+script_name = "SuitcaseChoice"
+options = [SubResource("opt_rotate_text"), SubResource("opt_craft_tag"), SubResource("opt_force_tags"), SubResource("opt_random_guess")]

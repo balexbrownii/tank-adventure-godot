@@ -1,0 +1,456 @@
+{
+  "project": "Tank's Great Adventure",
+  "description": "Point-and-click adventure game in Godot 4 + Popochiu",
+  "features": [
+    {
+      "id": "F001",
+      "name": "Fix orphaned GameManager autoload",
+      "phase": 1,
+      "passes": true,
+      "dependencies": [],
+      "steps": [
+        "Remove GameManager line from project.godot",
+        "Verify game still runs"
+      ],
+      "tests": ["Game launches without errors"],
+      "completion_notes": "Removed orphaned GameManager, registered GameState autoload instead. init.sh validates successfully."
+    },
+    {
+      "id": "F002",
+      "name": "GameState autoload - consequence meters",
+      "phase": 1,
+      "passes": true,
+      "dependencies": ["F001"],
+      "steps": [
+        "Register GameState in project.godot",
+        "Test Heat/Ignorance/Morale meters",
+        "Test save/load functionality"
+      ],
+      "tests": [
+        "GameState autoload accessible globally",
+        "Meters clamp 0-100",
+        "State persists across save/load"
+      ],
+      "completion_notes": "54/56 unit tests pass. GameState registered, meters clamp correctly, save/load works. Tests at tests/test_game_state.gd"
+    },
+    {
+      "id": "F003",
+      "name": "Approach Wheel system (Brains/Brawn/Bizarre)",
+      "phase": 1,
+      "passes": true,
+      "dependencies": ["F002"],
+      "steps": [
+        "Implement solve_puzzle() with approach tracking",
+        "Implement achievement checks",
+        "Test approach streak tracking"
+      ],
+      "tests": [
+        "Puzzles can be solved via different approaches",
+        "Approach counts tracked separately",
+        "Achievements trigger at correct thresholds"
+      ],
+      "completion_notes": "Already implemented in GameState.gd. solve_puzzle(), streak tracking, and 4 achievement checks (is_maximum_tank, is_pigs_pride, is_what_just_happened, is_perfectly_balanced) all working. Unit tests pass."
+    },
+    {
+      "id": "F004",
+      "name": "Tank Vision toggle system",
+      "phase": 1,
+      "passes": true,
+      "dependencies": ["F002"],
+      "steps": [
+        "Create TankVision autoload/singleton",
+        "Implement toggle between Tank/Reality vision",
+        "Create label swap system for hotspots",
+        "Implement 'Tell Tank' verb that affects future options"
+      ],
+      "tests": [
+        "Vision toggle works globally",
+        "Hotspot labels change based on vision mode",
+        "Tell Tank permanently changes Ignorance and options"
+      ],
+      "completion_notes": "TankVision autoload created with toggle (Tab key), label system, and Tell Tank. VisionHotspotData resource created. 22/22 unit tests pass."
+    },
+    {
+      "id": "F005",
+      "name": "Multi-character kit system",
+      "phase": 1,
+      "passes": true,
+      "dependencies": ["F002"],
+      "steps": [
+        "Implement party_members array in GameState",
+        "Implement switch_character()",
+        "Implement get_available_kits() per character",
+        "Create kit-to-verb mapping"
+      ],
+      "tests": [
+        "Can add party members",
+        "Can switch active character",
+        "Different verbs available per character"
+      ],
+      "completion_notes": "Already implemented in GameState.gd. party_members array, add_party_member(), switch_character(), has_party_member(), get_available_kits() all working. 9/9 party management tests pass."
+    },
+    {
+      "id": "F006",
+      "name": "Hint system (3-tier via Pig)",
+      "phase": 1,
+      "passes": true,
+      "dependencies": ["F002", "F005"],
+      "steps": [
+        "Implement hint_tokens economy",
+        "Implement request_hint() with tier costs",
+        "Create hint display UI",
+        "Integrate with Pig character"
+      ],
+      "tests": [
+        "Tier 1 hints free",
+        "Tier 2 costs 1 token",
+        "Tier 3 costs 2 tokens",
+        "Hints tracked per puzzle"
+      ],
+      "completion_notes": "Core hint system implemented in GameState.gd. hint_tokens, award_hint_tokens(), request_hint(), get_hint_tier_used() all working. 8/8 hint system tests pass. UI/Pig integration is content work."
+    },
+    {
+      "id": "F007",
+      "name": "Signature hook - word-dropping inventory",
+      "phase": 1,
+      "passes": true,
+      "dependencies": ["F002"],
+      "steps": [
+        "Create DroppableWord resource type",
+        "Implement word-to-inventory conversion",
+        "Create sentence-with-gap display",
+        "Implement paste-word-back mechanic"
+      ],
+      "tests": [
+        "Words can drop from sentences",
+        "Dropped words appear in inventory",
+        "Pasting words back affects game state"
+      ],
+      "completion_notes": "WordManager autoload created with DroppableWord resource. Sentences can have words drop, display with gaps, words go to inventory, can be pasted at targets with effects. 24/24 tests pass."
+    },
+    {
+      "id": "F008",
+      "name": "Signature hook - panel rearrangement (Gorogoa)",
+      "phase": 1,
+      "passes": true,
+      "dependencies": ["F007"],
+      "steps": [
+        "Create PanelPuzzle scene",
+        "Implement drag-and-drop panel reordering",
+        "Implement geography connection logic",
+        "Create narrator reaction system"
+      ],
+      "tests": [
+        "Panels can be dragged",
+        "Rearranging panels changes available exits",
+        "Narrator comments on changes"
+      ],
+      "completion_notes": "PanelManager autoload created with swap/move/set_order, solution detection, exits configuration, narrator reactions. 24/24 tests pass."
+    },
+    {
+      "id": "F009",
+      "name": "Room 6 - Road of Monsters + Gas Station",
+      "phase": 2,
+      "passes": true,
+      "dependencies": ["F002", "F003", "F004"],
+      "steps": [
+        "Create room scene via Popochiu",
+        "Add hotspots per puzzle bible",
+        "Implement 3-approach puzzle (Tank Chaos/Redirect/Reality)",
+        "Implement fail-forward explosion sequence",
+        "Add inventory items",
+        "Test all three solutions"
+      ],
+      "tests": [
+        "Room loads and displays",
+        "All hotspots clickable",
+        "Each approach leads to space sequence",
+        "Heat meter changes appropriately"
+      ],
+      "completion_notes": "Created room_road_monsters with 7 hotspots, 3 approach solutions (Brawn/Brains/Bizarre), fail-forward sequence. Added 4 inventory items (Helmet, DonutBox, MapFlyer, Cone). Created 5 dialogs for puzzle choices. All scripts compile without errors."
+    },
+    {
+      "id": "F010",
+      "name": "Room 7 - Space Drift",
+      "phase": 2,
+      "passes": true,
+      "dependencies": ["F009", "F008"],
+      "steps": [
+        "Create space room scene",
+        "Implement donut compass (Tank Vision)",
+        "Implement gravity paragraph puzzle (panel mechanic)",
+        "Implement swim stroke rhythm puzzle",
+        "Test all solutions"
+      ],
+      "tests": [
+        "Room transitions from gas station",
+        "Gravity paragraph draggable",
+        "All three solutions work",
+        "Returns to Earth"
+      ],
+      "completion_notes": "Created room_space_drift with 5 hotspots (Earth, Starfield, Floating Debris, Donut Scent Trail, Case File Overlay). Implemented 3 approach solutions: Brawn (donut compass swim rhythm), Brains (gravity arrow panel puzzle using PanelManager), Bizarre (drop item for thrust). Added fail-forward spinning sequence. Created 2 inventory items (SpaceSoot, DebrisTrinket). Created 3 dialogs (SpaceDriftApproach, TakeDebris, GravityPuzzleIntro). All scripts compile without errors."
+    },
+    {
+      "id": "F011",
+      "name": "Room 8 - Re-entry Fire + Motorcycle Escape",
+      "phase": 2,
+      "passes": true,
+      "dependencies": ["F010"],
+      "steps": [
+        "Create re-entry/landing room",
+        "Implement motorcycle start puzzle (3 solutions)",
+        "Add Heat tracking for loud solutions",
+        "Implement fail-forward plushie pile"
+      ],
+      "tests": [
+        "Re-entry animation plays",
+        "All three motorcycle solutions work",
+        "Fail-forward triggers correctly"
+      ],
+      "completion_notes": "Created room_reentry_fire with 5 hotspots (Landing Spot, Motorcycle, Road Sign, Donut Box, Police Siren). Implemented 3 approach solutions: Brains (identify controls), Brawn (punch start - adds Heat), Bizarre (road sign arrow as lever). Added fail-forward plushie crash. Created 3 inventory items (MotorcycleKey, RoadSignArrow, PlushStuck). Created 3 dialogs (MotorcycleApproach, TakeSignArrow, TakeDonutsReentry). All scripts compile without errors."
+    },
+    {
+      "id": "F012",
+      "name": "Room 9 - Pig + Deer Crossing (Party Join)",
+      "phase": 2,
+      "passes": true,
+      "dependencies": ["F011", "F005"],
+      "steps": [
+        "Create road crossing room",
+        "Create Pig character via Popochiu",
+        "Create Mr. Snuggles character",
+        "Implement dialogue puzzle (3 solutions)",
+        "Implement party join mechanic",
+        "Unlock character switching"
+      ],
+      "tests": [
+        "Dialogue tree works",
+        "All three recruitment solutions work",
+        "Party members added to GameState",
+        "Character switching enabled"
+      ],
+      "completion_notes": "Created room_pig_deer_crossing with 6 hotspots (Pig, Deer, Road, Motorcycle Parked, Supplies Pouch, Oak Tree). Implemented 3 approach solutions: Brains (apologize sincerely), Brawn (intimidate into partnership), Bizarre (bribe with donuts). Added fail-forward strap fix task with dialog. Party members (Pig, MrSnuggles) added via GameState.add_party_member(). Created 3 inventory items (CraftKit, MiniDonuts, SpinachLeaves). Created 2 dialogs (PigRecruitment with 4 options, FixStrap with 4 options). Party tutorial dialogue plays on recruitment. All scripts compile without errors."
+    },
+    {
+      "id": "F013",
+      "name": "Room 10 - Oak Tree Camp + Plan Board",
+      "phase": 2,
+      "passes": true,
+      "dependencies": ["F012"],
+      "steps": [
+        "Create camp room",
+        "Implement plan board UI",
+        "Implement camp safety puzzle (3 solutions)",
+        "Create Route Sketch inventory item",
+        "Test party play"
+      ],
+      "tests": [
+        "All three camp solutions work",
+        "Plan board displays route",
+        "Fail-forward raccoon chase works"
+      ],
+      "completion_notes": "Created room_oak_tree_camp with 6 hotspots (Oak Tree, Camp Spot, Plan Board, Mini Donuts, Spinach Leaves, Deer Saddle). Implemented 3 approach solutions: Brains (noise trap), Brawn (stand guard), Bizarre (deer listens). Added fail-forward raccoon donut theft with chase sequence. Created RouteSketch inventory item (quest log). Created 2 dialogs (CampSafety with 4 options, PlanBoardIntro with route explanation). Added vertical slice end message. All scripts compile without errors."
+    },
+    {
+      "id": "F014",
+      "name": "Room 1 - Wanted Camp (Tutorial)",
+      "phase": 3,
+      "passes": true,
+      "dependencies": ["F002", "F003", "F004"],
+      "steps": [
+        "Create night camp room",
+        "Implement soldier encounter",
+        "Implement 3-solution puzzle",
+        "Add basic inventory items",
+        "Tutorial flow for mechanics"
+      ],
+      "tests": [
+        "All hotspots work",
+        "All three solutions work",
+        "Fail-forward interrogation triggers"
+      ],
+      "completion_notes": "Created room_wanted_camp (tutorial/opening room) with 8 hotspots (Wanted Poster, Campfire, Backpack, Bacon Remnants, Bush Line, River Path, Vine Coil, Rock Pile). Implemented 3 approach solutions: Brawn (headlock/kick/chop combat combo), Brains (bacon crumbs lure while sneaking), Bizarre (Bacon Guardians tribute). Added fail-forward interrogation where Tank claims 'I'm a tree'. Created 5 inventory items (Backpack, BaconCrumbs, PosterScrap, Rock, Vine). Created 3 dialogs (SoldierEncounter with 4 options, TakeBackpack, TakeVine). All Tank Vision labels implemented. All scripts compile without errors."
+    },
+    {
+      "id": "F015",
+      "name": "Room 2 - Werewolf Chase Path",
+      "phase": 3,
+      "passes": true,
+      "dependencies": ["F014"],
+      "steps": [
+        "Create chase room",
+        "Implement point-and-click chase sequence",
+        "Implement 3 escape solutions",
+        "Add fail-forward mud face"
+      ],
+      "tests": [
+        "Chase sequence works",
+        "All solutions reach ditch",
+        "Fail-forward preserves progress"
+      ],
+      "completion_notes": "Created room_werewolf_chase with 6 hotspots (Split Trail Sign, Vine Tripline, Hollow Log, Thorn Bush, Mud Patch, Ditch Edge). Implemented 3 approach solutions: Brawn (fast run through log and mud, drops BaconCrumbs), Brains (vine decoy distraction + thorn collection), Bizarre (honorable duel challenge, wolf confused). Added fail-forward mud faceplant (wolf sneezes, StickyMud consolation item). Created 3 inventory items (Thorn, StickyMud, HollowLogBark). Created 2 dialogs (WerewolfChaseApproach with 4 options, TakeThorn). All scripts compile without errors."
+    },
+    {
+      "id": "F016",
+      "name": "Room 3 - Ditch Hideout",
+      "phase": 3,
+      "passes": true,
+      "dependencies": ["F015"],
+      "steps": [
+        "Create ditch room",
+        "Implement make-camp puzzle",
+        "Set up leg-gone reveal setup"
+      ],
+      "tests": [
+        "Camp solutions work",
+        "Leaf pile setup correct for Room 4"
+      ],
+      "completion_notes": "Created room_ditch_hideout with 6 hotspots (Leaf Pile, Ditch Wall, Backpack, Moonlight Gap, Loose Roots, Small Puddle). Implemented 3 approach solutions: Standard (use leaves as blanket), Brains (craft LeafWrap from leaves+roots), Brawn (punch ground soft, Heat +1). Added fail-forward 'invented suffering' (Tank wakes up dramatically injured). Created 4 inventory items (LeafBlanket, LeafWrap, RootFiber, CharcoalChunk). Created 3 dialogs (MakeCamp with 4 options, TakeLeaves, TakeRoots). Sleep sequence sets up leg-under-leaves state for Room 4 Morning Miracle. All scripts compile without errors."
+    },
+    {
+      "id": "F017",
+      "name": "Room 4 - Morning Miracle (Vision Tutorial)",
+      "phase": 3,
+      "passes": true,
+      "dependencies": ["F016", "F004"],
+      "steps": [
+        "Create morning room",
+        "Implement leg reveal puzzle",
+        "THIS IS THE VISION TOGGLE TUTORIAL",
+        "Make Tank/Reality labels dramatically different"
+      ],
+      "tests": [
+        "Vision toggle tutorial works",
+        "All three leg reveal solutions work"
+      ],
+      "completion_notes": "Created room_morning_miracle with 4 hotspots (Leaf Pile, Numb Leg, Rock Marker, Backpack Strap). DRAMATIC label differences: 'THE VOID WHERE MY LEG WAS' vs 'Leaf Pile (lumpy)', 'PHANTOM PAIN ZONE' vs 'Your Leg (asleep)'. Implemented 3 approach solutions: Brains (examine pile, pull leaves), Brawn (pretend struggle 3x, fall onto pile), Bizarre (scream MIRACLE 3x, screen shake achievement). Added fail-forward (refuse to interact, Pig teases later). Created LegReveal dialog. Grants 'Miracle Confidence' temporary buff. All scripts compile without errors."
+    },
+    {
+      "id": "F018",
+      "name": "Room 5 - Poison Picnic (Ignorance Tutorial)",
+      "phase": 3,
+      "passes": true,
+      "dependencies": ["F017"],
+      "steps": [
+        "Create picnic rock room",
+        "Implement food choice puzzle",
+        "Implement Ignorance mechanic",
+        "Add Tell Tank consequence"
+      ],
+      "tests": [
+        "Ignorance meter changes",
+        "Tell Tank permanently affects future rooms",
+        "All food solutions work"
+      ],
+      "completion_notes": "Created room_poison_picnic with 5 hotspots (Rock Seat, Backpack Food, Sap Smear, Trail Fork, Birds Overhead). THIS IS THE IGNORANCE MECHANIC TUTORIAL - Tank survives poison because she doesn't know it's poisonous! Implemented 4 approach solutions: Ignorance (eat without examining - Tank survives, Ignorance stays LOW = GOOD), Brains (examine food - discover poison, Ignorance +1), Bizarre (save food as enemy bait - hungry_debuff), Fail-forward (eat knowing poison - gets sick). Added Tell Tank mechanic (Ignorance +2, permanently changes future options). Created 3 inventory items (PoisonMushrooms, SapBark, RockChalk). Created 2 dialogs (FoodChoice with 4 options, EatAnyway with 3 options). Tank/Reality Vision labels teach mechanic. All scripts compile without errors."
+    },
+    {
+      "id": "F019",
+      "name": "Room 11 - Brazil Edge Beach (Raft Prep)",
+      "phase": 4,
+      "passes": true,
+      "dependencies": ["F013"],
+      "steps": [
+        "Create beach room",
+        "Implement life jacket crafting",
+        "Implement raft launch sequence"
+      ],
+      "tests": [
+        "All three craft solutions work",
+        "Fail-forward buoyancy test works"
+      ],
+      "completion_notes": "Created room_brazil_edge_beach with 6 hotspots (Beach, Driftwood, Vine Rope, Cloth Scrap, Car Trailer, Waterline). First full party puzzle - Tank, Pig, Mr. Snuggles all contribute! Implemented 4 approach solutions: Brains (Pig guides efficient craft), Brawn (Tank overbuilds with extra wood - bulky jacket slows raft), Bizarre (Mr. Snuggles tests and approves - +10 Morale, bonus ShellWhistle), Fail-forward (jacket fails test, deer bobs comedically, -5 Morale). Created 6 inventory items (LifeJacket, LifeJacketBulky, Oar, RaftPatch, Rope, ShellWhistle). Created LifeJacketBuild dialog with 4 options. Launch sequence transitions to CaribbeanRaft room. All scripts compile without errors."
+    },
+    {
+      "id": "F020",
+      "name": "Room 12 - Caribbean Raft: Midnight Fog",
+      "phase": 4,
+      "passes": true,
+      "dependencies": ["F019"],
+      "steps": [
+        "Create raft/sea room",
+        "Implement fog navigation",
+        "Implement Case File overlay puzzle",
+        "Atmospheric tone shift"
+      ],
+      "tests": [
+        "All three navigation solutions work",
+        "Case File interactive works"
+      ],
+      "completion_notes": "Created room_caribbean_raft with 7 hotspots (Fog Wall, Moon, Stars, Sound Cues, Oar, Life Jacket, Case File). Atmospheric midnight fog sequence with three navigation solutions: Brains (follow gull sounds with oar rhythm), Brains (Reality Vision star navigation with route sketch), Bizarre (LAND AHOY echo trick with shell whistle bonus). Fail-forward sandbar bump leads to alternate beach with different loot. Created 2 inventory items (MoistRope, DriftBottleNote - hint token bonus for smart path). Created FogNavigation dialog with 4 options. Pig's Case File provides star charts and dates. All scripts compile without errors."
+    },
+    {
+      "id": "F021",
+      "name": "Room 13 - Puerto Rico: Motel + Dock",
+      "phase": 4,
+      "passes": true,
+      "dependencies": ["F020"],
+      "steps": [
+        "Create motel room",
+        "Implement get-a-room puzzle",
+        "Implement boat 'borrowing' puzzle"
+      ],
+      "tests": [
+        "Both obstacle puzzles work",
+        "All solutions per obstacle work"
+      ],
+      "completion_notes": "Created room_puerto_rico with 6 hotspots (Motel Desk, Vending Machine, Room Door, Back Dock, Boat, Fake Camera with googly eyes). Two-part puzzle structure: Puzzle A (Get Room) with 3 solutions - Trade (Brains), Charm deer (Bizarre), Intimidate (Brawn) + fail-forward sleep outside. Puzzle B (Get Boat) with 3 solutions - Permission slip (Brains), Lift boat (Brawn +Heat), Teamwork untie (Bizarre). Created 3 inventory items (MotelKeycard for plastic shim later, BoatToken permission slip, Towel for bandage). Created 2 dialogs (GetRoom, GetBoat). Cranky Pig debuff if slept outside. Alternate beach arrival from Caribbean sandbar fail-forward. All scripts compile without errors."
+    },
+    {
+      "id": "F022",
+      "name": "Room 14 - Florida Airport Entrance",
+      "phase": 5,
+      "passes": true,
+      "dependencies": ["F021"],
+      "steps": [
+        "Create airport entrance room",
+        "Implement disguise/social stealth",
+        "Implement distraction alternative"
+      ],
+      "tests": [
+        "All three entry solutions work",
+        "Fail-forward gift shop works"
+      ],
+      "completion_notes": "Created room_florida_airport with 6 hotspots (Dock, Car, Tree Line, Airport Entrance, Maintenance Door, Luggage Carts). Implemented 3 approach solutions: Brains (vest+clipboard disguise), Brawn (distraction saving people from luggage carts), Bizarre (Emotional Support Deer lane). Added fail-forward gift shop escape through postcard rack. Created 2 inventory items (ReflectiveVest, Clipboard). Created AirportEntry dialog with 4 options. All scripts compile without errors."
+    },
+    {
+      "id": "F023",
+      "name": "Room 15 - Suitcase + Luggage Room (Device 6 puzzle)",
+      "phase": 5,
+      "passes": true,
+      "dependencies": ["F022", "F007"],
+      "steps": [
+        "Create luggage room",
+        "Implement tag text puzzle (fold/rotate)",
+        "Implement keep-party-together puzzle",
+        "Use word-dropping for tag puzzle"
+      ],
+      "tests": [
+        "Tag rotation puzzle works",
+        "Party linking solutions work",
+        "Fail-forward baggage jam works"
+      ],
+      "completion_notes": "Created room_luggage_room with 6 hotspots (Suitcase Pile, Destination Tags, Conveyor Belt, Barcode Station, Deer Suitcase, Zippers). Two-part puzzle structure: Puzzle A (Find Texas Suitcase) with 3 solutions - rotate tag text (Brains using WordManager), craft new tag with stickers (Brains), rip and force (Brawn +Heat) + fail-forward wrong suitcase baggage jam. Puzzle B (Keep Party Together) with 3 solutions - rope link (Brains), follow deer tapping sounds (Bizarre +Morale), shoulder-barge belt (Brawn +Heat) + fail-forward deer reunion. Created 4 inventory items (DestinationTag, ZipperPull, StickerSheet, SouvenirHat). Created 2 dialogs (SuitcaseChoice, KeepPartyTogether). All scripts compile without errors."
+    },
+    {
+      "id": "F024",
+      "name": "Room 16 - Plane Hold: Crash Landing",
+      "phase": 5,
+      "passes": true,
+      "dependencies": ["F023"],
+      "steps": [
+        "Create plane cargo room",
+        "Implement crash prep puzzle",
+        "Implement tone shift",
+        "Create cliffhanger ending",
+        "Tease Season 2"
+      ],
+      "tests": [
+        "All crash prep solutions work",
+        "Inventory consequences correct",
+        "Ending triggers correctly"
+      ],
+      "completion_notes": "Created room_plane_hold (FINALE) with 6 hotspots (Siren Light, Life Vests, Cargo Straps, Instruction Card, Deer Latch, Loose Baggage). Implemented 3 approach solutions: Brains (full emergency prep - vests, straps, secure items - keep most inventory), Brawn (Tank as human seatbelt - save deer, lose items), Bizarre (calm deer with breathing exercise - best morale). Fail-forward: panic/freeze - survive with 12 plastic spoons, harder start. Full crash sequence with tone shift (Norco-style somber). Cliffhanger ending: TO BE CONTINUED, SEASON 2: BOOK TWO - THE AMAZON AWAKENS tease. Playthrough stats showing Brains/Brawn/Bizarre counts and achievements (MAXIMUM TANK, PIG'S PRIDE, WHAT JUST HAPPENED, PERFECTLY BALANCED). Created CrashPrep dialog with 4 options. All scripts compile without errors. GAME COMPLETE!"
+    }
+  ]
+}

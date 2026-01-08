@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="PopochiuRoomData" load_steps=2 format=3 uid="uid://bf8k3m7xp2nya"]
+
+[ext_resource type="Script" path="res://game/rooms/morning_miracle/room_morning_miracle_state.gd" id="1_state"]
+
+[resource]
+script = ExtResource("1_state")
+script_name = "MorningMiracle"
+scene = "res://game/rooms/morning_miracle/room_morning_miracle.tscn"

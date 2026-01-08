@@ -1,0 +1,104 @@
+[gd_scene load_steps=10 format=3 uid="uid://bf6rm1road2"]
+
+[ext_resource type="Script" path="res://game/rooms/road_monsters/room_road_monsters.gd" id="1_room"]
+[ext_resource type="Script" path="res://game/rooms/road_monsters/hotspots/hotspot_passing_cars.gd" id="2_cars"]
+[ext_resource type="Script" path="res://game/rooms/road_monsters/hotspots/hotspot_gas_station.gd" id="3_station"]
+[ext_resource type="Script" path="res://game/rooms/road_monsters/hotspots/hotspot_gas_truck.gd" id="4_truck"]
+[ext_resource type="Script" path="res://game/rooms/road_monsters/hotspots/hotspot_traffic_cones.gd" id="5_cones"]
+[ext_resource type="Script" path="res://game/rooms/road_monsters/hotspots/hotspot_donut_sign.gd" id="6_donut"]
+[ext_resource type="Script" path="res://game/rooms/road_monsters/hotspots/hotspot_leaking_pump.gd" id="7_pump"]
+[ext_resource type="Script" path="res://game/rooms/road_monsters/hotspots/hotspot_spark_source.gd" id="8_spark"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_walkable"]
+size = Vector2(1280, 200)
+
+[node name="RoomRoadMonsters" type="Node2D"]
+script = ExtResource("1_room")
+script_name = "RoadMonsters"
+width = 1280
+height = 720
+
+[node name="WalkableAreas" type="Node2D" parent="."]
+
+[node name="Ground" type="Node2D" parent="WalkableAreas"]
+position = Vector2(640, 600)
+
+[node name="Perimeter" type="NavigationRegion2D" parent="WalkableAreas/Ground"]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="WalkableAreas"]
+
+[node name="Props" type="Node2D" parent="."]
+
+[node name="Hotspots" type="Node2D" parent="."]
+
+[node name="PassingCars" type="Area2D" parent="Hotspots"]
+position = Vector2(900, 200)
+script = ExtResource("2_cars")
+script_name = "PassingCars"
+description = "Passing Cars"
+
+[node name="InteractionPolygon" type="CollisionShape2D" parent="Hotspots/PassingCars"]
+shape = SubResource("RectangleShape2D_walkable")
+
+[node name="GasStation" type="Area2D" parent="Hotspots"]
+position = Vector2(300, 300)
+script = ExtResource("3_station")
+script_name = "GasStation"
+description = "Gas Station"
+
+[node name="InteractionPolygon" type="CollisionShape2D" parent="Hotspots/GasStation"]
+shape = SubResource("RectangleShape2D_walkable")
+
+[node name="GasTruck" type="Area2D" parent="Hotspots"]
+position = Vector2(500, 400)
+script = ExtResource("4_truck")
+script_name = "GasTruck"
+description = "Gas Truck"
+
+[node name="InteractionPolygon" type="CollisionShape2D" parent="Hotspots/GasTruck"]
+shape = SubResource("RectangleShape2D_walkable")
+
+[node name="TrafficCones" type="Area2D" parent="Hotspots"]
+position = Vector2(700, 500)
+script = ExtResource("5_cones")
+script_name = "TrafficCones"
+description = "Traffic Cones"
+
+[node name="InteractionPolygon" type="CollisionShape2D" parent="Hotspots/TrafficCones"]
+shape = SubResource("RectangleShape2D_walkable")
+
+[node name="DonutSign" type="Area2D" parent="Hotspots"]
+position = Vector2(250, 250)
+script = ExtResource("6_donut")
+script_name = "DonutSign"
+description = "Donut Sign"
+
+[node name="InteractionPolygon" type="CollisionShape2D" parent="Hotspots/DonutSign"]
+shape = SubResource("RectangleShape2D_walkable")
+
+[node name="LeakingPump" type="Area2D" parent="Hotspots"]
+position = Vector2(400, 450)
+script = ExtResource("7_pump")
+script_name = "LeakingPump"
+description = "Leaking Pump"
+
+[node name="InteractionPolygon" type="CollisionShape2D" parent="Hotspots/LeakingPump"]
+shape = SubResource("RectangleShape2D_walkable")
+
+[node name="SparkSource" type="Area2D" parent="Hotspots"]
+position = Vector2(420, 430)
+script = ExtResource("8_spark")
+script_name = "SparkSource"
+description = "Spark Source"
+
+[node name="InteractionPolygon" type="CollisionShape2D" parent="Hotspots/SparkSource"]
+shape = SubResource("RectangleShape2D_walkable")
+
+[node name="Regions" type="Node2D" parent="."]
+
+[node name="Markers" type="Node2D" parent="."]
+
+[node name="Characters" type="Node2D" parent="."]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(640, 360)

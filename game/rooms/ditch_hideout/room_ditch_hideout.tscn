@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8m3vnqz6k2xy"]
+
+[ext_resource type="Script" path="res://game/rooms/ditch_hideout/room_ditch_hideout.gd" id="1_room"]
+[ext_resource type="Resource" path="res://game/rooms/ditch_hideout/room_ditch_hideout.tres" id="2_data"]
+
+[node name="RoomDitchHideout" type="Node2D"]
+script = ExtResource("1_room")
+
+[node name="Hotspots" type="Node2D" parent="."]
+
+[node name="LeafPile" type="Node2D" parent="Hotspots"]
+position = Vector2(400, 300)
+
+[node name="DitchWall" type="Node2D" parent="Hotspots"]
+position = Vector2(100, 200)
+
+[node name="Backpack" type="Node2D" parent="Hotspots"]
+position = Vector2(250, 280)
+
+[node name="MoonlightGap" type="Node2D" parent="Hotspots"]
+position = Vector2(300, 50)
+
+[node name="LooseRoots" type="Node2D" parent="Hotspots"]
+position = Vector2(150, 250)
+
+[node name="SmallPuddle" type="Node2D" parent="Hotspots"]
+position = Vector2(450, 350)
+
+[node name="Markers" type="Node2D" parent="."]
+
+[node name="TankStart" type="Marker2D" parent="Markers"]
+position = Vector2(320, 280)

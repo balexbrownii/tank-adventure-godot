@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://p12k8nrtqwx1m"]
+
+[ext_resource type="Script" path="res://game/inventory_items/spinach_leaves/inventory_item_spinach_leaves.gd" id="1_script"]
+
+[node name="SpinachLeaves" type="Sprite2D"]
+script = ExtResource("1_script")

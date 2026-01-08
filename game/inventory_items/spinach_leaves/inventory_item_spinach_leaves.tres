@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PopochiuInventoryItemData" load_steps=2 format=3 uid="uid://o01k7nrtqwx0l"]
+
+[ext_resource type="Script" path="res://game/inventory_items/spinach_leaves/inventory_item_spinach_leaves.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+script_name = "SpinachLeaves"
+scene = "res://game/inventory_items/spinach_leaves/inventory_item_spinach_leaves.tscn"
+description = "Spinach leaves. Healthy, allegedly."

@@ -1,0 +1,79 @@
+[gd_scene load_steps=10 format=3 uid="uid://luggage_room_scene"]
+
+[ext_resource type="Script" path="res://game/rooms/luggage_room/room_luggage_room.gd" id="1_room"]
+[ext_resource type="Script" path="res://game/rooms/luggage_room/hotspots/hotspot_suitcase_pile.gd" id="2_suitcase_pile"]
+[ext_resource type="Script" path="res://game/rooms/luggage_room/hotspots/hotspot_destination_tags.gd" id="3_tags"]
+[ext_resource type="Script" path="res://game/rooms/luggage_room/hotspots/hotspot_conveyor_belt.gd" id="4_conveyor"]
+[ext_resource type="Script" path="res://game/rooms/luggage_room/hotspots/hotspot_barcode_station.gd" id="5_barcode"]
+[ext_resource type="Script" path="res://game/rooms/luggage_room/hotspots/hotspot_deer_suitcase.gd" id="6_deer"]
+[ext_resource type="Script" path="res://game/rooms/luggage_room/hotspots/hotspot_zippers.gd" id="7_zippers"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pile"]
+size = Vector2(120, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_small"]
+size = Vector2(60, 40)
+
+[node name="RoomLuggageRoom" type="Node2D"]
+script = ExtResource("1_room")
+script_name = "LuggageRoom"
+
+[node name="Hotspots" type="Node2D" parent="."]
+
+[node name="HotspotSuitcasePile" type="Area2D" parent="Hotspots"]
+position = Vector2(200, 200)
+script = ExtResource("2_suitcase_pile")
+script_name = "SuitcasePile"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotSuitcasePile"]
+shape = SubResource("RectangleShape2D_pile")
+
+[node name="HotspotDestinationTags" type="Area2D" parent="Hotspots"]
+position = Vector2(320, 180)
+script = ExtResource("3_tags")
+script_name = "DestinationTags"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotDestinationTags"]
+shape = SubResource("RectangleShape2D_small")
+
+[node name="HotspotConveyorBelt" type="Area2D" parent="Hotspots"]
+position = Vector2(400, 280)
+script = ExtResource("4_conveyor")
+script_name = "ConveyorBelt"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotConveyorBelt"]
+shape = SubResource("RectangleShape2D_pile")
+
+[node name="HotspotBarcodeStation" type="Area2D" parent="Hotspots"]
+position = Vector2(550, 200)
+script = ExtResource("5_barcode")
+script_name = "BarcodeStation"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotBarcodeStation"]
+shape = SubResource("RectangleShape2D_small")
+
+[node name="HotspotDeerSuitcase" type="Area2D" parent="Hotspots"]
+position = Vector2(480, 280)
+script = ExtResource("6_deer")
+script_name = "DeerSuitcase"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotDeerSuitcase"]
+shape = SubResource("RectangleShape2D_small")
+
+[node name="HotspotZippers" type="Area2D" parent="Hotspots"]
+position = Vector2(280, 240)
+script = ExtResource("7_zippers")
+script_name = "Zippers"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotZippers"]
+shape = SubResource("RectangleShape2D_small")
+
+[node name="Characters" type="Node2D" parent="."]
+
+[node name="Props" type="Node2D" parent="."]
+
+[node name="Walkable" type="Node2D" parent="."]
+
+[node name="Regions" type="Node2D" parent="."]
+
+[node name="Markers" type="Node2D" parent="."]

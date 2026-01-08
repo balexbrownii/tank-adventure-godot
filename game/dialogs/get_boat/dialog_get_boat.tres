@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="PopochiuDialogData" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://game/dialogs/get_boat/dialog_get_boat.gd" id="1_script"]
+
+[sub_resource type="Resource" id="opt_permission"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "permission"
+text = "Find the boat borrow form (Brains)"
+visible_in_list = true
+disabled = false
+
+[sub_resource type="Resource" id="opt_lift"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "lift"
+text = "Just pick up the boat! (Brawn)"
+visible_in_list = true
+disabled = false
+
+[sub_resource type="Resource" id="opt_teamwork"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "teamwork"
+text = "Team untie - Mr. Snuggles and Pig (Bizarre)"
+visible_in_list = true
+disabled = false
+
+[resource]
+script = ExtResource("1_script")
+script_name = "GetBoat"
+options = [SubResource("opt_permission"), SubResource("opt_lift"), SubResource("opt_teamwork")]

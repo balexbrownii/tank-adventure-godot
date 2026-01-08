@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PopochiuInventoryItemData" load_steps=2 format=3 uid="uid://fy9p0nrtqwx5e"]
+
+[ext_resource type="Script" path="res://game/inventory_items/bacon_crumbs/inventory_item_bacon_crumbs.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+script_name = "BaconCrumbs"
+scene = "res://game/inventory_items/bacon_crumbs/inventory_item_bacon_crumbs.tscn"
+description = "Aromatic bacon crumbs. Still tempting."

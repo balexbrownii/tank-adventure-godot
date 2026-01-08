@@ -1,0 +1,36 @@
+[gd_resource type="Resource" load_steps=6 format=3 uid="uid://c5qjk8m9rtwx2"]
+
+[ext_resource type="Script" path="res://game/dialogs/space_drift_approach/dialog_space_drift_approach.gd" id="1_script"]
+
+[sub_resource type="Resource" id="Resource_opt1"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "follow_donut_smell"
+text = "Follow the donut smell! (BRAWN)"
+visible = true
+disabled = false
+
+[sub_resource type="Resource" id="Resource_opt2"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "use_science"
+text = "Use the science lesson (BRAINS)"
+visible = true
+disabled = false
+
+[sub_resource type="Resource" id="Resource_opt3"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "throw_something"
+text = "Throw something for thrust! (BIZARRE)"
+visible = true
+disabled = false
+
+[sub_resource type="Resource" id="Resource_opt4"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "just_float"
+text = "Just... float?"
+visible = true
+disabled = false
+
+[resource]
+script = ExtResource("1_script")
+script_name = "SpaceDriftApproach"
+options = [SubResource("Resource_opt1"), SubResource("Resource_opt2"), SubResource("Resource_opt3"), SubResource("Resource_opt4")]

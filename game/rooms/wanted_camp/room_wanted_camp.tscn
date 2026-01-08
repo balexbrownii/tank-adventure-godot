@@ -1,0 +1,89 @@
+[gd_scene load_steps=10 format=3 uid="uid://cy6m4nrtqwx2b"]
+
+[ext_resource type="Script" path="res://game/rooms/wanted_camp/room_wanted_camp.gd" id="1_room"]
+[ext_resource type="Script" path="res://game/rooms/wanted_camp/hotspots/hotspot_wanted_poster.gd" id="2_wanted_poster"]
+[ext_resource type="Script" path="res://game/rooms/wanted_camp/hotspots/hotspot_campfire.gd" id="3_campfire"]
+[ext_resource type="Script" path="res://game/rooms/wanted_camp/hotspots/hotspot_backpack.gd" id="4_backpack"]
+[ext_resource type="Script" path="res://game/rooms/wanted_camp/hotspots/hotspot_bacon_remnants.gd" id="5_bacon_remnants"]
+[ext_resource type="Script" path="res://game/rooms/wanted_camp/hotspots/hotspot_bush_line.gd" id="6_bush_line"]
+[ext_resource type="Script" path="res://game/rooms/wanted_camp/hotspots/hotspot_river_path.gd" id="7_river_path"]
+[ext_resource type="Script" path="res://game/rooms/wanted_camp/hotspots/hotspot_vine_coil.gd" id="8_vine_coil"]
+[ext_resource type="Script" path="res://game/rooms/wanted_camp/hotspots/hotspot_rock_pile.gd" id="9_rock_pile"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_default"]
+size = Vector2(150, 100)
+
+[node name="RoomWantedCamp" type="Node2D"]
+script = ExtResource("1_room")
+
+[node name="WalkableAreas" type="Node2D" parent="."]
+
+[node name="WalkableArea" type="Node2D" parent="WalkableAreas"]
+
+[node name="Perimeter" type="NavigationRegion2D" parent="WalkableAreas/WalkableArea"]
+
+[node name="Props" type="Node2D" parent="."]
+
+[node name="Hotspots" type="Node2D" parent="."]
+
+[node name="HotspotWantedPoster" type="Area2D" parent="Hotspots"]
+position = Vector2(150, 250)
+script = ExtResource("2_wanted_poster")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotWantedPoster"]
+shape = SubResource("RectangleShape2D_default")
+
+[node name="HotspotCampfire" type="Area2D" parent="Hotspots"]
+position = Vector2(500, 400)
+script = ExtResource("3_campfire")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotCampfire"]
+shape = SubResource("RectangleShape2D_default")
+
+[node name="HotspotBackpack" type="Area2D" parent="Hotspots"]
+position = Vector2(350, 450)
+script = ExtResource("4_backpack")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotBackpack"]
+shape = SubResource("RectangleShape2D_default")
+
+[node name="HotspotBaconRemnants" type="Area2D" parent="Hotspots"]
+position = Vector2(550, 420)
+script = ExtResource("5_bacon_remnants")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotBaconRemnants"]
+shape = SubResource("RectangleShape2D_default")
+
+[node name="HotspotBushLine" type="Area2D" parent="Hotspots"]
+position = Vector2(100, 350)
+script = ExtResource("6_bush_line")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotBushLine"]
+shape = SubResource("RectangleShape2D_default")
+
+[node name="HotspotRiverPath" type="Area2D" parent="Hotspots"]
+position = Vector2(900, 500)
+script = ExtResource("7_river_path")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotRiverPath"]
+shape = SubResource("RectangleShape2D_default")
+
+[node name="HotspotVineCoil" type="Area2D" parent="Hotspots"]
+position = Vector2(700, 300)
+script = ExtResource("8_vine_coil")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotVineCoil"]
+shape = SubResource("RectangleShape2D_default")
+
+[node name="HotspotRockPile" type="Area2D" parent="Hotspots"]
+position = Vector2(800, 450)
+script = ExtResource("9_rock_pile")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotRockPile"]
+shape = SubResource("RectangleShape2D_default")
+
+[node name="Regions" type="Node2D" parent="."]
+
+[node name="Markers" type="Node2D" parent="."]
+
+[node name="Characters" type="Node2D" parent="."]

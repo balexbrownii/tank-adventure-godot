@@ -1,0 +1,29 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://jd9u5tx0wefg8"]
+
+[ext_resource type="Script" path="res://game/dialogs/eat_anyway/dialog_eat_anyway.gd" id="1_script"]
+
+[sub_resource type="Resource" id="Resource_opt1"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "eat_anyway"
+text = "Eat it anyway! I'm SO hungry!"
+visible = true
+disabled = false
+
+[sub_resource type="Resource" id="Resource_opt2"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "dont_eat"
+text = "Don't eat - save as enemy bait"
+visible = true
+disabled = false
+
+[sub_resource type="Resource" id="Resource_opt3"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "tell_tank"
+text = "Think harder about poison... (LEARN)"
+visible = true
+disabled = false
+
+[resource]
+script = ExtResource("1_script")
+script_name = "EatAnyway"
+options = [SubResource("Resource_opt1"), SubResource("Resource_opt2"), SubResource("Resource_opt3")]

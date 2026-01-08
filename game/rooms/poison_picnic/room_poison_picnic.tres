@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="PopochiuRoomData" load_steps=2 format=3 uid="uid://c4k7m9np3qzxa"]
+
+[ext_resource type="Script" path="res://game/rooms/poison_picnic/room_poison_picnic_state.gd" id="1_state"]
+
+[resource]
+script = ExtResource("1_state")
+script_name = "PoisonPicnic"
+scene = "res://game/rooms/poison_picnic/room_poison_picnic.tscn"

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PopochiuInventoryItemData" load_steps=2 format=3 uid="uid://cy2n8mq3pxyz1"]
+
+[ext_resource type="Script" path="res://game/inventory_items/poison_mushrooms/inventory_item_poison_mushrooms.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+script_name = "PoisonMushrooms"
+scene = "res://game/inventory_items/poison_mushrooms/inventory_item_poison_mushrooms.tscn"
+description = "Forest mushrooms. Tank calls them adventure snacks."

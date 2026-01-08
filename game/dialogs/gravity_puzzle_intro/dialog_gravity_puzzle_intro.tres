@@ -1,0 +1,36 @@
+[gd_resource type="Resource" load_steps=6 format=3 uid="uid://dm3k7nrpqtwx8"]
+
+[ext_resource type="Script" path="res://game/dialogs/gravity_puzzle_intro/dialog_gravity_puzzle_intro.gd" id="1_script"]
+
+[sub_resource type="Resource" id="Resource_opt1"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "try_puzzle"
+text = "Try to solve the puzzle"
+visible = true
+disabled = false
+
+[sub_resource type="Resource" id="Resource_opt2"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "rotate_left"
+text = "Rotate arrows left"
+visible = true
+disabled = false
+
+[sub_resource type="Resource" id="Resource_opt3"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "rotate_right"
+text = "Rotate arrows right"
+visible = true
+disabled = false
+
+[sub_resource type="Resource" id="Resource_opt4"]
+script = preload("res://addons/popochiu/engine/objects/dialog/popochiu_dialog_option.gd")
+id = "give_up"
+text = "Give up on science"
+visible = true
+disabled = false
+
+[resource]
+script = ExtResource("1_script")
+script_name = "GravityPuzzleIntro"
+options = [SubResource("Resource_opt1"), SubResource("Resource_opt2"), SubResource("Resource_opt3"), SubResource("Resource_opt4")]
