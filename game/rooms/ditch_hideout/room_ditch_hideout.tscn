@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b8m3vnqz6k2xy"]
+[gd_scene load_steps=10 format=3 uid="uid://b8m3vnqz6k2xy"]
 
 [ext_resource type="Script" path="res://game/rooms/ditch_hideout/room_ditch_hideout.gd" id="1_room"]
 [ext_resource type="Script" path="res://game/rooms/ditch_hideout/hotspots/hotspot_leaf_pile.gd" id="2_leaf_pile"]
@@ -7,6 +7,12 @@
 [ext_resource type="Script" path="res://game/rooms/ditch_hideout/hotspots/hotspot_moonlight_gap.gd" id="5_moonlight"]
 [ext_resource type="Script" path="res://game/rooms/ditch_hideout/hotspots/hotspot_loose_roots.gd" id="6_roots"]
 [ext_resource type="Script" path="res://game/rooms/ditch_hideout/hotspots/hotspot_small_puddle.gd" id="7_puddle"]
+[ext_resource type="Texture2D" path="res://assets/images/backgrounds/forest-interactive.png" id="8_background"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_1"]
+vertices = PackedVector2Array(50, 350, 1230, 350, 1230, 680, 50, 680)
+polygons = [PackedInt32Array(0, 1, 2, 3)]
+outlines = [PackedVector2Array(50, 350, 1230, 350, 1230, 680, 50, 680)]
 
 [node name="RoomDitchHideout" type="Node2D"]
 script = ExtResource("1_room")
@@ -14,16 +20,16 @@ script_name = "DitchHideout"
 width = 1280
 height = 720
 
-[node name="Background" type="ColorRect" parent="."]
-offset_right = 1280.0
-offset_bottom = 720.0
-color = Color(0.1, 0.12, 0.1, 1)
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+texture = ExtResource("8_background")
 
 [node name="WalkableAreas" type="Node2D" parent="."]
 
 [node name="Floor" type="Node2D" parent="WalkableAreas"]
 
 [node name="Perimeter" type="NavigationRegion2D" parent="WalkableAreas/Floor"]
+navigation_polygon = SubResource("NavigationPolygon_1")
 
 [node name="Props" type="Node2D" parent="."]
 

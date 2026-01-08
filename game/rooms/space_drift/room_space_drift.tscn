@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cqp8d3m7x0tpk"]
+[gd_scene load_steps=9 format=3 uid="uid://cqp8d3m7x0tpk"]
 
 [ext_resource type="Script" path="res://game/rooms/space_drift/room_space_drift.gd" id="1_room"]
 [ext_resource type="Script" path="res://game/rooms/space_drift/hotspots/hotspot_earth.gd" id="2_earth"]
@@ -6,30 +6,36 @@
 [ext_resource type="Script" path="res://game/rooms/space_drift/hotspots/hotspot_floating_debris.gd" id="4_debris"]
 [ext_resource type="Script" path="res://game/rooms/space_drift/hotspots/hotspot_donut_scent_trail.gd" id="5_donut"]
 [ext_resource type="Script" path="res://game/rooms/space_drift/hotspots/hotspot_case_file_overlay.gd" id="6_case_file"]
+[ext_resource type="Texture2D" path="res://assets/images/backgrounds/forest-interactive.png" id="7_background"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_1"]
+vertices = PackedVector2Array(50, 350, 1230, 350, 1230, 680, 50, 680)
+polygons = [PackedInt32Array(0, 1, 2, 3)]
+outlines = [PackedVector2Array(50, 350, 1230, 350, 1230, 680, 50, 680)]
 
 [node name="RoomSpaceDrift" type="Node2D"]
 script = ExtResource("1_room")
 script_name = "SpaceDrift"
-width = 1920
-height = 1080
+width = 1280
+height = 720
 
-[node name="Background" type="ColorRect" parent="."]
-offset_right = 1920.0
-offset_bottom = 1080.0
-color = Color(0.02, 0.02, 0.08, 1)
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+texture = ExtResource("7_background")
 
 [node name="WalkableAreas" type="Node2D" parent="."]
 
 [node name="WalkableArea" type="Node2D" parent="WalkableAreas"]
 
 [node name="Perimeter" type="NavigationRegion2D" parent="WalkableAreas/WalkableArea"]
+navigation_polygon = SubResource("NavigationPolygon_1")
 
 [node name="Props" type="Node2D" parent="."]
 
 [node name="Hotspots" type="Node2D" parent="."]
 
 [node name="HotspotEarth" type="Area2D" parent="Hotspots"]
-position = Vector2(300, 600)
+position = Vector2(200, 400)
 script = ExtResource("2_earth")
 script_name = "Earth"
 description = "Earth"
@@ -37,10 +43,10 @@ clickable = true
 cursor = 1
 
 [node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/HotspotEarth"]
-polygon = PackedVector2Array(-150, -150, 150, -150, 150, 150, -150, 150)
+polygon = PackedVector2Array(-100, -100, 100, -100, 100, 100, -100, 100)
 
 [node name="HotspotStarfield" type="Area2D" parent="Hotspots"]
-position = Vector2(960, 200)
+position = Vector2(640, 150)
 script = ExtResource("3_starfield")
 script_name = "Starfield"
 description = "Starfield"
@@ -48,10 +54,10 @@ clickable = true
 cursor = 1
 
 [node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/HotspotStarfield"]
-polygon = PackedVector2Array(-400, -150, 400, -150, 400, 150, -400, 150)
+polygon = PackedVector2Array(-300, -100, 300, -100, 300, 100, -300, 100)
 
 [node name="HotspotFloatingDebris" type="Area2D" parent="Hotspots"]
-position = Vector2(1400, 400)
+position = Vector2(1000, 300)
 script = ExtResource("4_debris")
 script_name = "FloatingDebris"
 description = "Floating Debris"
@@ -59,10 +65,10 @@ clickable = true
 cursor = 1
 
 [node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/HotspotFloatingDebris"]
-polygon = PackedVector2Array(-100, -80, 100, -80, 100, 80, -100, 80)
+polygon = PackedVector2Array(-80, -60, 80, -60, 80, 60, -80, 60)
 
 [node name="HotspotDonutScentTrail" type="Area2D" parent="Hotspots"]
-position = Vector2(700, 700)
+position = Vector2(500, 500)
 script = ExtResource("5_donut")
 script_name = "DonutScentTrail"
 description = "Donut Scent Trail"
@@ -70,10 +76,10 @@ clickable = true
 cursor = 1
 
 [node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/HotspotDonutScentTrail"]
-polygon = PackedVector2Array(-80, -50, 80, -50, 80, 50, -80, 50)
+polygon = PackedVector2Array(-60, -40, 60, -40, 60, 40, -60, 40)
 
 [node name="HotspotCaseFileOverlay" type="Area2D" parent="Hotspots"]
-position = Vector2(1200, 800)
+position = Vector2(850, 550)
 script = ExtResource("6_case_file")
 script_name = "CaseFileOverlay"
 description = "Case File"
@@ -81,13 +87,13 @@ clickable = true
 cursor = 1
 
 [node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/HotspotCaseFileOverlay"]
-polygon = PackedVector2Array(-60, -80, 60, -80, 60, 80, -60, 80)
+polygon = PackedVector2Array(-50, -60, 50, -60, 50, 60, -50, 60)
 
 [node name="Regions" type="Node2D" parent="."]
 
 [node name="Markers" type="Node2D" parent="."]
 
 [node name="TankStart" type="Marker2D" parent="Markers"]
-position = Vector2(960, 540)
+position = Vector2(640, 500)
 
 [node name="Characters" type="Node2D" parent="."]

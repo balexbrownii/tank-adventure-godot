@@ -25,6 +25,9 @@ height = 720
 
 [node name="Markers" type="Node2D" parent="."]
 
+[node name="TankStart" type="Marker2D" parent="Markers"]
+position = Vector2(640, 500)
+
 [node name="Characters" type="Node2D" parent="."]
 
 [node name="CharacterTank *" parent="Characters" instance=ExtResource("2_305fl")]

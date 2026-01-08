@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cy6m4nrtqwx2b"]
+[gd_scene load_steps=12 format=3 uid="uid://cy6m4nrtqwx2b"]
 
 [ext_resource type="Script" path="res://game/rooms/wanted_camp/room_wanted_camp.gd" id="1_room"]
 [ext_resource type="Script" path="res://game/rooms/wanted_camp/hotspots/hotspot_wanted_poster.gd" id="2_wanted_poster"]
@@ -9,23 +9,29 @@
 [ext_resource type="Script" path="res://game/rooms/wanted_camp/hotspots/hotspot_river_path.gd" id="7_river_path"]
 [ext_resource type="Script" path="res://game/rooms/wanted_camp/hotspots/hotspot_vine_coil.gd" id="8_vine_coil"]
 [ext_resource type="Script" path="res://game/rooms/wanted_camp/hotspots/hotspot_rock_pile.gd" id="9_rock_pile"]
+[ext_resource type="Texture2D" path="res://assets/images/backgrounds/forest-interactive.png" id="10_background"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_default"]
 size = Vector2(150, 100)
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_1"]
+vertices = PackedVector2Array(50, 350, 1230, 350, 1230, 680, 50, 680)
+polygons = [PackedInt32Array(0, 1, 2, 3)]
+outlines = [PackedVector2Array(50, 350, 1230, 350, 1230, 680, 50, 680)]
+
 [node name="RoomWantedCamp" type="Node2D"]
 script = ExtResource("1_room")
 
-[node name="Background" type="ColorRect" parent="."]
-offset_right = 1280.0
-offset_bottom = 720.0
-color = Color(0.15, 0.2, 0.15, 1)
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+texture = ExtResource("10_background")
 
 [node name="WalkableAreas" type="Node2D" parent="."]
 
 [node name="WalkableArea" type="Node2D" parent="WalkableAreas"]
 
 [node name="Perimeter" type="NavigationRegion2D" parent="WalkableAreas/WalkableArea"]
+navigation_polygon = SubResource("NavigationPolygon_1")
 
 [node name="Props" type="Node2D" parent="."]
 
@@ -122,5 +128,8 @@ polygon = PackedVector2Array(-75, -50, 75, -50, 75, 50, -75, 50)
 [node name="Regions" type="Node2D" parent="."]
 
 [node name="Markers" type="Node2D" parent="."]
+
+[node name="TankStart" type="Marker2D" parent="Markers"]
+position = Vector2(640, 500)
 
 [node name="Characters" type="Node2D" parent="."]

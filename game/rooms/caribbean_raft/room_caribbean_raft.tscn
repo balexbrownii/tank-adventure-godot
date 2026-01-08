@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://crf12k8nv2q3x"]
+[gd_scene load_steps=11 format=3 uid="uid://crf12k8nv2q3x"]
 
 [ext_resource type="Script" path="res://game/rooms/caribbean_raft/room_caribbean_raft.gd" id="1_room"]
 [ext_resource type="Script" path="res://game/rooms/caribbean_raft/hotspots/hotspot_fog_wall.gd" id="2_fog_wall"]
@@ -8,6 +8,12 @@
 [ext_resource type="Script" path="res://game/rooms/caribbean_raft/hotspots/hotspot_oar.gd" id="6_oar"]
 [ext_resource type="Script" path="res://game/rooms/caribbean_raft/hotspots/hotspot_life_jacket.gd" id="7_life_jacket"]
 [ext_resource type="Script" path="res://game/rooms/caribbean_raft/hotspots/hotspot_case_file.gd" id="8_case_file"]
+[ext_resource type="Texture2D" path="res://assets/images/backgrounds/forest-interactive.png" id="9_background"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_1"]
+vertices = PackedVector2Array(200, 450, 1080, 450, 1080, 650, 200, 650)
+polygons = [PackedInt32Array(0, 1, 2, 3)]
+outlines = [PackedVector2Array(200, 450, 1080, 450, 1080, 650, 200, 650)]
 
 [node name="RoomCaribbeanRaft" type="Node2D"]
 script = ExtResource("1_room")
@@ -15,17 +21,16 @@ script_name = "CaribbeanRaft"
 width = 1280
 height = 720
 
-[node name="Background" type="ColorRect" parent="."]
-offset_right = 1280.0
-offset_bottom = 720.0
-color = Color(0.1, 0.15, 0.3, 1)
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+texture = ExtResource("9_background")
 
 [node name="WalkableAreas" type="Node2D" parent="."]
 
 [node name="Raft" type="Node2D" parent="WalkableAreas"]
-position = Vector2(640, 500)
 
 [node name="Perimeter" type="NavigationRegion2D" parent="WalkableAreas/Raft"]
+navigation_polygon = SubResource("NavigationPolygon_1")
 
 [node name="Props" type="Node2D" parent="."]
 

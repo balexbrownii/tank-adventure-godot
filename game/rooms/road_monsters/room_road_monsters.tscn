@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bf6rm1road2"]
+[gd_scene load_steps=11 format=3 uid="uid://bf6rm1road2"]
 
 [ext_resource type="Script" path="res://game/rooms/road_monsters/room_road_monsters.gd" id="1_room"]
 [ext_resource type="Script" path="res://game/rooms/road_monsters/hotspots/hotspot_passing_cars.gd" id="2_cars"]
@@ -8,6 +8,12 @@
 [ext_resource type="Script" path="res://game/rooms/road_monsters/hotspots/hotspot_donut_sign.gd" id="6_donut"]
 [ext_resource type="Script" path="res://game/rooms/road_monsters/hotspots/hotspot_leaking_pump.gd" id="7_pump"]
 [ext_resource type="Script" path="res://game/rooms/road_monsters/hotspots/hotspot_spark_source.gd" id="8_spark"]
+[ext_resource type="Texture2D" path="res://assets/images/backgrounds/village.png" id="9_background"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_1"]
+vertices = PackedVector2Array(50, 350, 1230, 350, 1230, 680, 50, 680)
+polygons = [PackedInt32Array(0, 1, 2, 3)]
+outlines = [PackedVector2Array(50, 350, 1230, 350, 1230, 680, 50, 680)]
 
 [node name="RoomRoadMonsters" type="Node2D"]
 script = ExtResource("1_room")
@@ -15,17 +21,16 @@ script_name = "RoadMonsters"
 width = 1280
 height = 720
 
-[node name="Background" type="ColorRect" parent="."]
-offset_right = 1280.0
-offset_bottom = 720.0
-color = Color(0.3, 0.35, 0.4, 1)
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+texture = ExtResource("9_background")
 
 [node name="WalkableAreas" type="Node2D" parent="."]
 
 [node name="Ground" type="Node2D" parent="WalkableAreas"]
-position = Vector2(640, 600)
 
 [node name="Perimeter" type="NavigationRegion2D" parent="WalkableAreas/Ground"]
+navigation_polygon = SubResource("NavigationPolygon_1")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="WalkableAreas"]
 
@@ -113,5 +118,8 @@ polygon = PackedVector2Array(-20, -20, 20, -20, 20, 20, -20, 20)
 [node name="Regions" type="Node2D" parent="."]
 
 [node name="Markers" type="Node2D" parent="."]
+
+[node name="TankStart" type="Marker2D" parent="Markers"]
+position = Vector2(640, 500)
 
 [node name="Characters" type="Node2D" parent="."]

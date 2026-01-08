@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://floridaairport14"]
+[gd_scene load_steps=11 format=3 uid="uid://floridaairport14"]
 
 [ext_resource type="Script" path="res://game/rooms/florida_airport/room_florida_airport.gd" id="1_room"]
 [ext_resource type="Script" path="res://game/rooms/florida_airport/hotspots/hotspot_dock.gd" id="2_dock"]
@@ -7,6 +7,12 @@
 [ext_resource type="Script" path="res://game/rooms/florida_airport/hotspots/hotspot_airport_entrance.gd" id="5_entrance"]
 [ext_resource type="Script" path="res://game/rooms/florida_airport/hotspots/hotspot_maintenance_door.gd" id="6_maintenance"]
 [ext_resource type="Script" path="res://game/rooms/florida_airport/hotspots/hotspot_luggage_carts.gd" id="7_carts"]
+[ext_resource type="Texture2D" path="res://assets/images/backgrounds/village.png" id="8_background"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_1"]
+vertices = PackedVector2Array(50, 350, 1230, 350, 1230, 680, 50, 680)
+polygons = [PackedInt32Array(0, 1, 2, 3)]
+outlines = [PackedVector2Array(50, 350, 1230, 350, 1230, 680, 50, 680)]
 
 [node name="RoomFloridaAirport" type="Node2D"]
 script = ExtResource("1_room")
@@ -14,16 +20,16 @@ script_name = "FloridaAirport"
 width = 1280
 height = 720
 
-[node name="Background" type="ColorRect" parent="."]
-offset_right = 1280.0
-offset_bottom = 720.0
-color = Color(0.6, 0.7, 0.8, 1)
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+texture = ExtResource("8_background")
 
 [node name="WalkableAreas" type="Node2D" parent="."]
 
 [node name="Ground" type="Node2D" parent="WalkableAreas"]
 
 [node name="Perimeter" type="NavigationRegion2D" parent="WalkableAreas/Ground"]
+navigation_polygon = SubResource("NavigationPolygon_1")
 
 [node name="Props" type="Node2D" parent="."]
 
