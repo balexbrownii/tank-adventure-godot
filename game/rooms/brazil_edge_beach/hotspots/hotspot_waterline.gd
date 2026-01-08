@@ -1,53 +1,51 @@
 @tool
 extends PopochiuHotspot
-## Hotspot: Waterline (THE GATEWAY TO CANADA / Water's Edge)
-## Where the raft launches - blocked until life jacket is ready
+## Waterline hotspot - Where the ocean meets the beach
 
-@onready var room: Node = get_parent().get_parent()
-
-
-func _on_interact() -> void:
-	if not room.state.jacket_crafted:
-		# Trigger life jacket puzzle
-		room.trigger_life_jacket_puzzle()
-		return
-
-	if room.state.raft_launched:
-		await C.Tank.say("We already launched!")
-		return
-
-	# Ready to launch
-	room.launch_raft()
+#region Virtual ####################################################################################
+func _on_click() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
 
 
-func _on_look() -> void:
-	var text: String = TankVision.get_inspect_text(room.vision_data["waterline"])
-	await C.Tank.say(text)
-
-	if not room.state.jacket_crafted:
-		await E.queue([
-			"*Mr. Snuggles looks at the water nervously*",
-			"*He needs a life jacket before we can go*",
-		])
-	else:
-		await E.queue([
-			"*Mr. Snuggles floats confidently in his life jacket*",
-			"*Ready to launch!*",
-		])
+func _on_right_click() -> void:
+	await C.player.face_clicked()
+	await C.player.say("Where the water meets the sand.")
 
 
 func _on_item_used(item: PopochiuInventoryItem) -> void:
-	match item.script_name:
-		"Oar":
-			if room.state.jacket_crafted:
-				await C.Tank.say("Yes! Let's LAUNCH!")
-				room.launch_raft()
-			else:
-				await C.Tank.say("We need to make Mr. Snuggles a life jacket first!")
-		"LifeJacket", "LifeJacketBulky":
-			await E.queue([
-				"Tank: *puts life jacket on Mr. Snuggles*",
-				"Mr. Snuggles: *adjusts to the fit*",
-			])
-		_:
-			await C.Tank.say("That won't help us launch.")
+	await C.player.say("I don't want to throw that in the ocean.")
+
+
+#endregion
+
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("The ocean! It's SO BIG!")
+	await C.player.say("Puerto Rico is out there somewhere!")
+
+
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I splash in the water!")
+	await C.player.say("Hehe! Salty!")
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Hello ocean! We're going to sail across you!")
+	await C.player.say("The waves seem... indifferent.")
+
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I try to pick up the ocean.")
+	await C.player.say("It just runs through my fingers.")
+
+
+#endregion

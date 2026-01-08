@@ -1,30 +1,51 @@
 @tool
 extends PopochiuHotspot
-## Oak Tree hotspot - Distant tree that will be the camp in next room.
+## Oak Tree hotspot - A tree at the crossing
 
 #region Virtual ####################################################################################
 func _on_click() -> void:
-	var room = get_parent().get_parent().get_parent() as PopochiuRoom
-
-	if TankVision.current_mode == TankVision.VisionMode.TANK:
-		await C.player.say("A BIG TREE FRIEND in the distance!")
-		await C.player.say("It's waving at me! Hello, tree!")
-	else:
-		await C.player.say("A large oak tree. Could make a good camp spot.")
-		await C.player.say("Looks peaceful.")
-
-	if not room.state.pig_joined:
-		await C.player.say("Maybe we could head there after I sort things out here.")
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
 
 
 func _on_right_click() -> void:
-	var room = get_parent().get_parent().get_parent() as PopochiuRoom
-	var inspect = TankVision.get_inspect_text(room.vision_data["oak_tree"])
-	await C.player.say(inspect)
+	await C.player.face_clicked()
+	await C.player.say("A shady oak tree by the road.")
 
 
-func _on_item_used(_item: PopochiuInventoryItem) -> void:
-	await C.player.say("The tree is too far away to use that on.")
+func _on_item_used(item: PopochiuInventoryItem) -> void:
+	await C.player.say("The tree doesn't need that.")
+
+
+#endregion
+
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("A nice oak tree providing shade!")
+	await C.player.say("Pig says we could camp here!")
+
+
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I lean against the tree.")
+	await C.player.say("Ahh, nice and shady!")
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Hello tree! Will you shelter us tonight?")
+	await C.player.say("The branches sway welcomingly.")
+
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I could uproot this tree...")
+	await C.player.say("But it provides such nice shade!")
 
 
 #endregion

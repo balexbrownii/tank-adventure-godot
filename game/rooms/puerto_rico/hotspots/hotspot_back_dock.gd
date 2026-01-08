@@ -1,27 +1,51 @@
 @tool
 extends PopochiuHotspot
-## Hotspot: Back Dock - where the boats are
+## Back Dock hotspot - Where boats are kept
 
-@onready var room: Node = get_parent().get_parent()
-
-
-func _on_look() -> void:
-	var text: String = TankVision.get_inspect_text(room.vision_data["back_dock"])
-	await C.Tank.say(text)
+#region Virtual ####################################################################################
+func _on_click() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
 
 
-func _on_interact() -> void:
-	if room.state.got_boat:
-		await C.Tank.say("We already have a boat!")
-		return
+func _on_right_click() -> void:
+	await C.player.face_clicked()
+	await C.player.say("A dock behind the motel.")
 
-	if not room.state.got_room and not room.state.slept_outside:
-		await E.queue([
-			"Pig: Let's get some rest first. Can't sail tired.",
-		])
-		return
 
-	await E.queue([
-		"*The dock is quiet in the pre-dawn darkness*",
-		"*A few boats bob gently in the water*",
-	])
+func _on_item_used(item: PopochiuInventoryItem) -> void:
+	await C.player.say("I don't need to use that here.")
+
+
+#endregion
+
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("The dock behind the motel!")
+	await C.player.say("Several boats are tied up here...")
+
+
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I check the dock for loose boards.")
+	await C.player.say("Seems sturdy enough!")
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Hello dock! Any nice boats here?")
+	await C.player.say("It creaks mysteriously.")
+
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I can't pick up a whole dock!")
+	await C.player.say("It's attached to the shore!")
+
+
+#endregion

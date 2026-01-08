@@ -1,25 +1,51 @@
 @tool
 extends PopochiuHotspot
-## Landing Spot hotspot - Where Tank crashed from space.
+## Landing Spot hotspot - Where Tank landed from space
 
 #region Virtual ####################################################################################
 func _on_click() -> void:
-	if TankVision.current_mode == TankVision.VisionMode.TANK:
-		await C.player.say("MY CRATER! I made this!")
-		await C.player.say("It's still warm. And me-shaped.")
-	else:
-		await C.player.say("The impact site. Still smoldering.")
-		await C.player.say("I should probably not stay here too long...")
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
 
 
 func _on_right_click() -> void:
-	var room = get_parent().get_parent().get_parent() as PopochiuRoom
-	var inspect = TankVision.get_inspect_text(room.vision_data["landing_spot"])
-	await C.player.say(inspect)
+	await C.player.face_clicked()
+	await C.player.say("A crater in the ground. Did I make that?")
 
 
-func _on_item_used(_item: PopochiuInventoryItem) -> void:
-	await C.player.say("I don't need to leave anything at my crash site.")
+func _on_item_used(item: PopochiuInventoryItem) -> void:
+	await C.player.say("I don't need to put that in the crater.")
+
+
+#endregion
+
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("The spot where I landed!")
+	await C.player.say("Still smoking from the impact...")
+
+
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I touch the ground. Still warm!")
+	await C.player.say("Reentry was HOT!")
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Thank you, ground! Thanks for catching me!")
+	await C.player.say("The crater smolders appreciatively.")
+
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I grab some charred dirt.")
+	await C.player.say("A souvenir from my space adventure!")
 
 
 #endregion

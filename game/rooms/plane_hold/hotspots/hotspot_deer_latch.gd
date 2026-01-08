@@ -1,52 +1,51 @@
 @tool
 extends PopochiuHotspot
+## Deer Latch hotspot - Keeping Mr. Snuggles secure
 
-## Deer Latch hotspot - DEER HOUSE DOOR / Suitcase Latch
-
-@onready var room: Node = get_parent().get_parent()
-
-
+#region Virtual ####################################################################################
 func _on_click() -> void:
-	await C.Tank.walk_to_clicked()
-	await C.Tank.face_clicked()
-
-	var inspect_text: String = TankVision.get_inspect_text(room.vision_data["deer_latch"])
-	await C.Tank.say(inspect_text)
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
 
 
 func _on_right_click() -> void:
-	var inspect_text: String = TankVision.get_inspect_text(room.vision_data["deer_latch"])
-	await C.Tank.say(inspect_text)
+	await C.player.face_clicked()
+	await C.player.say("The latch on Mr. Snuggles' container.")
 
 
-func _on_look() -> void:
-	var inspect_text: String = TankVision.get_inspect_text(room.vision_data["deer_latch"])
-	await C.Tank.say(inspect_text)
-
-	await E.queue([
-		"*tap tap tap* from inside",
-		"Mr. Snuggles is in there.",
-	])
+func _on_item_used(item: PopochiuInventoryItem) -> void:
+	await C.player.say("I don't need to use that on the latch.")
 
 
-func _on_interact() -> void:
-	await C.Tank.walk_to_clicked()
+#endregion
 
-	if not room.state.crash_prepped:
-		await E.queue([
-			"*Tank touches the suitcase latch*",
-			"*tap tap tap*",
-		])
-		await C.Tank.say("Don't worry, Mr. Snuggles! We'll protect you!")
-
-		if GameState.has_party_member("Pig"):
-			await C.player.say("We need to secure that suitcase before impact!")
-	else:
-		await E.queue([
-			"*tap tap tap*",
-		])
-		await C.Tank.say("Stay safe in there, buddy.")
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("The latch keeping Mr. Snuggles safe!")
+	await C.player.say("Pig made sure it's extra secure!")
 
 
-func get_description() -> String:
-	return TankVision.get_hover_text(room.vision_data["deer_latch"])
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I check the latch.")
+	await C.player.say("Still secure! Mr. Snuggles is safe!")
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Stay strong, latch! Protect the deer!")
+	await C.player.say("It clicks reassuringly.")
+
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I shouldn't open this during the flight!")
+	await C.player.say("Mr. Snuggles needs to stay secure!")
+
+
+#endregion

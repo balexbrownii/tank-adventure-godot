@@ -1,39 +1,51 @@
 @tool
 extends PopochiuHotspot
-## Hotspot: Rock Marker (MEMORIAL STONE / Random Rock)
-## A rock Tank might use as a memorial... or just trip over
+## Rock Marker hotspot - A landmark rock
 
-@onready var room: Node = get_parent().get_parent()
-
-
-func _on_interact() -> void:
-	if room.state.leg_revealed:
-		await E.queue([
-			"Tank: I should probably move this rock.",
-			"Tank: Don't want to trip on it... again.",
-		])
-	else:
-		if TankVision.is_reality_mode:
-			await C.Tank.say("It's just a rock. You almost tripped on it last night.")
-		else:
-			await E.queue([
-				"Tank: This stone shall serve as a MEMORIAL!",
-				"Tank: Future travelers will know of my sacrifice!",
-			])
+#region Virtual ####################################################################################
+func _on_click() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
 
 
-func _on_look() -> void:
-	var text: String = TankVision.get_inspect_text(room.vision_data["rock_marker"])
-	await C.Tank.say(text)
+func _on_right_click() -> void:
+	await C.player.face_clicked()
+	await C.player.say("A big rock. Good for marking your location.")
 
 
 func _on_item_used(item: PopochiuInventoryItem) -> void:
-	match item.script_name:
-		"CharcoalChunk":
-			await E.queue([
-				"Tank: *draws on rock*",
-				"Tank: 'R.I.P. LEG'",
-				"Tank: There. A proper memorial.",
-			])
-		_:
-			await C.Tank.say("The rock doesn't need that.")
+	await C.player.say("I don't need to use that on the rock.")
+
+
+#endregion
+
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("A distinctive rock!")
+	await C.player.say("I can use this to remember where I slept!")
+
+
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I pat the rock.")
+	await C.player.say("Solid! You're a good rock!")
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Hello rock! Thanks for being a landmark!")
+	await C.player.say("The rock is stoic and dependable.")
+
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I could lift this rock...")
+	await C.player.say("But it's good where it is!")
+
+
+#endregion

@@ -1,30 +1,51 @@
 @tool
 extends PopochiuHotspot
-## Hotspot: Stars - Key to Reality Vision navigation
+## Stars hotspot - The starfield above
 
-@onready var room: Node = get_parent().get_parent()
-
-
-func _on_look() -> void:
-	var text: String = TankVision.get_inspect_text(room.vision_data["stars"])
-	await C.Tank.say(text)
+#region Virtual ####################################################################################
+func _on_click() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
 
 
-func _on_interact() -> void:
-	if room.state.navigation_solved:
-		await C.Tank.say("We already found the way!")
-		return
+func _on_right_click() -> void:
+	await C.player.face_clicked()
+	await C.player.say("Stars. Millions of them.")
 
-	if TankVision.is_reality_mode:
-		await E.queue([
-			"*You study the star pattern carefully*",
-			"*A bright cluster forms a line pointing southeast*",
-			"Pig: If we had the route sketch, we could confirm...",
-		])
-	else:
-		await E.queue([
-			"Tank: *squints at stars*",
-			"Tank: I see... A BEAR! No wait, a WARRIOR!",
-			"Tank: It's POINTING at something!",
-			"Pig: ...that's actually not wrong.",
-		])
+
+func _on_item_used(item: PopochiuInventoryItem) -> void:
+	await C.player.say("Stars are too far away for that.")
+
+
+#endregion
+
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("So many stars! They're beautiful!")
+	await C.player.say("Pig says sailors used these to find their way.")
+
+
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I try to connect the dots to make pictures.")
+	await C.player.say("I see a... donut? No wait, that's just wishful thinking.")
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Hello stars! Are any of you planets?")
+	await C.player.say("The stars twinkle mysteriously.")
+
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I try to catch a star!")
+	await C.player.say("My hand closes on nothing. Stars are tricky.")
+
+
+#endregion

@@ -1,48 +1,51 @@
 @tool
 extends PopochiuHotspot
+## Loose Baggage hotspot - Suitcases sliding around
 
-## Loose Baggage hotspot - SHIELD COLLECTION / Unsecured Cargo
-
-@onready var room: Node = get_parent().get_parent()
-
-
+#region Virtual ####################################################################################
 func _on_click() -> void:
-	await C.Tank.walk_to_clicked()
-	await C.Tank.face_clicked()
-
-	var inspect_text: String = TankVision.get_inspect_text(room.vision_data["loose_baggage"])
-	await C.Tank.say(inspect_text)
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
 
 
 func _on_right_click() -> void:
-	var inspect_text: String = TankVision.get_inspect_text(room.vision_data["loose_baggage"])
-	await C.Tank.say(inspect_text)
+	await C.player.face_clicked()
+	await C.player.say("Suitcases sliding around the cargo hold.")
 
 
-func _on_look() -> void:
-	var inspect_text: String = TankVision.get_inspect_text(room.vision_data["loose_baggage"])
-	await C.Tank.say(inspect_text)
-
-	await E.queue([
-		"Suitcases, boxes, crates... all sliding around.",
-		"They could become projectiles.",
-	])
+func _on_item_used(item: PopochiuInventoryItem) -> void:
+	await C.player.say("I don't need to add that to the sliding bags.")
 
 
-func _on_interact() -> void:
-	await C.Tank.walk_to_clicked()
+#endregion
 
-	if TankVision.is_tank_vision:
-		await C.Tank.say("I'll use these as shields! Nothing can hurt me!")
-		await E.queue([
-			"*Tank grabs a suitcase*",
-			"*It slides away as the plane shakes*",
-		])
-	else:
-		await C.Tank.say("This cargo is dangerous. Flying debris in a crash...")
-		if GameState.has_party_member("Pig"):
-			await C.player.say("We could use them as padding, or lose everything!")
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("The suitcases are sliding everywhere!")
+	await C.player.say("The turbulence is really bad!")
 
 
-func get_description() -> String:
-	return TankVision.get_hover_text(room.vision_data["loose_baggage"])
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I try to catch the sliding bags!")
+	await C.player.say("Got one! It's heavy!")
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Stop sliding, suitcases!")
+	await C.player.say("They don't listen. Rude suitcases.")
+
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I grab a sliding suitcase!")
+	await C.player.say("Oof! Someone packed bricks in this one!")
+
+
+#endregion

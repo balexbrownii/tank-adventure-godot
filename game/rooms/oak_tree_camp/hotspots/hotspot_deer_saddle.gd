@@ -1,37 +1,51 @@
 @tool
 extends PopochiuHotspot
-## Deer saddle hotspot - Mr. Snuggles' riding equipment (Bizarre solution trigger)
+## Deer Saddle hotspot - Where Pig rides Mr. Snuggles
 
 #region Virtual ####################################################################################
 func _on_click() -> void:
-	var room = get_parent().get_parent().get_parent() as PopochiuRoom
-
-	if room.state.camp_secured:
-		await C.player.say("Mr. Snuggles is resting. His saddle is secure.")
-		return
-
-	if TankVision.current_mode == TankVision.VisionMode.TANK:
-		await C.player.say("The fluffy horse seat!")
-		await C.player.say("Mr. Snuggles carries Pig in STYLE!")
-	else:
-		await C.player.say("Mr. Snuggles' saddle. Pig maintains it carefully.")
-		await C.player.say("The strap looks much better now that I fixed it.")
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
 
 
 func _on_right_click() -> void:
-	var room = get_parent().get_parent().get_parent() as PopochiuRoom
-	var inspect = TankVision.get_inspect_text(room.vision_data["deer_saddle"])
-	await C.player.say(inspect)
+	await C.player.face_clicked()
+	await C.player.say("A saddle for Mr. Snuggles.")
 
 
-func _on_item_used(_item: PopochiuInventoryItem) -> void:
-	var room = get_parent().get_parent().get_parent() as PopochiuRoom
+func _on_item_used(item: PopochiuInventoryItem) -> void:
+	await C.player.say("I don't need to attach that to the saddle.")
 
-	if room.state.camp_secured:
-		await C.player.say("The saddle is fine.")
-		return
 
-	await C.player.say("Mr. Snuggles doesn't need that on his saddle.")
+#endregion
+
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Pig's riding saddle for Mr. Snuggles!")
+	await C.player.say("It has special clips for Pig's tight workout pants!")
+
+
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I adjust the saddle straps.")
+	await C.player.say("Nice and snug! Ready for Pig!")
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Hello saddle! Take care of Pig!")
+	await C.player.say("It's well-maintained and comfortable-looking.")
+
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I can't take the saddle off Mr. Snuggles.")
+	await C.player.say("He seems to like wearing it!")
 
 
 #endregion

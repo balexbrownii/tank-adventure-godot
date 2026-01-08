@@ -1,31 +1,51 @@
 @tool
 extends PopochiuHotspot
-## Supplies Pouch hotspot - Pig's travel supplies. Can't access until recruited.
+## Supplies Pouch hotspot - Pig's supply bag
 
 #region Virtual ####################################################################################
 func _on_click() -> void:
-	var room = get_parent().get_parent().get_parent() as PopochiuRoom
-
-	if room.state.pig_joined:
-		await C.player.say("Pig already shared the supplies with us!")
-		return
-
-	if TankVision.current_mode == TankVision.VisionMode.TANK:
-		await C.player.say("TREASURE BAG! I want to see what's inside!")
-		await C.player.say("But the angry bacon is guarding it...")
-	else:
-		await C.player.say("The pig's supply pouch. Looks well-organized.")
-		await C.player.say("I should probably ask before touching it.")
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
 
 
 func _on_right_click() -> void:
-	var room = get_parent().get_parent().get_parent() as PopochiuRoom
-	var inspect = TankVision.get_inspect_text(room.vision_data["supplies_pouch"])
-	await C.player.say(inspect)
+	await C.player.face_clicked()
+	await C.player.say("Pig's supplies pouch.")
 
 
-func _on_item_used(_item: PopochiuInventoryItem) -> void:
-	await C.player.say("I shouldn't mess with someone else's supplies.")
+func _on_item_used(item: PopochiuInventoryItem) -> void:
+	await C.player.say("I shouldn't put things in Pig's bag without asking.")
+
+
+#endregion
+
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Pig's supply pouch!")
+	await C.player.say("Full of maps, snacks, and emergency bacon.")
+
+
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I peek inside the pouch.")
+	await C.player.say("Pig organizes everything so neatly!")
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Hello pouch! Keep Pig's stuff safe!")
+	await C.player.say("It bulges with supplies.")
+
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I shouldn't take Pig's supplies.")
+	await C.player.say("He'll need them for planning!")
 
 
 #endregion

@@ -1,27 +1,51 @@
 @tool
 extends PopochiuHotspot
-## Hotspot: Backpack Strap (SURVIVAL LIFELINE / Twisted strap)
-## Tank's backpack - a connection to her "former" life
+## Backpack Strap hotspot - Hanging from something
 
-@onready var room: Node = get_parent().get_parent()
-
-
-func _on_interact() -> void:
-	await E.queue([
-		"Tank: *adjusts backpack*",
-		"Tank: At least I still have my supplies...",
-	])
-
-	if I.Backpack.is_in_inventory():
-		await C.Tank.say("The pack is secure.")
-	else:
-		await C.Tank.say("I should probably grab my pack before moving on.")
+#region Virtual ####################################################################################
+func _on_click() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
 
 
-func _on_look() -> void:
-	var text: String = TankVision.get_inspect_text(room.vision_data["backpack_strap"])
-	await C.Tank.say(text)
+func _on_right_click() -> void:
+	await C.player.face_clicked()
+	await C.player.say("A strap from my backpack is sticking out.")
 
 
 func _on_item_used(item: PopochiuInventoryItem) -> void:
-	await C.Tank.say("I should keep my items accessible, not stuff them in the pack.")
+	await C.player.say("I don't need to attach that to the strap.")
+
+
+#endregion
+
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Hey, that's my backpack strap!")
+	await C.player.say("My backpack must be nearby!")
+
+
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I pull on the strap!")
+	await C.player.say("My backpack emerges from the leaves!")
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Hey strap! Where's my backpack?")
+	await C.player.say("It seems to point under the leaves!")
+
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I grab the strap and pull!")
+	await C.player.say("Found my backpack!")
+
+
+#endregion

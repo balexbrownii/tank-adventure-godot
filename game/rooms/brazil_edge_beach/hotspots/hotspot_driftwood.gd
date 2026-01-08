@@ -1,38 +1,49 @@
 @tool
 extends PopochiuHotspot
-## Hotspot: Driftwood (FLOATY WOOD THINGS / Driftwood Pile)
-## Flotation material for life jacket crafting
+## Driftwood hotspot - Useful for raft building
 
-@onready var room: Node = get_parent().get_parent()
-
-
-func _on_interact() -> void:
-	if room.state.jacket_crafted:
-		await C.Tank.say("We already used the good pieces for the life jacket.")
-		return
-
-	await E.queue([
-		"Tank: *picks up driftwood*",
-		"Tank: These are VERY floaty!",
-		"Pig: That's the idea. Driftwood floats.",
-		"Tank: GENIUS!",
-	])
+#region Virtual ####################################################################################
+func _on_click() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
 
 
-func _on_look() -> void:
-	var text: String = TankVision.get_inspect_text(room.vision_data["driftwood"])
-	await C.Tank.say(text)
-
-	if TankVision.is_reality_mode:
-		await E.queue([
-			"*The driftwood looks weathered but solid*",
-			"*Perfect for flotation*",
-		])
+func _on_right_click() -> void:
+	await C.player.face_clicked()
+	await C.player.say("Old wood that washed up on shore.")
 
 
 func _on_item_used(item: PopochiuInventoryItem) -> void:
-	match item.script_name:
-		"Rope", "Vine":
-			await C.Tank.say("I could tie these together... if I knew how to make a life jacket.")
-		_:
-			await C.Tank.say("Wood doesn't need that.")
+	await C.player.say("I don't need to combine that with the wood.")
+
+
+#endregion
+
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Driftwood! Perfect for building a raft!")
+	await C.player.say("It looks sturdy enough to float.")
+
+
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I test the wood's strength by punching it.")
+	await C.player.say("SOLID! This will make a great raft base!")
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("You will help us cross the sea, noble wood!")
+
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I grab the driftwood. It's heavy but manageable!")
+
+
+#endregion

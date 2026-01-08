@@ -1,35 +1,51 @@
 @tool
 extends PopochiuHotspot
-## Hotspot: Small Puddle
-## Muddy water at the bottom of the ditch
+## Small Puddle hotspot - Water collected in the ditch
 
-@onready var room: Node = get_parent().get_parent()
-
-
-func _on_interact() -> void:
-	await room.examine_puddle()
-
-	# Optional: wash mud face if player has it from fail-forward
-	if GameState.has_temporary_status("mud_face"):
-		await E.queue([
-			"Tank: *splashes water on face*",
-			"Tank: There! Clean-ish!",
-		])
-		GameState.remove_temporary_status("mud_face")
+#region Virtual ####################################################################################
+func _on_click() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
 
 
-func _on_look() -> void:
-	var text: String = TankVision.get_inspect_text(room.vision_data["small_puddle"])
-	await C.Tank.say(text)
+func _on_right_click() -> void:
+	await C.player.face_clicked()
+	await C.player.say("A small puddle of water.")
 
 
 func _on_item_used(item: PopochiuInventoryItem) -> void:
-	match item.script_name:
-		"CharcoalChunk":
-			await E.queue([
-				"Tank: *drops charcoal in puddle*",
-				"Tank: ...Now it's charcoal water.",
-				"Tank: I didn't think this through.",
-			])
-		_:
-			await C.Tank.say("I don't want to get that wet.")
+	await C.player.say("I don't want to drop that in the puddle.")
+
+
+#endregion
+
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("A puddle from last night's rain!")
+	await C.player.say("I can see my reflection... Looking good, Tank!")
+
+
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I splash in the puddle!")
+	await C.player.say("SPLISH SPLASH! Refreshing!")
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Hello puddle! Hello reflection of me!")
+	await C.player.say("Reflection-Tank waves back. Friendly!")
+
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I cup some water in my hands.")
+	await C.player.say("Cool and refreshing!")
+
+
+#endregion

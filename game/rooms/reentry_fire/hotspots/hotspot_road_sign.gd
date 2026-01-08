@@ -1,46 +1,51 @@
 @tool
 extends PopochiuHotspot
-## Road Sign hotspot - Can take the arrow for the Bizarre solution.
+## Road Sign hotspot - Shows directions
 
 #region Virtual ####################################################################################
 func _on_click() -> void:
-	var room = get_parent().get_parent().get_parent() as PopochiuRoom
-
-	if room.state.sign_arrow_taken:
-		await C.player.say("I already took the arrow from this.")
-		return
-
-	if TankVision.current_mode == TankVision.VisionMode.TANK:
-		await _tank_vision_interaction()
-	else:
-		await _reality_vision_interaction()
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
 
 
 func _on_right_click() -> void:
-	var room = get_parent().get_parent().get_parent() as PopochiuRoom
-	var inspect = TankVision.get_inspect_text(room.vision_data["road_sign"])
-	await C.player.say(inspect)
+	await C.player.face_clicked()
+	await C.player.say("A road sign with directions.")
 
 
-func _on_item_used(_item: PopochiuInventoryItem) -> void:
-	await C.player.say("I don't need to put anything on the sign.")
+func _on_item_used(item: PopochiuInventoryItem) -> void:
+	await C.player.say("I can't use that on the sign.")
 
 
 #endregion
 
-#region Private ####################################################################################
-func _tank_vision_interaction() -> void:
-	await C.player.say("A DIRECTION TOTEM!")
-	await C.player.say("It points... that way! Wisdom!")
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("A road sign!")
+	await C.player.say("It points toward... Canada! Wait, no... Brazil?")
 
-	await D.TakeSignArrow.start()
+
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I spin the sign around!")
+	await C.player.say("Now Canada is that way! Problem solved!")
 
 
-func _reality_vision_interaction() -> void:
-	await C.player.say("A road sign. The arrow looks like it could be removed...")
-	await C.player.say("Might make a decent lever or tool.")
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Which way to Canada, sign?")
+	await C.player.say("It points firmly in one direction.")
 
-	await D.TakeSignArrow.start()
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I yank the sign out of the ground!")
+	await C.player.say("Might be useful for navigation!")
 
 
 #endregion

@@ -1,29 +1,51 @@
 @tool
 extends PopochiuHotspot
-## Hotspot: Life Jacket on Mr. Snuggles
+## Life Jacket hotspot - Mr. Snuggles' safety gear
 
-@onready var room: Node = get_parent().get_parent()
-
-
-func _on_look() -> void:
-	var text: String = TankVision.get_inspect_text(room.vision_data["life_jacket"])
-	await C.Tank.say(text)
-
-	await E.queue([
-		"Mr. Snuggles: *floats contentedly*",
-	])
-
-	# Check which jacket type from Room 11
-	if I.LifeJacketBulky.is_in_inventory():
-		await E.queue([
-			"*The oversized jacket makes him bob like a cork*",
-			"*He doesn't seem to mind*",
-		])
+#region Virtual ####################################################################################
+func _on_click() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
 
 
-func _on_interact() -> void:
-	await E.queue([
-		"Tank: You okay, Mr. Snuggles?",
-		"Mr. Snuggles: *calm blink*",
-		"Tank: He's SO BRAVE!",
-	])
+func _on_right_click() -> void:
+	await C.player.face_clicked()
+	await C.player.say("Mr. Snuggles' life jacket. Safety first!")
+
+
+func _on_item_used(item: PopochiuInventoryItem) -> void:
+	await C.player.say("The life jacket doesn't need that.")
+
+
+#endregion
+
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Pig made this life jacket for Mr. Snuggles!")
+	await C.player.say("It's made from coconut shells and cloth. Very clever!")
+
+
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I check the straps. Nice and tight!")
+	await C.player.say("Mr. Snuggles is safe if we capsize!")
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Don't worry life jacket, you're doing great!")
+	await C.player.say("Mr. Snuggles nods calmly.")
+
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I can't take it off Mr. Snuggles.")
+	await C.player.say("He needs it more than I do!")
+
+
+#endregion

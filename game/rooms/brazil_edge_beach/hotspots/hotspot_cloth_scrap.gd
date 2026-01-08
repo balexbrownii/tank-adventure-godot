@@ -1,43 +1,49 @@
 @tool
 extends PopochiuHotspot
-## Hotspot: Cloth Scrap (VICTORY BANNER MATERIAL / Trailer Tarp torn)
-## Water-resistant material for life jacket body
+## Cloth Scrap hotspot - Sailcloth material
 
-@onready var room: Node = get_parent().get_parent()
-
-
-func _on_interact() -> void:
-	if room.state.jacket_crafted:
-		await C.Tank.say("We used most of that for Mr. Snuggles' jacket.")
-		return
-
-	await E.queue([
-		"Tank: *examines cloth*",
-		"Tank: This would make a GREAT flag!",
-		"Pig: Or... a life jacket body.",
-		"Tank: OR A FLAG ON A LIFE JACKET!",
-		"Pig: Sure. That too.",
-	])
+#region Virtual ####################################################################################
+func _on_click() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
 
 
-func _on_look() -> void:
-	var text: String = TankVision.get_inspect_text(room.vision_data["cloth_scrap"])
-	await C.Tank.say(text)
-
-	if TankVision.is_reality_mode:
-		await E.queue([
-			"*The tarp material is water-resistant*",
-			"*Good for keeping water out of the life jacket*",
-		])
+func _on_right_click() -> void:
+	await C.player.face_clicked()
+	await C.player.say("Torn cloth. Probably from a ship.")
 
 
 func _on_item_used(item: PopochiuInventoryItem) -> void:
-	match item.script_name:
-		"Thorn":
-			await E.queue([
-				"Tank: *pokes hole in cloth with thorn*",
-				"Pig: Why would you do that?!",
-				"Tank: ...oops?",
-			])
-		_:
-			await C.Tank.say("The cloth doesn't need that.")
+	await C.player.say("I don't think that goes with the cloth.")
+
+
+#endregion
+
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("A big piece of torn cloth!")
+	await C.player.say("Pig says we can use this as a sail!")
+
+
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I wave the cloth around!")
+	await C.player.say("WHOOOOSH! Wind power!")
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Hello cloth! You're going to catch the wind for us!")
+
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I grab the cloth. It's big but light!")
+
+
+#endregion

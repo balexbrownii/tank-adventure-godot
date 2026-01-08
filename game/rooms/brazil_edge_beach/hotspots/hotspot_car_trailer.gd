@@ -1,39 +1,51 @@
 @tool
 extends PopochiuHotspot
-## Hotspot: Car + Trailer (LAND VESSEL BROKEN / Abandoned Car + Trailer)
-## The motorcycle-towed trailer that brought them here
+## Car Trailer hotspot - The stolen trailer/car
 
-@onready var room: Node = get_parent().get_parent()
-
-
-func _on_interact() -> void:
-	await E.queue([
-		"Tank: *pats trailer*",
-		"Tank: You served us well, noble land-ship!",
-		"Pig: It's a trailer. We towed it.",
-		"Tank: AND IT WAS GLORIOUS!",
-	])
+#region Virtual ####################################################################################
+func _on_click() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
 
 
-func _on_look() -> void:
-	var text: String = TankVision.get_inspect_text(room.vision_data["car_trailer"])
-	await C.Tank.say(text)
-
-	# Check for useful items
-	if not room.state.jacket_crafted:
-		await E.queue([
-			"*There's a torn tarp on the trailer*",
-			"*Could be useful for crafting*",
-		])
+func _on_right_click() -> void:
+	await C.player.face_clicked()
+	await C.player.say("Our trusty ride... well, borrowed ride.")
 
 
 func _on_item_used(item: PopochiuInventoryItem) -> void:
-	match item.script_name:
-		"MotorcycleKey":
-			await E.queue([
-				"Tank: Should I try to start it?",
-				"Pig: Tank, we're goin' by SEA now.",
-				"Tank: RIGHT! SEA!",
-			])
-		_:
-			await C.Tank.say("The trailer doesn't need that anymore.")
+	await C.player.say("I don't need to put that in the trailer.")
+
+
+#endregion
+
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("The car that got us here!")
+	await C.player.say("It can't cross the ocean though. Too bad.")
+
+
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I pat the hood. Good car!")
+	await C.player.say("Thanks for the ride!")
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Thank you, metal friend! You served us well!")
+	await C.player.say("The car does not respond. Because it's a car.")
+
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I could probably lift it...")
+	await C.player.say("But where would I put it?")
+
+
+#endregion

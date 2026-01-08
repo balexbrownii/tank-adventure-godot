@@ -1,20 +1,51 @@
 @tool
 extends PopochiuHotspot
-## Hotspot: Fog Wall - The impenetrable mist
+## Fog Wall hotspot - Mysterious fog on the sea
 
-@onready var room: Node = get_parent().get_parent()
-
-
-func _on_look() -> void:
-	var text: String = TankVision.get_inspect_text(room.vision_data["fog_wall"])
-	await C.Tank.say(text)
+#region Virtual ####################################################################################
+func _on_click() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
 
 
-func _on_interact() -> void:
-	await E.queue([
-		"*You reach into the fog*",
-		"*Your hand disappears immediately*",
-		"Tank: It's like the world just... stops.",
-		"Pig: It's fog, Tank. It ain't magic.",
-		"Tank: FOG MAGIC!",
-	])
+func _on_right_click() -> void:
+	await C.player.face_clicked()
+	await C.player.say("Thick fog. Can't see anything through it.")
+
+
+func _on_item_used(item: PopochiuInventoryItem) -> void:
+	await C.player.say("I can't use that on fog.")
+
+
+#endregion
+
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("The fog is so thick!")
+	await C.player.say("It's like sailing through clouds!")
+
+
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I try to push the fog away.")
+	await C.player.say("It just swirls around my hand.")
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Hello fog! Are you hiding ghosts?")
+	await C.player.say("The fog doesn't answer. Suspicious.")
+
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I grab a handful of fog!")
+	await C.player.say("...And it's gone. Sneaky fog.")
+
+
+#endregion

@@ -1,23 +1,51 @@
 @tool
 extends PopochiuHotspot
-## Hotspot: Staff/Maintenance Door
+## Maintenance Door hotspot - Back way into the airport
 
-@onready var room: Node = get_parent().get_parent()
-
-
-func _on_look() -> void:
-	var text: String = TankVision.get_inspect_text(room.vision_data["maintenance_door"])
-	await C.Tank.say(text)
+#region Virtual ####################################################################################
+func _on_click() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
 
 
-func _on_interact() -> void:
-	if room.state.entered_airport:
-		await C.Tank.say("We already found a way in!")
-		return
+func _on_right_click() -> void:
+	await C.player.face_clicked()
+	await C.player.say("A door marked 'Staff Only'.")
 
-	await E.queue([
-		"*The door is locked*",
-		"*'STAFF ONLY' sign is very clear*",
-		"Tank: A CHALLENGE!",
-		"Pig: Let's try the front entrance instead.",
-	])
+
+func _on_item_used(item: PopochiuInventoryItem) -> void:
+	await C.player.say("Hmm, that won't help open this door.")
+
+
+#endregion
+
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("A maintenance door!")
+	await C.player.say("Pig says this might be our way in!")
+
+
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I try the handle...")
+	await C.player.say("It's locked. Need to find another way!")
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Hello door! Will you let us in?")
+	await C.player.say("The door remains stubbornly closed.")
+
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I can't pick up a door.")
+	await C.player.say("Well, I could rip it off, but that's noisy.")
+
+
+#endregion

@@ -1,42 +1,51 @@
 @tool
 extends PopochiuHotspot
+## Destination Tags hotspot - Airport routing tags
 
-## Destination Tags hotspot - MYSTERIOUS LABELS / Destination Tags
-## This is the key hotspot for the Device 6 style tag text puzzle
-
-@onready var room: Node = get_parent().get_parent()
-
-
+#region Virtual ####################################################################################
 func _on_click() -> void:
-	await C.Tank.walk_to_clicked()
-	await C.Tank.face_clicked()
-
-	if not room.state.found_texas_suitcase:
-		# Start the suitcase choice dialog
-		await D.SuitcaseChoice.start()
-	else:
-		await C.Tank.say("Already solved the tag puzzle!")
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
 
 
 func _on_right_click() -> void:
-	var inspect_text: String = TankVision.get_inspect_text(room.vision_data["destination_tags"])
-	await C.Tank.say(inspect_text)
+	await C.player.face_clicked()
+	await C.player.say("Tags showing where bags are going.")
 
 
-func _on_look() -> void:
-	var inspect_text: String = TankVision.get_inspect_text(room.vision_data["destination_tags"])
-	await C.Tank.say(inspect_text)
-
-	if not room.state.found_texas_suitcase:
-		await E.queue([
-			"The tags have scrambled text.",
-			"Maybe rotating or folding them would help...",
-		])
+func _on_item_used(item: PopochiuInventoryItem) -> void:
+	await C.player.say("I don't need to tag that.")
 
 
-func _on_interact() -> void:
-	await _on_click()
+#endregion
+
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Destination tags! Each shows where a bag is going!")
+	await C.player.say("I need to find one that says Texas!")
 
 
-func get_description() -> String:
-	return TankVision.get_hover_text(room.vision_data["destination_tags"])
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I read the tags carefully.")
+	await C.player.say("DFW... that's Dallas! Texas!")
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Hello tags! Which way to Texas?")
+	await C.player.say("A tag flutters in the AC breeze. Is that a sign?")
+
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I grab a DFW tag!")
+	await C.player.say("This will get us to Texas!")
+
+
+#endregion

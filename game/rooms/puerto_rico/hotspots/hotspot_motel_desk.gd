@@ -1,21 +1,51 @@
 @tool
 extends PopochiuHotspot
-## Hotspot: Motel Front Desk - where to get a room
+## Motel Desk hotspot - Check-in counter
 
-@onready var room: Node = get_parent().get_parent()
-
-
-func _on_look() -> void:
-	var text: String = TankVision.get_inspect_text(room.vision_data["motel_desk"])
-	await C.Tank.say(text)
+#region Virtual ####################################################################################
+func _on_click() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
 
 
-func _on_interact() -> void:
-	if room.state.got_room:
-		await E.queue([
-			"Clerk: You already have a room. 7.",
-			"Tank: RIGHT! I forgot!",
-		])
-		return
+func _on_right_click() -> void:
+	await C.player.face_clicked()
+	await C.player.say("The motel check-in desk.")
 
-	room.trigger_room_puzzle()
+
+func _on_item_used(item: PopochiuInventoryItem) -> void:
+	await C.player.say("The clerk doesn't want that.")
+
+
+#endregion
+
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("The motel front desk!")
+	await C.player.say("A bored-looking clerk sits behind it.")
+
+
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I ring the bell!")
+	await C.player.say("DING! The clerk looks up wearily.")
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Hello! We need a room for the night!")
+	await C.player.say("The clerk eyes Pig and Mr. Snuggles suspiciously.")
+
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I can't pick up a desk.")
+	await C.player.say("The clerk would definitely notice!")
+
+
+#endregion

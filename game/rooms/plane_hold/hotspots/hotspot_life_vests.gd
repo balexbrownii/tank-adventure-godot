@@ -1,34 +1,51 @@
 @tool
 extends PopochiuHotspot
+## Life Vests hotspot - Emergency flotation devices
 
-## Life Vests hotspot - FLOATY PILLOWS / Emergency Life Vests
-
-@onready var room: Node = get_parent().get_parent()
-
-
+#region Virtual ####################################################################################
 func _on_click() -> void:
-	await C.Tank.walk_to_clicked()
-	await C.Tank.face_clicked()
-
-	if not room.state.crash_prepped:
-		await D.CrashPrep.start()
-	else:
-		await C.Tank.say("Already dealt with the floaty pillows!")
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
 
 
 func _on_right_click() -> void:
-	var inspect_text: String = TankVision.get_inspect_text(room.vision_data["life_vests"])
-	await C.Tank.say(inspect_text)
+	await C.player.face_clicked()
+	await C.player.say("Emergency life vests.")
 
 
-func _on_look() -> void:
-	var inspect_text: String = TankVision.get_inspect_text(room.vision_data["life_vests"])
-	await C.Tank.say(inspect_text)
+func _on_item_used(item: PopochiuInventoryItem) -> void:
+	await C.player.say("The life vests don't need that.")
 
 
-func _on_interact() -> void:
-	await _on_click()
+#endregion
+
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Life vests! For water landings!")
+	await C.player.say("Hopefully we won't need these!")
 
 
-func get_description() -> String:
-	return TankVision.get_hover_text(room.vision_data["life_vests"])
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I put on a life vest.")
+	await C.player.say("Safety first! Pig would approve!")
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Hello life vests! Keep us safe!")
+	await C.player.say("They inflate with optimism.")
+
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I grab some life vests!")
+	await C.player.say("One for me, one for Pig, one for Mr. Snuggles!")
+
+
+#endregion

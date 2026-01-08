@@ -1,46 +1,51 @@
 @tool
 extends PopochiuHotspot
-## Floating Debris hotspot - Space junk from the explosion. Can collect Debris Trinket.
+## Floating Debris hotspot - Space junk around Tank
 
 #region Virtual ####################################################################################
 func _on_click() -> void:
-	var room = get_parent().get_parent().get_parent() as PopochiuRoom
-
-	if room.state.debris_collected:
-		await C.player.say("I already grabbed the shiniest piece!")
-		return
-
-	if TankVision.current_mode == TankVision.VisionMode.TANK:
-		await _tank_vision_interaction()
-	else:
-		await _reality_vision_interaction()
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
 
 
 func _on_right_click() -> void:
-	var room = get_parent().get_parent().get_parent() as PopochiuRoom
-	var inspect = TankVision.get_inspect_text(room.vision_data["floating_debris"])
-	await C.player.say(inspect)
+	await C.player.face_clicked()
+	await C.player.say("Chunks of stuff floating around me.")
 
 
-func _on_item_used(_item: PopochiuInventoryItem) -> void:
-	await C.player.say("I'd rather not add to the debris field.")
+func _on_item_used(item: PopochiuInventoryItem) -> void:
+	await C.player.say("I don't want to add to the space junk!")
 
 
 #endregion
 
-#region Private ####################################################################################
-func _tank_vision_interaction() -> void:
-	await C.player.say("SPACE TREASURE!")
-	await C.player.say("Ooh, that piece is extra shiny!")
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Floating debris from the explosion!")
+	await C.player.say("Part of a gas pump... some asphalt...")
 
-	await D.TakeDebris.start()
+
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I push off the debris!")
+	await C.player.say("WHOOSH! Now I'm spinning the other way!")
 
 
-func _reality_vision_interaction() -> void:
-	await C.player.say("Debris from the explosion. Some of it looks salvageable.")
-	await C.player.say("That piece might be useful...")
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Hello space junk! How'd you get up here?")
+	await C.player.say("Oh right... same way I did.")
 
-	await D.TakeDebris.start()
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I grab a chunk of debris!")
+	await C.player.say("Could be useful for steering!")
 
 
 #endregion

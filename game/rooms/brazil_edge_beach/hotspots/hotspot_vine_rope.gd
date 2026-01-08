@@ -1,37 +1,49 @@
 @tool
 extends PopochiuHotspot
-## Hotspot: Vine Rope (NATURE'S BINDINGS / Coastal Vines)
-## Strapping material for life jacket crafting
+## Vine Rope hotspot - Natural rope for lashing the raft
 
-@onready var room: Node = get_parent().get_parent()
-
-
-func _on_interact() -> void:
-	if room.state.collected_rope:
-		await C.Tank.say("I already grabbed some rope-vines!")
-		return
-
-	await E.queue([
-		"Tank: *tugs on vines*",
-		"Tank: Strong! Like me!",
-		"Tank: *coils some up*",
-	])
-
-	if not room.state.jacket_crafted:
-		await C.Tank.say("This will be useful for the life jacket!")
+#region Virtual ####################################################################################
+func _on_click() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
 
 
-func _on_look() -> void:
-	var text: String = TankVision.get_inspect_text(room.vision_data["vine_rope"])
-	await C.Tank.say(text)
+func _on_right_click() -> void:
+	await C.player.face_clicked()
+	await C.player.say("Strong jungle vines.")
 
 
 func _on_item_used(item: PopochiuInventoryItem) -> void:
-	match item.script_name:
-		"Thorn":
-			await E.queue([
-				"Tank: *uses thorn to cut vines*",
-				"Tank: The thorn is USEFUL!",
-			])
-		_:
-			await C.Tank.say("Vines don't need that.")
+	await C.player.say("The vines don't need that.")
+
+
+#endregion
+
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Thick jungle vines! Perfect for tying things together!")
+	await C.player.say("Pig called this 'natural rope'. Smart pig!")
+
+
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I test the vine's strength by trying to rip it.")
+	await C.player.say("It holds! This pig knows what he's talking about!")
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Thank you for being strong, little vine!")
+
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I coil up the vines. Ready for raft-making!")
+
+
+#endregion

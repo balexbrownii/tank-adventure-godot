@@ -1,36 +1,51 @@
 @tool
 extends PopochiuHotspot
-## Mini donuts hotspot - Food supplies that need to be protected
+## Mini Donuts hotspot - Tank's favorite snack
 
 #region Virtual ####################################################################################
 func _on_click() -> void:
-	var room = get_parent().get_parent().get_parent() as PopochiuRoom
-
-	if room.state.raccoon_stole_donuts:
-		await C.player.say("The donuts... are gone.")
-		await C.player.say("CURSE YOU, RACCOON!")
-		return
-
-	if room.state.breakfast_done:
-		await C.player.say("We already had some for breakfast.")
-		return
-
-	if TankVision.current_mode == TankVision.VisionMode.TANK:
-		await C.player.say("PRECIOUS TREASURE!")
-		await C.player.say("I must protect these with my LIFE!")
-	else:
-		await C.player.say("Mini donuts. Should probably secure them overnight.")
-		await C.player.say("Don't want any animals getting into them.")
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
 
 
 func _on_right_click() -> void:
-	var room = get_parent().get_parent().get_parent() as PopochiuRoom
-	var inspect = TankVision.get_inspect_text(room.vision_data["mini_donuts"])
-	await C.player.say(inspect)
+	await C.player.face_clicked()
+	await C.player.say("DONUTS! My favorite!")
 
 
-func _on_item_used(_item: PopochiuInventoryItem) -> void:
-	await C.player.say("I should eat the donuts, not put things on them!")
+func _on_item_used(item: PopochiuInventoryItem) -> void:
+	await C.player.say("I don't want to ruin the donuts!")
+
+
+#endregion
+
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("MINI DONUTS!")
+	await C.player.say("The most perfect food in existence!")
+
+
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I eat a mini donut!")
+	await C.player.say("Mmmm! SO GOOD!")
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Hello donuts! I love you!")
+	await C.player.say("They smell delicious!")
+
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I carefully pick up the donuts.")
+	await C.player.say("Must protect these precious treasures!")
 
 
 #endregion

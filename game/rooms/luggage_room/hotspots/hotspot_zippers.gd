@@ -1,48 +1,51 @@
 @tool
 extends PopochiuHotspot
+## Zippers hotspot - Suitcase zippers for hiding
 
-## Zippers hotspot - TEETH LINE / Zipper Mechanism
-
-@onready var room: Node = get_parent().get_parent()
-
-
+#region Virtual ####################################################################################
 func _on_click() -> void:
-	await C.Tank.walk_to_clicked()
-	await C.Tank.face_clicked()
-
-	var inspect_text: String = TankVision.get_inspect_text(room.vision_data["zippers"])
-	await C.Tank.say(inspect_text)
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
 
 
 func _on_right_click() -> void:
-	var inspect_text: String = TankVision.get_inspect_text(room.vision_data["zippers"])
-	await C.Tank.say(inspect_text)
+	await C.player.face_clicked()
+	await C.player.say("Zippers on various suitcases.")
 
 
-func _on_look() -> void:
-	var inspect_text: String = TankVision.get_inspect_text(room.vision_data["zippers"])
-	await C.Tank.say(inspect_text)
+func _on_item_used(item: PopochiuInventoryItem) -> void:
+	await C.player.say("I can't zip that up.")
 
 
-func _on_interact() -> void:
-	await C.Tank.walk_to_clicked()
+#endregion
 
-	if I.ZipperPull.is_in_inventory():
-		await C.Tank.say("Already got a zipper pull!")
-	else:
-		await E.queue([
-			"*Tank tugs on a zipper*",
-			"*The zipper pull comes off in her hand*",
-		])
-
-		if TankVision.is_tank_vision:
-			await C.Tank.say("I defeated the teeth! Victory!")
-		else:
-			await C.Tank.say("Oops. But this could be useful.")
-
-		I.ZipperPull.add()
-		await I.ZipperPull.add_popup()
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Zippers! The key to getting in and out!")
+	await C.player.say("Pig says to leave them slightly open so we can breathe.")
 
 
-func get_description() -> String:
-	return TankVision.get_hover_text(room.vision_data["zippers"])
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("ZZZZIP! I test the zipper.")
+	await C.player.say("Works smoothly! Good zipper!")
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Hello zipper! Please don't get stuck!")
+	await C.player.say("The zipper slides smoothly. Cooperative!")
+
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I can't take just the zipper.")
+	await C.player.say("It's attached to the suitcase!")
+
+
+#endregion

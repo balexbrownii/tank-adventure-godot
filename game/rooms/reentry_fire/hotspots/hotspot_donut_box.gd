@@ -1,46 +1,51 @@
 @tool
 extends PopochiuHotspot
-## Donut Box hotspot - Temptation item. Optional morale boost.
+## Donut Box hotspot - Glorious donuts!
 
 #region Virtual ####################################################################################
 func _on_click() -> void:
-	var room = get_parent().get_parent().get_parent() as PopochiuRoom
-
-	if room.state.donut_box_taken:
-		await C.player.say("I already have those donuts!")
-		return
-
-	if TankVision.current_mode == TankVision.VisionMode.TANK:
-		await _tank_vision_interaction()
-	else:
-		await _reality_vision_interaction()
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
 
 
 func _on_right_click() -> void:
-	var room = get_parent().get_parent().get_parent() as PopochiuRoom
-	var inspect = TankVision.get_inspect_text(room.vision_data["donut_box"])
-	await C.player.say(inspect)
+	await C.player.face_clicked()
+	await C.player.say("DONUTS! A whole box of them!")
 
 
-func _on_item_used(_item: PopochiuInventoryItem) -> void:
-	await C.player.say("I shouldn't mix things with my precious donuts.")
+func _on_item_used(item: PopochiuInventoryItem) -> void:
+	await C.player.say("I don't want to ruin the donuts!")
 
 
 #endregion
 
-#region Private ####################################################################################
-func _tank_vision_interaction() -> void:
-	await C.player.say("DONUTS! REAL EARTH DONUTS!")
-	await C.player.say("I KNEW following the donut smell would pay off!")
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("A BOX OF DONUTS!")
+	await C.player.say("The most beautiful thing I've ever seen!")
 
-	await D.TakeDonutsReentry.start()
+
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I eat ALL THE DONUTS!")
+	await C.player.say("NOM NOM NOM! DELICIOUS!")
 
 
-func _reality_vision_interaction() -> void:
-	await C.player.say("A discarded box of donuts. Still looks fresh.")
-	await C.player.say("Someone's loss is my gain!")
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Hello donuts! I LOVE YOU!")
+	await C.player.say("They smell like heaven!")
 
-	await D.TakeDonutsReentry.start()
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I grab the donut box carefully!")
+	await C.player.say("Must protect these precious circles!")
 
 
 #endregion

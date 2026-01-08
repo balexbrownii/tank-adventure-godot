@@ -1,42 +1,51 @@
 @tool
 extends PopochiuHotspot
-## Plan board hotspot - Shows the route plan (tutorial for quest system)
+## Plan Board hotspot - Pig's route planning board
 
 #region Virtual ####################################################################################
 func _on_click() -> void:
-	var room = get_parent().get_parent().get_parent() as PopochiuRoom
-
-	if not room.state.breakfast_done:
-		await C.player.say("Pig said to wait until after breakfast.")
-		return
-
-	if room.state.route_sketch_received:
-		await C.player.say("I already have the route sketch!")
-		return
-
-	if TankVision.current_mode == TankVision.VisionMode.TANK:
-		await C.player.say("THE MAP TO CANADA!")
-		await C.player.say("Step 1: Go! Step 2: Keep going! Step 3: WIN!")
-		room.state.plan_examined_reality = false
-	else:
-		await C.player.say("Pig's detailed route plan.")
-		await C.player.say("Brazil coast, then across the Caribbean to Puerto Rico...")
-		await C.player.say("Then Florida, and north to Canada.")
-		room.state.plan_examined_reality = true
-		GameState.modify_ignorance(2)
-
-	if not room.state.route_sketch_received:
-		await room._complete_planning()
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
 
 
 func _on_right_click() -> void:
-	var room = get_parent().get_parent().get_parent() as PopochiuRoom
-	var inspect = TankVision.get_inspect_text(room.vision_data["plan_board"])
-	await C.player.say(inspect)
+	await C.player.face_clicked()
+	await C.player.say("Pig's planning board. Full of maps and notes.")
 
 
-func _on_item_used(_item: PopochiuInventoryItem) -> void:
-	await C.player.say("The plan board doesn't need anything added.")
+func _on_item_used(item: PopochiuInventoryItem) -> void:
+	await C.player.say("I shouldn't mess with Pig's plans.")
+
+
+#endregion
+
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Pig's route planning board!")
+	await C.player.say("Brazil to Canada... that's a long way!")
+
+
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I study the plan carefully.")
+	await C.player.say("Lots of lines and arrows. Pig is smart!")
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Hello plan board! Show me the way to Canada!")
+	await C.player.say("It points north. Very helpful!")
+
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I shouldn't take Pig's board.")
+	await C.player.say("He needs it for planning!")
 
 
 #endregion

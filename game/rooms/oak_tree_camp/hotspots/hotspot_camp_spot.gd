@@ -1,47 +1,51 @@
 @tool
 extends PopochiuHotspot
-## Camp spot hotspot - Main puzzle trigger for camp security
+## Camp Spot hotspot - Where the team rests
 
 #region Virtual ####################################################################################
 func _on_click() -> void:
-	var room = get_parent().get_parent().get_parent() as PopochiuRoom
-
-	if room.state.camp_secured:
-		await C.player.say("The camp is all set up and secure!")
-		return
-
-	if room.state.breakfast_done:
-		await C.player.say("We already had breakfast. Time to move on!")
-		return
-
-	if TankVision.current_mode == TankVision.VisionMode.TANK:
-		await C.player.say("OUR FORTRESS! We must defend it!")
-	else:
-		await C.player.say("A good spot to make camp.")
-		await C.player.say("We should secure it for the night.")
-
-	# Show camp security options
-	await D.CampSafety.start()
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
 
 
 func _on_right_click() -> void:
-	var room = get_parent().get_parent().get_parent() as PopochiuRoom
-	var inspect = TankVision.get_inspect_text(room.vision_data["camp_spot"])
-	await C.player.say(inspect)
+	await C.player.face_clicked()
+	await C.player.say("Our campsite for the night.")
 
 
 func _on_item_used(item: PopochiuInventoryItem) -> void:
-	var room = get_parent().get_parent().get_parent() as PopochiuRoom
+	await C.player.say("I don't need to add that to the camp.")
 
-	if room.state.camp_secured:
-		await C.player.say("The camp's already set up.")
-		return
 
-	if item.script_name == "CraftKit":
-		await C.player.say("Maybe I can use this to make a trap...")
-		await room.execute_brains_solution()
-	else:
-		await C.player.say("I don't need that for the camp right now.")
+#endregion
+
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Our camp under the oak tree!")
+	await C.player.say("Pig set up everything. So organized!")
+
+
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I arrange the camp supplies.")
+	await C.player.say("Nice and tidy! Pig would be proud!")
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Hello camp! You're very cozy!")
+	await C.player.say("The camp seems inviting and safe.")
+
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I can't pick up the whole campsite.")
+	await C.player.say("We just set it up!")
 
 
 #endregion

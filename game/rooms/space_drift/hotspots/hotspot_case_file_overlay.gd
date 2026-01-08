@@ -1,83 +1,51 @@
 @tool
 extends PopochiuHotspot
-## Case File Overlay hotspot - Interactive "science lesson" that enables Brains solution.
-## Uses PanelManager for the gravity arrow puzzle.
-
-const PUZZLE_ID := "space_gravity_arrows"
+## Case File Overlay hotspot - Information display
 
 #region Virtual ####################################################################################
-func _on_room_entered() -> void:
-	# Register the panel puzzle for this room
-	_setup_gravity_puzzle()
-
-
 func _on_click() -> void:
-	var room = get_parent().get_parent().get_parent() as PopochiuRoom
-
-	if room.state.solution_used != "":
-		await C.player.say("I already figured out the gravity thing!")
-		return
-
-	if TankVision.current_mode == TankVision.VisionMode.TANK:
-		await _tank_vision_interaction()
-	else:
-		await _reality_vision_interaction()
-
-	room.state.case_file_examined = true
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
 
 
 func _on_right_click() -> void:
-	var room = get_parent().get_parent().get_parent() as PopochiuRoom
-	var inspect = TankVision.get_inspect_text(room.vision_data["case_file_overlay"])
-	await C.player.say(inspect)
+	await C.player.face_clicked()
+	await C.player.say("Some kind of information display.")
 
 
-func _on_item_used(_item: PopochiuInventoryItem) -> void:
-	await C.player.say("I don't think I can put that in the science book.")
+func _on_item_used(item: PopochiuInventoryItem) -> void:
+	await C.player.say("The display doesn't need that.")
 
 
 #endregion
 
-#region Private ####################################################################################
-func _setup_gravity_puzzle() -> void:
-	# Register with PanelManager
-	PanelManager.register_puzzle(PUZZLE_ID, 4)
-
-	# Add valid solution - panels must be in order: [3, 0, 1, 2]
-	# This represents rotating the arrows so "down" points to Earth
-	var solution: Array[int] = [3, 0, 1, 2]
-	PanelManager.add_solution(PUZZLE_ID, solution)
-
-	# Add configuration for solved state
-	PanelManager.add_configuration(PUZZLE_ID, solution, {
-		"effect": "gravity_aligned"
-	}, ["space_gravity_solved"])
-
-	# Add narrator messages
-	PanelManager.add_narrator_messages(PUZZLE_ID, {
-		"protest": "That's not how gravity works!",
-		"confusion": "Wait, did you just... rotate physics?",
-		"acceptance": "Fine. 'Down' is whatever you say it is.",
-		"impressed": "Huh. The arrows actually lined up. Science!"
-	})
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("A case file overlay!")
+	await C.player.say("It shows my mission status: GET BACK TO EARTH!")
 
 
-func _tank_vision_interaction() -> void:
-	await C.player.say("WORDS FLOATING IN SPACE!")
-	await C.player.say("Is this a test?! Am I being GRADED?!")
-	await C.player.say("I didn't study!")
-
-	# Still allow interaction with puzzle
-	await D.GravityPuzzleIntro.start()
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I check the display for useful info.")
+	await C.player.say("Optimal reentry angle: 'JUST GO'")
 
 
-func _reality_vision_interaction() -> void:
-	await C.player.say("An interactive science lesson. About gravity.")
-	await C.player.say("It says I can drag the arrows to point 'down' toward my destination...")
-	await C.player.say("If I point all the arrows at Earth, maybe gravity will know where to pull me?")
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Any advice, display?")
+	await C.player.say("It flashes: 'AIM FOR EARTH'")
 
-	# Start the puzzle
-	await D.GravityPuzzleIntro.start()
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I can't pick up a holographic display!")
+	await C.player.say("My hand goes right through it!")
 
 
 #endregion

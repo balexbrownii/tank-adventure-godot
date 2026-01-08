@@ -1,21 +1,51 @@
 @tool
 extends PopochiuHotspot
-## Hotspot: Room Door - your assigned room
+## Room Door hotspot - Motel room entrance
 
-@onready var room: Node = get_parent().get_parent()
-
-
-func _on_look() -> void:
-	var text: String = TankVision.get_inspect_text(room.vision_data["room_door"])
-	await C.Tank.say(text)
+#region Virtual ####################################################################################
+func _on_click() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
 
 
-func _on_interact() -> void:
-	if not room.state.got_room:
-		await C.Tank.say("I need to get a room first!")
-		return
+func _on_right_click() -> void:
+	await C.player.face_clicked()
+	await C.player.say("The door to our motel room.")
 
-	await E.queue([
-		"*Room 7 is small but clean*",
-		"*There's a bed, a towel, and a window overlooking the dock*",
-	])
+
+func _on_item_used(item: PopochiuInventoryItem) -> void:
+	await C.player.say("I don't need to use that on the door.")
+
+
+#endregion
+
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Our motel room door!")
+	await C.player.say("Room 7. Lucky number!")
+
+
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I unlock the door with the key card.")
+	await C.player.say("BEEP! Green light! We're in!")
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Hello room! Be comfortable for us!")
+	await C.player.say("The door swings open welcomingly.")
+
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I can't pick up a door.")
+	await C.player.say("It's attached to the wall!")
+
+
+#endregion

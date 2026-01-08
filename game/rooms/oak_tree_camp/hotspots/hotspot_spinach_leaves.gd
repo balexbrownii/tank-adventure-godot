@@ -1,33 +1,51 @@
 @tool
 extends PopochiuHotspot
-## Spinach leaves hotspot - Mr. Snuggles' food
+## Spinach Leaves hotspot - Mr. Snuggles' food
 
 #region Virtual ####################################################################################
 func _on_click() -> void:
-	var room = get_parent().get_parent().get_parent() as PopochiuRoom
-
-	if TankVision.current_mode == TankVision.VisionMode.TANK:
-		await C.player.say("GREEN POWER LEAVES!")
-		await C.player.say("Mr. Snuggles eats these and becomes SUPER FLUFFY!")
-	else:
-		await C.player.say("Fresh spinach leaves. For Mr. Snuggles.")
-		await C.player.say("Deer need proper nutrition too.")
-
-	if not room.state.breakfast_done:
-		await E.queue([
-			"Mr. Snuggles eyes the spinach hopefully",
-			"Pig: We'll eat in the morning. Patience, buddy."
-		])
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
 
 
 func _on_right_click() -> void:
-	var room = get_parent().get_parent().get_parent() as PopochiuRoom
-	var inspect = TankVision.get_inspect_text(room.vision_data["spinach_leaves"])
-	await C.player.say(inspect)
+	await C.player.face_clicked()
+	await C.player.say("Spinach. Mr. Snuggles' favorite.")
 
 
-func _on_item_used(_item: PopochiuInventoryItem) -> void:
-	await C.player.say("The spinach is fine as it is.")
+func _on_item_used(item: PopochiuInventoryItem) -> void:
+	await C.player.say("The spinach doesn't need that.")
+
+
+#endregion
+
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Fresh spinach leaves for Mr. Snuggles!")
+	await C.player.say("Deer love this stuff!")
+
+
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I offer spinach to Mr. Snuggles.")
+	await C.player.say("He munches happily. Good deer!")
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Hello spinach! You're deer food!")
+	await C.player.say("The spinach rustles leafily.")
+
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I grab some spinach leaves.")
+	await C.player.say("Snack time for Mr. Snuggles later!")
 
 
 #endregion

@@ -1,42 +1,51 @@
 @tool
 extends PopochiuHotspot
-## Hotspot: Leaf Pile (THE VOID WHERE MY LEG WAS / Leaf Pile with leg)
-## The key hotspot for the Vision Tutorial - labels are DRAMATICALLY different
+## Leaf Pile hotspot - Tank's morning bed
 
-@onready var room: Node = get_parent().get_parent()
-
-
-func _on_interact() -> void:
-	if room.state.leg_revealed:
-		await C.Tank.say("Just a pile of leaves now. My leg is fine!")
-		return
-
-	# Start the leg reveal dialog
-	D.LegReveal.start()
+#region Virtual ####################################################################################
+func _on_click() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
 
 
-func _on_look() -> void:
-	var text: String = TankVision.get_inspect_text(room.vision_data["leaf_pile"])
-	await C.Tank.say(text)
-
-	# Different reactions based on vision mode - THIS IS THE TUTORIAL
-	if TankVision.is_reality_mode:
-		if not room.state.leg_revealed:
-			await E.queue([
-				"*You notice something leg-shaped under the leaves*",
-				"*Maybe you should examine more closely?*",
-			])
-	else:
-		if not room.state.leg_revealed:
-			await C.Tank.say("The emptiness... it consumes me...")
+func _on_right_click() -> void:
+	await C.player.face_clicked()
+	await C.player.say("Leaves. Lots of autumn leaves.")
 
 
 func _on_item_used(item: PopochiuInventoryItem) -> void:
-	match item.script_name:
-		"Rock":
-			await E.queue([
-				"Tank: I'll mark this spot with a memorial stone!",
-				"Tank: 'HERE LIES TANK'S LEG'",
-			])
-		_:
-			await C.Tank.say("I can't use that on my tragedy!")
+	await C.player.say("I don't want to hide that in the leaves.")
+
+
+#endregion
+
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("The leaf pile where I woke up!")
+	await C.player.say("Wait... something's under there...")
+
+
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I brush away the leaves.")
+	await C.player.say("There's something underneath!")
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Good morning, leaves!")
+	await C.player.say("Thanks for keeping me warm!")
+
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I scoop up some leaves.")
+	await C.player.say("Crinkly!")
+
+
+#endregion

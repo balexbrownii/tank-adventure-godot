@@ -1,39 +1,51 @@
 @tool
 extends PopochiuHotspot
+## Cargo Straps hotspot - For securing cargo during flight
 
-## Cargo Straps hotspot - SEATBELT FRIENDS / Cargo Securing Straps
-
-@onready var room: Node = get_parent().get_parent()
-
-
+#region Virtual ####################################################################################
 func _on_click() -> void:
-	await C.Tank.walk_to_clicked()
-	await C.Tank.face_clicked()
-
-	var inspect_text: String = TankVision.get_inspect_text(room.vision_data["cargo_straps"])
-	await C.Tank.say(inspect_text)
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
 
 
 func _on_right_click() -> void:
-	var inspect_text: String = TankVision.get_inspect_text(room.vision_data["cargo_straps"])
-	await C.Tank.say(inspect_text)
+	await C.player.face_clicked()
+	await C.player.say("Heavy-duty cargo straps.")
 
 
-func _on_look() -> void:
-	var inspect_text: String = TankVision.get_inspect_text(room.vision_data["cargo_straps"])
-	await C.Tank.say(inspect_text)
+func _on_item_used(item: PopochiuInventoryItem) -> void:
+	await C.player.say("I don't need to strap that down.")
 
 
-func _on_interact() -> void:
-	await C.Tank.walk_to_clicked()
+#endregion
 
-	if not room.state.crash_prepped:
-		await C.Tank.say("These could secure the deer suitcase!")
-		if GameState.has_party_member("Pig"):
-			await C.player.say("Good thinking! Use them in the crash prep!")
-	else:
-		await C.Tank.say("Already used the hugging straps!")
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Cargo straps for keeping things secure!")
+	await C.player.say("The plane is shaking a lot...")
 
 
-func get_description() -> String:
-	return TankVision.get_hover_text(room.vision_data["cargo_straps"])
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I strap myself to the cargo!")
+	await C.player.say("Click! Now I won't fly around!")
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Hold tight, straps! Things are getting bumpy!")
+	await C.player.say("They seem sturdy enough.")
+
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I can't take the cargo straps.")
+	await C.player.say("They're securing important stuff!")
+
+
+#endregion

@@ -1,62 +1,51 @@
 @tool
 extends PopochiuHotspot
+## Deer Suitcase hotspot - Where Mr. Snuggles will hide
 
-## Deer Suitcase hotspot - GRAY BOX WITH DEER SMELL / Gray Suitcase (Mr. Snuggles)
-
-@onready var room: Node = get_parent().get_parent()
-
-
+#region Virtual ####################################################################################
 func _on_click() -> void:
-	await C.Tank.walk_to_clicked()
-	await C.Tank.face_clicked()
-
-	if not room.state.party_linked:
-		await _try_link_party()
-	else:
-		await C.Tank.say("Mr. Snuggles is safe in there!")
-		await E.queue([
-			"*Reassuring tap from inside the suitcase*",
-		])
-
-
-func _try_link_party() -> void:
-	if not room.state.found_texas_suitcase:
-		await C.Tank.say("I need to figure out which suitcase to get in first!")
-		return
-
-	await C.Tank.say("Mr. Snuggles! We need to stay together!")
-
-	# Start the keep party together dialog
-	await D.KeepPartyTogether.start()
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
 
 
 func _on_right_click() -> void:
-	var inspect_text: String = TankVision.get_inspect_text(room.vision_data["deer_suitcase"])
-	await C.Tank.say(inspect_text)
-
-
-func _on_look() -> void:
-	var inspect_text: String = TankVision.get_inspect_text(room.vision_data["deer_suitcase"])
-	await C.Tank.say(inspect_text)
-
-	await E.queue([
-		"*tap tap tap*",
-		"A gentle tapping sound comes from inside.",
-	])
-
-
-func _on_interact() -> void:
-	await _on_click()
+	await C.player.face_clicked()
+	await C.player.say("A really big suitcase. Deer-sized, actually.")
 
 
 func _on_item_used(item: PopochiuInventoryItem) -> void:
-	# Link with rope
-	if item.script_name == "Rope" or item.script_name == "MoistRope":
-		if room.state.found_texas_suitcase and not room.state.party_linked:
-			await room.execute_brains_rope_link()
-		else:
-			await C.Tank.say("Already linked!")
+	await C.player.say("I don't need to put that in the deer suitcase.")
 
 
-func get_description() -> String:
-	return TankVision.get_hover_text(room.vision_data["deer_suitcase"])
+#endregion
+
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("This suitcase is HUGE!")
+	await C.player.say("Big enough for Mr. Snuggles to hide in!")
+
+
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I open the giant suitcase.")
+	await C.player.say("Empty! Perfect for a deer!")
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Hello big suitcase! Ready for a deer passenger?")
+	await C.player.say("It seems roomy and willing.")
+
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I lift the giant suitcase.")
+	await C.player.say("Heavy even when empty! Must be fancy!")
+
+
+#endregion

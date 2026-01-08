@@ -1,37 +1,51 @@
 @tool
 extends PopochiuHotspot
-## Hotspot: Moonlight Gap
-## The opening above showing the night sky
+## Moonlight Gap hotspot - Opening in the canopy
 
-@onready var room: Node = get_parent().get_parent()
-
-
-func _on_interact() -> void:
-	await E.queue([
-		"Tank: *reaches toward the moonlight*",
-		"Tank: I can't quite reach the sky...",
-		"Tank: Someday I'll punch the MOON!",
-	])
+#region Virtual ####################################################################################
+func _on_click() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
 
 
-func _on_look() -> void:
-	var text: String = TankVision.get_inspect_text(room.vision_data["moonlight_gap"])
-	await C.Tank.say(text)
-
-	# Atmospheric moment
-	await E.queue([
-		"*The moon hangs silently above*",
-		"*Somewhere, a wolf howls*",
-	])
+func _on_right_click() -> void:
+	await C.player.face_clicked()
+	await C.player.say("A gap in the trees. Moonlight shines through.")
 
 
 func _on_item_used(item: PopochiuInventoryItem) -> void:
-	match item.script_name:
-		"Rock":
-			await E.queue([
-				"Tank: *throws rock at moon*",
-				"*The rock disappears into the darkness*",
-				"Tank: ...I'll get you someday, moon.",
-			])
-		_:
-			await C.Tank.say("I can't reach that high.")
+	await C.player.say("I can't use that on moonlight.")
+
+
+#endregion
+
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Moonlight streams through the canopy!")
+	await C.player.say("It's beautiful... and helps me see!")
+
+
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I stand in the moonlight.")
+	await C.player.say("I feel like a warrior in a spotlight!")
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Hello moonlight! Thanks for guiding me!")
+	await C.player.say("The light shimmers peacefully.")
+
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I try to catch moonlight in my hands.")
+	await C.player.say("It's pretty but not pickable.")
+
+
+#endregion

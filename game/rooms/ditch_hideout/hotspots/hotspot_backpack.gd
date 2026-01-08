@@ -1,28 +1,51 @@
 @tool
 extends PopochiuHotspot
-## Hotspot: Backpack
-## Tank's trusty supply pack
+## Backpack hotspot - Tank's trusty backpack
 
-@onready var room: Node = get_parent().get_parent()
-
-
-func _on_interact() -> void:
-	await E.queue([
-		"Tank: Let me check my supplies...",
-		"Tank: *rummages*",
-	])
-
-	# List what's in inventory
-	if I.Backpack.is_in_inventory():
-		await C.Tank.say("I've already got the backpack equipped.")
-	else:
-		await C.Tank.say("The pack is mostly empty now. Just some crumbs and lint.")
+#region Virtual ####################################################################################
+func _on_click() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
 
 
-func _on_look() -> void:
-	var text: String = TankVision.get_inspect_text(room.vision_data["backpack"])
-	await C.Tank.say(text)
+func _on_right_click() -> void:
+	await C.player.face_clicked()
+	await C.player.say("My backpack. Full of useful stuff!")
 
 
 func _on_item_used(item: PopochiuInventoryItem) -> void:
-	await C.Tank.say("I should keep my items ready, not stuff them in the pack!")
+	await C.player.say("I could put that in my backpack, but why?")
+
+
+#endregion
+
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("My trusty backpack!")
+	await C.player.say("Contains snacks, supplies, and hopefully no spiders.")
+
+
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I rummage through the backpack.")
+	await C.player.say("Some granola bars and a water bottle. Good!")
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Hey backpack! You're my favorite!")
+	await C.player.say("It holds all my important stuff!")
+
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I pick up my backpack and swing it on.")
+	await C.player.say("Ready for adventure!")
+
+
+#endregion

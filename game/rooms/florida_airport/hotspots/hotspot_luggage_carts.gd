@@ -1,25 +1,51 @@
 @tool
 extends PopochiuHotspot
-## Hotspot: Luggage Carts - where the vest/clipboard are
+## Luggage Carts hotspot - For hiding in
 
-@onready var room: Node = get_parent().get_parent()
-
-
-func _on_look() -> void:
-	var text: String = TankVision.get_inspect_text(room.vision_data["luggage_carts"])
-	await C.Tank.say(text)
-
-	# Hint about disguise in Reality mode
-	room.check_vest_location()
+#region Virtual ####################################################################################
+func _on_click() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
 
 
-func _on_interact() -> void:
-	if room.state.entered_airport:
-		await C.Tank.say("We don't need the cart anymore!")
-		return
+func _on_right_click() -> void:
+	await C.player.face_clicked()
+	await C.player.say("Luggage carts for moving bags around.")
 
-	await E.queue([
-		"*You examine the luggage cart*",
-		"*A reflective vest and clipboard sit on top*",
-		"Tank: DISGUISE MATERIALS!",
-	])
+
+func _on_item_used(item: PopochiuInventoryItem) -> void:
+	await C.player.say("I don't need to put that on the cart.")
+
+
+#endregion
+
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Luggage carts full of suitcases!")
+	await C.player.say("Pig has an idea about these...")
+
+
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I push the cart around.")
+	await C.player.say("Wheee! This is fun!")
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Hello cart! Hello suitcases!")
+	await C.player.say("They seem ready for adventure!")
+
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I grab a suitcase from the cart.")
+	await C.player.say("Ooh, this one's empty! Perfect!")
+
+
+#endregion

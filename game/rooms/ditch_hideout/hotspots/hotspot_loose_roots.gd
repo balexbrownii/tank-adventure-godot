@@ -1,31 +1,51 @@
 @tool
 extends PopochiuHotspot
-## Hotspot: Loose Roots
-## Exposed roots from the ditch wall - can be harvested
+## Loose Roots hotspot - Roots hanging from the ditch wall
 
-@onready var room: Node = get_parent().get_parent()
-
-
-func _on_interact() -> void:
-	if room.state.took_roots:
-		await C.Tank.say("I already got the best roots from there.")
-		return
-
-	# Offer to take roots
-	D.TakeRoots.start()
+#region Virtual ####################################################################################
+func _on_click() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
 
 
-func _on_look() -> void:
-	var text: String = TankVision.get_inspect_text(room.vision_data["loose_roots"])
-	await C.Tank.say(text)
-
-	if not room.state.took_roots:
-		await C.Tank.say("I could pull some of these for crafting...")
+func _on_right_click() -> void:
+	await C.player.face_clicked()
+	await C.player.say("Tree roots poking out of the dirt.")
 
 
 func _on_item_used(item: PopochiuInventoryItem) -> void:
-	match item.script_name:
-		"Vine":
-			await C.Tank.say("I already have vine. These roots are similar but different!")
-		_:
-			await C.Tank.say("The roots don't need that.")
+	await C.player.say("I don't need to use that with the roots.")
+
+
+#endregion
+
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Tree roots hang down from the wall!")
+	await C.player.say("They look strong enough to climb on!")
+
+
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I grab the roots and pull myself up!")
+	await C.player.say("They hold my weight! These could help me escape!")
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Hello roots! Will you help me climb out?")
+	await C.player.say("They seem sturdy and reliable!")
+
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I tug on the roots.")
+	await C.player.say("They're attached pretty firmly to the tree!")
+
+
+#endregion
