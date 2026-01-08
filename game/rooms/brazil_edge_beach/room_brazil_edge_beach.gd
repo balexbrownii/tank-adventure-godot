@@ -173,7 +173,7 @@ func execute_bizarre_solution() -> void:
 		"*+10 Morale for respecting Mr. Snuggles' preferences*",
 	])
 
-	GameState.add_morale(10)
+	GameState.modify_morale(10)
 	I.LifeJacket.add()
 	I.Oar.add()
 	I.RaftPatch.add()
@@ -210,7 +210,7 @@ func execute_fail_forward() -> void:
 		"*-5 Morale*",
 	])
 
-	GameState.add_morale(-5)
+	GameState.modify_morale(-5)
 	I.LifeJacket.add()
 	I.Oar.add()
 	_collect_bonus_items()

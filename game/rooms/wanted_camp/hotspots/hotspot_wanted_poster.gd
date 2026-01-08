@@ -21,7 +21,7 @@ func _on_right_click() -> void:
 
 
 func _on_item_used(_item: PopochiuInventoryItem) -> void:
-	match item.script_name:
+	match _item.script_name:
 		"Machete":
 			await C.player.say("I could cut a piece of this...")
 			await _take_poster_scrap()

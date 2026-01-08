@@ -204,7 +204,7 @@ func execute_bizarre_calm_deer() -> void:
 
 	state.deer_secured = true
 	state.items_saved = true
-	GameState.add_morale(10)  # Best morale for jungle start
+	GameState.modify_morale(10)  # Best morale for jungle start
 
 	await _execute_crash()
 

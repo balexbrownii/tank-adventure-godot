@@ -212,7 +212,7 @@ func execute_bizarre_solution() -> void:
 			"Tank: CONFIRMED!",
 			"Pig: *reluctantly impressed*",
 		])
-		GameState.add_morale(5)
+		GameState.modify_morale(5)
 
 	await E.queue([
 		"*Against all logic, the echo leads to land*",

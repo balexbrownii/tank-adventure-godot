@@ -188,7 +188,7 @@ func execute_bizarre_solution() -> void:
 		"Tank: Mr. Snuggles is OFFICIALLY SUPPORTIVE!",
 	])
 
-	GameState.add_morale(5)
+	GameState.modify_morale(5)
 	await _enter_airport()
 
 

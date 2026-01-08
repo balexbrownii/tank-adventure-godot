@@ -282,7 +282,7 @@ func execute_bizarre_sound_follow() -> void:
 	await I.ZipperPull.add_popup()
 
 	# Morale bonus for teamwork
-	GameState.add_morale(5)
+	GameState.modify_morale(5)
 
 
 func execute_brawn_belt_stop() -> void:
@@ -341,7 +341,7 @@ func execute_link_fail_forward() -> void:
 	])
 
 	# Morale hit but not catastrophic
-	GameState.add_morale(-5)
+	GameState.modify_morale(-5)
 
 #endregion
 

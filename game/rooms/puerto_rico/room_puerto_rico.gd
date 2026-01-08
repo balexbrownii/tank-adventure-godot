@@ -188,7 +188,7 @@ func execute_room_brawn_solution() -> void:
 		"*Morale -1 (Pig is embarrassed)*",
 	])
 
-	GameState.add_morale(-1)
+	GameState.modify_morale(-1)
 	await _room_sequence()
 
 
@@ -374,4 +374,4 @@ func check_vending_machine() -> void:
 		])
 		state.used_vending = true
 		# Small morale boost
-		GameState.add_morale(1)
+		GameState.modify_morale(1)

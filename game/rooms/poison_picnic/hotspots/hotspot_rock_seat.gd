@@ -19,7 +19,7 @@ func _on_look() -> void:
 
 
 func _on_item_used(_item: PopochiuInventoryItem) -> void:
-	match item.script_name:
+	match _item.script_name:
 		"RockChalk":
 			await E.queue([
 				"Tank: *draws on rock*",
