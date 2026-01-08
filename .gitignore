@@ -1,0 +1,28 @@
+# Godot 4+ specific ignores
+.godot/
+*.uid
+
+# Godot-specific ignores
+*.translation
+
+# Imported textures and samples
+.import/
+
+# Mono-specific ignores
+.mono/
+data_*/
+mono_crash.*.json
+
+# Builds
+builds/
+
+# OS/Editor-specific
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.vscode/
+*.code-workspace
+
+# Environment variables
+.env
