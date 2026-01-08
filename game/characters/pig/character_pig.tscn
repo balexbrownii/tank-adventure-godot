@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://pig_character_tscn"]
+
+[ext_resource type="Script" path="res://game/characters/pig/character_pig.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://c1pig_sprite" path="res://assets/images/characters/pig.png" id="2_sprite"]
+
+[node name="CharacterPig" type="Area2D"]
+script = ExtResource("1_script")
+script_name = "Pig"
+description = "Pig"
+text_color = Color(0.9, 0.7, 0.5, 1)
+cursor = 8
+interaction_polygon = PackedVector2Array(-10, -10, 10, -10, 10, 10, -10, 10)
+
+[node name="ScalingPolygon" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_sprite")
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(-10, -10, 10, -10, 10, 10, -10, 10)
+
+[node name="ObstaclePolygon" type="NavigationObstacle2D" parent="."]
+visible = false
+affect_navigation_mesh = true
+carve_navigation_mesh = true

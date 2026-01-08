@@ -4,7 +4,7 @@
 // Incrementing CACHE_VERSION will kick off the install event and force
 // previously cached resources to be updated from the network.
 /** @type {string} */
-const CACHE_VERSION = '1767914377|4522868';
+const CACHE_VERSION = '1767914934|4148670';
 /** @type {string} */
 const CACHE_PREFIX = 'Tank's Great Adv-sw-cache-';
 const CACHE_NAME = CACHE_PREFIX + CACHE_VERSION;
