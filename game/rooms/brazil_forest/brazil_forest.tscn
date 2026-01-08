@@ -1,7 +1,30 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=11 format=3]
 
 [ext_resource type="Texture2D" path="res://assets/images/backgrounds/forest-interactive.png" id="1_bg"]
 [ext_resource type="Script" path="res://game/rooms/brazil_forest/brazil_forest.gd" id="2_script"]
+[ext_resource type="PackedScene" path="res://game/characters/tank/tank.tscn" id="3_tank"]
+[ext_resource type="PackedScene" path="res://game/ui/adventure_ui.tscn" id="4_ui"]
+[ext_resource type="Script" path="res://game/rooms/brazil_forest/hotspots/stump_hotspot.gd" id="5_stump"]
+[ext_resource type="Script" path="res://game/rooms/brazil_forest/hotspots/flower_hotspot.gd" id="6_flower"]
+[ext_resource type="Script" path="res://game/rooms/brazil_forest/hotspots/vines_hotspot.gd" id="7_vines"]
+[ext_resource type="Script" path="res://game/rooms/brazil_forest/hotspots/path_hotspot.gd" id="8_path"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_walk"]
+vertices = PackedVector2Array(50, 550, 1230, 550, 1230, 680, 50, 680)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(50, 550, 1230, 550, 1230, 680, 50, 680)])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_stump"]
+size = Vector2(80, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_flower"]
+size = Vector2(40, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vines"]
+size = Vector2(60, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_path"]
+size = Vector2(100, 80)
 
 [node name="BrazilForest" type="Node2D"]
 script = ExtResource("2_script")
@@ -12,8 +35,44 @@ centered = false
 
 [node name="WalkableAreas" type="Node2D" parent="."]
 
+[node name="WalkableArea" type="NavigationRegion2D" parent="WalkableAreas"]
+navigation_polygon = SubResource("NavigationPolygon_walk")
+
 [node name="Props" type="Node2D" parent="."]
 
 [node name="Hotspots" type="Node2D" parent="."]
 
+[node name="Stump" type="Area2D" parent="Hotspots"]
+position = Vector2(200, 580)
+script = ExtResource("5_stump")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Stump"]
+shape = SubResource("RectangleShape2D_stump")
+
+[node name="Flower" type="Area2D" parent="Hotspots"]
+position = Vector2(600, 560)
+script = ExtResource("6_flower")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Flower"]
+shape = SubResource("RectangleShape2D_flower")
+
+[node name="Vines" type="Area2D" parent="Hotspots"]
+position = Vector2(1100, 560)
+script = ExtResource("7_vines")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Vines"]
+shape = SubResource("RectangleShape2D_vines")
+
+[node name="PathToVillage" type="Area2D" parent="Hotspots"]
+position = Vector2(1200, 600)
+script = ExtResource("8_path")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/PathToVillage"]
+shape = SubResource("RectangleShape2D_path")
+
 [node name="Characters" type="Node2D" parent="."]
+
+[node name="Tank" parent="Characters" instance=ExtResource("3_tank")]
+position = Vector2(400, 620)
+
+[node name="AdventureUI" parent="." instance=ExtResource("4_ui")]
