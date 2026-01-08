@@ -4,35 +4,40 @@ extends PopochiuHotspot
 
 #region Virtual ####################################################################################
 func _on_click() -> void:
-	if TankVision.current_mode == TankVision.VisionMode.TANK:
-		await C.player.say("WARM FRIEND! The fire keeps the monsters away!")
-		await C.player.say("I should tell it a story!")
-		await E.queue([
-			"Tank: Once upon a time, there was a sandwich...",
-			"Tank: THE END! It was delicious!",
-			"The fire crackles approvingly"
-		])
-	else:
-		await C.player.say("A small campfire. Probably visible from far away...")
-		await C.player.say("Not the stealthiest choice.")
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("It's a warm, cozy fire.")
 
 
 func _on_right_click() -> void:
-	var room = R.WantedCamp
-	var inspect = TankVision.get_inspect_text(room.vision_data["campfire"])
-	await C.player.say(inspect)
+	await C.player.face_clicked()
+	await C.player.say("A campfire. Good for warmth and cooking bacon.")
 
 
 func _on_item_used(item: PopochiuInventoryItem) -> void:
-	match item.script_name:
-		"BaconCrumbs":
-			await E.queue([
-				"Tank throws the bacon crumbs into the fire",
-				"The fire flares with a bacon-scented whoosh",
-				"Tank: A tribute to the Bacon Spirits!"
-			])
-		_:
-			await C.player.say("I shouldn't burn that.")
+	await C.player.say("I shouldn't put that in the fire.")
+
+
+#endregion
+
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("WARM FRIEND! The fire keeps the monsters away!")
+
+
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I warm my hands by the fire. Toasty!")
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Hello fire! You're doing a great job!")
+	await C.player.say("The fire crackles in response.")
 
 
 #endregion
