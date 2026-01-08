@@ -29,58 +29,90 @@ script = ExtResource("1_room")
 [node name="HotspotWantedPoster" type="Area2D" parent="Hotspots"]
 position = Vector2(150, 250)
 script = ExtResource("2_wanted_poster")
+script_name = "WantedPoster"
+description = "Wanted Poster"
+clickable = true
+cursor = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotWantedPoster"]
-shape = SubResource("RectangleShape2D_default")
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/HotspotWantedPoster"]
+polygon = PackedVector2Array(-75, -50, 75, -50, 75, 50, -75, 50)
 
 [node name="HotspotCampfire" type="Area2D" parent="Hotspots"]
 position = Vector2(500, 400)
 script = ExtResource("3_campfire")
+script_name = "Campfire"
+description = "Campfire"
+clickable = true
+cursor = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotCampfire"]
-shape = SubResource("RectangleShape2D_default")
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/HotspotCampfire"]
+polygon = PackedVector2Array(-75, -50, 75, -50, 75, 50, -75, 50)
 
 [node name="HotspotBackpack" type="Area2D" parent="Hotspots"]
 position = Vector2(350, 450)
 script = ExtResource("4_backpack")
+script_name = "Backpack"
+description = "Backpack"
+clickable = true
+cursor = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotBackpack"]
-shape = SubResource("RectangleShape2D_default")
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/HotspotBackpack"]
+polygon = PackedVector2Array(-75, -50, 75, -50, 75, 50, -75, 50)
 
 [node name="HotspotBaconRemnants" type="Area2D" parent="Hotspots"]
 position = Vector2(550, 420)
 script = ExtResource("5_bacon_remnants")
+script_name = "BaconRemnants"
+description = "Bacon Remnants"
+clickable = true
+cursor = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotBaconRemnants"]
-shape = SubResource("RectangleShape2D_default")
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/HotspotBaconRemnants"]
+polygon = PackedVector2Array(-75, -50, 75, -50, 75, 50, -75, 50)
 
 [node name="HotspotBushLine" type="Area2D" parent="Hotspots"]
 position = Vector2(100, 350)
 script = ExtResource("6_bush_line")
+script_name = "BushLine"
+description = "Bush Line"
+clickable = true
+cursor = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotBushLine"]
-shape = SubResource("RectangleShape2D_default")
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/HotspotBushLine"]
+polygon = PackedVector2Array(-75, -50, 75, -50, 75, 50, -75, 50)
 
 [node name="HotspotRiverPath" type="Area2D" parent="Hotspots"]
 position = Vector2(900, 500)
 script = ExtResource("7_river_path")
+script_name = "RiverPath"
+description = "River Path"
+clickable = true
+cursor = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotRiverPath"]
-shape = SubResource("RectangleShape2D_default")
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/HotspotRiverPath"]
+polygon = PackedVector2Array(-75, -50, 75, -50, 75, 50, -75, 50)
 
 [node name="HotspotVineCoil" type="Area2D" parent="Hotspots"]
 position = Vector2(700, 300)
 script = ExtResource("8_vine_coil")
+script_name = "VineCoil"
+description = "Vine Coil"
+clickable = true
+cursor = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotVineCoil"]
-shape = SubResource("RectangleShape2D_default")
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/HotspotVineCoil"]
+polygon = PackedVector2Array(-75, -50, 75, -50, 75, 50, -75, 50)
 
 [node name="HotspotRockPile" type="Area2D" parent="Hotspots"]
 position = Vector2(800, 450)
 script = ExtResource("9_rock_pile")
+script_name = "RockPile"
+description = "Rock Pile"
+clickable = true
+cursor = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotRockPile"]
-shape = SubResource("RectangleShape2D_default")
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/HotspotRockPile"]
+polygon = PackedVector2Array(-75, -50, 75, -50, 75, 50, -75, 50)
 
 [node name="Regions" type="Node2D" parent="."]
 
