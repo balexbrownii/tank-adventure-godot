@@ -13,7 +13,7 @@ func _on_right_click() -> void:
 	await C.player.say("Computers that scan luggage barcodes.")
 
 
-func _on_item_used(item: PopochiuInventoryItem) -> void:
+func _on_item_used(_item: PopochiuInventoryItem) -> void:
 	await C.player.say("The scanner doesn't know what to do with that.")
 
 

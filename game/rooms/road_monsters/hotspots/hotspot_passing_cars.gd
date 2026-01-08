@@ -26,7 +26,7 @@ func _on_right_click() -> void:
 	await C.player.say(inspect)
 
 
-func _on_item_used(item: PopochiuInventoryItem) -> void:
+func _on_item_used(_item: PopochiuInventoryItem) -> void:
 	if item.script_name == "TrafficCones" or item.script_name == "Cone":
 		# Using cones on cars - redirect solution hint
 		await C.player.say("I could use these to redirect the monster herd...")

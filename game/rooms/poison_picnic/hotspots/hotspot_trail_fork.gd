@@ -36,7 +36,7 @@ func _on_look() -> void:
 	await C.Tank.say(text)
 
 
-func _on_item_used(item: PopochiuInventoryItem) -> void:
+func _on_item_used(_item: PopochiuInventoryItem) -> void:
 	await C.Tank.say("I should just pick a path and GO!")
 
 

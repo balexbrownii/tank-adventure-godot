@@ -35,7 +35,7 @@ func _on_right_click() -> void:
 	await C.player.say(inspect)
 
 
-func _on_item_used(item: PopochiuInventoryItem) -> void:
+func _on_item_used(_item: PopochiuInventoryItem) -> void:
 	if item.script_name == "Match" or item.script_name == "Lighter":
 		# Direct ignition attempt - trigger fail-forward
 		var room = get_parent().get_parent().get_parent() as PopochiuRoom

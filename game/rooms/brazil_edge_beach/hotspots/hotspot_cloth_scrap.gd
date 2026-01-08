@@ -13,7 +13,7 @@ func _on_right_click() -> void:
 	await C.player.say("Torn cloth. Probably from a ship.")
 
 
-func _on_item_used(item: PopochiuInventoryItem) -> void:
+func _on_item_used(_item: PopochiuInventoryItem) -> void:
 	await C.player.say("I don't think that goes with the cloth.")
 
 

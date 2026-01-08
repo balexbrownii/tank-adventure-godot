@@ -30,7 +30,7 @@ func _on_look() -> void:
 		])
 
 
-func _on_item_used(item: PopochiuInventoryItem) -> void:
+func _on_item_used(_item: PopochiuInventoryItem) -> void:
 	match item.script_name:
 		"LeafWrap":
 			await E.queue([

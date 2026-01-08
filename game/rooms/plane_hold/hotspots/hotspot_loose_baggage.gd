@@ -13,7 +13,7 @@ func _on_right_click() -> void:
 	await C.player.say("Suitcases sliding around the cargo hold.")
 
 
-func _on_item_used(item: PopochiuInventoryItem) -> void:
+func _on_item_used(_item: PopochiuInventoryItem) -> void:
 	await C.player.say("I don't need to add that to the sliding bags.")
 
 

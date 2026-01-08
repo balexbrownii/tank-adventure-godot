@@ -35,7 +35,7 @@ func _on_look() -> void:
 			await C.Tank.say("I can't wait to eat these adventure snacks!")
 
 
-func _on_item_used(item: PopochiuInventoryItem) -> void:
+func _on_item_used(_item: PopochiuInventoryItem) -> void:
 	match item.script_name:
 		"SapBark":
 			await C.Tank.say("I already have some of that!")

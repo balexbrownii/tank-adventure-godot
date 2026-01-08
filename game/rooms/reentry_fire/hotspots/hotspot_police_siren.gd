@@ -13,7 +13,7 @@ func _on_right_click() -> void:
 	await C.player.say("Police sirens in the distance!")
 
 
-func _on_item_used(item: PopochiuInventoryItem) -> void:
+func _on_item_used(_item: PopochiuInventoryItem) -> void:
 	await C.player.say("That won't stop the police!")
 
 

@@ -13,7 +13,7 @@ func _on_right_click() -> void:
 	await C.player.say("A door marked 'Staff Only'.")
 
 
-func _on_item_used(item: PopochiuInventoryItem) -> void:
+func _on_item_used(_item: PopochiuInventoryItem) -> void:
 	await C.player.say("Hmm, that won't help open this door.")
 
 

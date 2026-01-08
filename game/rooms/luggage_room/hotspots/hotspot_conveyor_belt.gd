@@ -13,7 +13,7 @@ func _on_right_click() -> void:
 	await C.player.say("A conveyor belt carrying suitcases.")
 
 
-func _on_item_used(item: PopochiuInventoryItem) -> void:
+func _on_item_used(_item: PopochiuInventoryItem) -> void:
 	await C.player.say("I shouldn't put that on the belt.")
 
 

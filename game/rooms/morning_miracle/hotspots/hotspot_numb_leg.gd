@@ -13,7 +13,7 @@ func _on_right_click() -> void:
 	await C.player.say("My leg! It feels so weird!")
 
 
-func _on_item_used(item: PopochiuInventoryItem) -> void:
+func _on_item_used(_item: PopochiuInventoryItem) -> void:
 	await C.player.say("I don't think that will help my leg.")
 
 

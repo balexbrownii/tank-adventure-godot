@@ -13,7 +13,7 @@ func _on_right_click() -> void:
 	await C.player.say("Pig's supplies pouch.")
 
 
-func _on_item_used(item: PopochiuInventoryItem) -> void:
+func _on_item_used(_item: PopochiuInventoryItem) -> void:
 	await C.player.say("I shouldn't put things in Pig's bag without asking.")
 
 

@@ -13,7 +13,7 @@ func _on_right_click() -> void:
 	await C.player.say("A gap in the trees. Moonlight shines through.")
 
 
-func _on_item_used(item: PopochiuInventoryItem) -> void:
+func _on_item_used(_item: PopochiuInventoryItem) -> void:
 	await C.player.say("I can't use that on moonlight.")
 
 

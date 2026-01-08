@@ -39,7 +39,7 @@ func _on_right_click() -> void:
 	await C.player.say(inspect)
 
 
-func _on_item_used(item: PopochiuInventoryItem) -> void:
+func _on_item_used(_item: PopochiuInventoryItem) -> void:
 	if item.script_name == "Cone" or item.script_name == "TrafficCones":
 		await C.player.say("I can't cover electrical problems with traffic cones.")
 	elif item.script_name == "Water" or item.script_name == "WaterBottle":
