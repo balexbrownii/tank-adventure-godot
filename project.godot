@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Tank's Great Adventure"
 config/description="A point-and-click adventure game featuring Tank, a martial artist, and her companions Pig and Mr. Snuggles on a quest through Brazil."
-run/main_scene="res://game/rooms/brazil_forest/room_brazil_forest.tscn"
+run/main_scene="res://game/rooms/wanted_camp/room_wanted_camp.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
