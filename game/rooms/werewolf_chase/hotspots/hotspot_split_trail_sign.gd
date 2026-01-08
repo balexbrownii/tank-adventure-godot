@@ -24,3 +24,31 @@ func _on_item_used(_item: PopochiuInventoryItem) -> void:
 
 
 #endregion
+
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await _on_click()
+
+
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("No time to use things! THE WOLF!")
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Which way, sign?!")
+	await C.player.say("It points... everywhere. Not helpful!")
+
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("No time to pick things up! RUNNING!")
+
+
+#endregion

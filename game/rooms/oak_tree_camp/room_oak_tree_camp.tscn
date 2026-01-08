@@ -8,11 +8,16 @@
 [ext_resource type="Script" path="res://game/rooms/oak_tree_camp/hotspots/hotspot_spinach_leaves.gd" id="6_spinach_leaves"]
 [ext_resource type="Script" path="res://game/rooms/oak_tree_camp/hotspots/hotspot_deer_saddle.gd" id="7_deer_saddle"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_default"]
-size = Vector2(150, 100)
-
 [node name="RoomOakTreeCamp" type="Node2D"]
 script = ExtResource("1_room")
+script_name = "OakTreeCamp"
+width = 1280
+height = 720
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.2, 0.35, 0.2, 1)
 
 [node name="WalkableAreas" type="Node2D" parent="."]
 
@@ -25,49 +30,76 @@ script = ExtResource("1_room")
 [node name="Hotspots" type="Node2D" parent="."]
 
 [node name="HotspotOakTree" type="Area2D" parent="Hotspots"]
-position = Vector2(600, 200)
+position = Vector2(600, 300)
 script = ExtResource("2_oak_tree")
+script_name = "OakTree"
+description = "Oak Tree"
+clickable = true
+cursor = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotOakTree"]
-shape = SubResource("RectangleShape2D_default")
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/HotspotOakTree"]
+polygon = PackedVector2Array(-100, -150, 100, -150, 100, 150, -100, 150)
 
 [node name="HotspotCampSpot" type="Area2D" parent="Hotspots"]
-position = Vector2(500, 400)
+position = Vector2(500, 500)
 script = ExtResource("3_camp_spot")
+script_name = "CampSpot"
+description = "Camp Spot"
+clickable = true
+cursor = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotCampSpot"]
-shape = SubResource("RectangleShape2D_default")
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/HotspotCampSpot"]
+polygon = PackedVector2Array(-80, -60, 80, -60, 80, 60, -80, 60)
 
 [node name="HotspotPlanBoard" type="Area2D" parent="Hotspots"]
-position = Vector2(300, 350)
+position = Vector2(300, 400)
 script = ExtResource("4_plan_board")
+script_name = "PlanBoard"
+description = "Plan Board"
+clickable = true
+cursor = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotPlanBoard"]
-shape = SubResource("RectangleShape2D_default")
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/HotspotPlanBoard"]
+polygon = PackedVector2Array(-60, -80, 60, -80, 60, 80, -60, 80)
 
 [node name="HotspotMiniDonuts" type="Area2D" parent="Hotspots"]
-position = Vector2(700, 450)
+position = Vector2(700, 550)
 script = ExtResource("5_mini_donuts")
+script_name = "MiniDonuts"
+description = "Mini Donuts"
+clickable = true
+cursor = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotMiniDonuts"]
-shape = SubResource("RectangleShape2D_default")
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/HotspotMiniDonuts"]
+polygon = PackedVector2Array(-40, -30, 40, -30, 40, 30, -40, 30)
 
 [node name="HotspotSpinachLeaves" type="Area2D" parent="Hotspots"]
-position = Vector2(750, 480)
+position = Vector2(850, 580)
 script = ExtResource("6_spinach_leaves")
+script_name = "SpinachLeaves"
+description = "Spinach Leaves"
+clickable = true
+cursor = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotSpinachLeaves"]
-shape = SubResource("RectangleShape2D_default")
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/HotspotSpinachLeaves"]
+polygon = PackedVector2Array(-40, -30, 40, -30, 40, 30, -40, 30)
 
 [node name="HotspotDeerSaddle" type="Area2D" parent="Hotspots"]
-position = Vector2(850, 420)
+position = Vector2(950, 480)
 script = ExtResource("7_deer_saddle")
+script_name = "DeerSaddle"
+description = "Deer Saddle"
+clickable = true
+cursor = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotDeerSaddle"]
-shape = SubResource("RectangleShape2D_default")
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/HotspotDeerSaddle"]
+polygon = PackedVector2Array(-50, -40, 50, -40, 50, 40, -50, 40)
 
 [node name="Regions" type="Node2D" parent="."]
 
 [node name="Markers" type="Node2D" parent="."]
+
+[node name="TankStart" type="Marker2D" parent="Markers"]
+position = Vector2(500, 520)
 
 [node name="Characters" type="Node2D" parent="."]

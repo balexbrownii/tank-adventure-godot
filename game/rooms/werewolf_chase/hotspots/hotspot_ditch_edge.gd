@@ -28,3 +28,36 @@ func _on_item_used(_item: PopochiuInventoryItem) -> void:
 
 
 #endregion
+
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	var room = R.WerewolfChase
+	var inspect = TankVision.get_inspect_text(room.vision_data["ditch_edge"])
+	await C.player.say(inspect)
+
+
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I need to jump in! Escape the wolf!")
+	await _on_click()
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Ditch! Catch me if I fall!")
+	await C.player.say("Be a good ditch!")
+
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I can't pick up a whole ditch!")
+	await C.player.say("...Or can I?")
+	await C.player.say("No, probably not.")
+
+
+#endregion

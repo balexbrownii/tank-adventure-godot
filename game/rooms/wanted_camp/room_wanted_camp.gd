@@ -68,9 +68,8 @@ func _on_room_entered() -> void:
 
 
 func _on_room_transition_finished() -> void:
-	if not state.intro_complete:
-		await _play_intro_sequence()
-		state.intro_complete = true
+	# Intro disabled for testing
+	pass
 
 
 #endregion

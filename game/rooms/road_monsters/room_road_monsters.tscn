@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bf6rm1road2"]
+[gd_scene load_steps=9 format=3 uid="uid://bf6rm1road2"]
 
 [ext_resource type="Script" path="res://game/rooms/road_monsters/room_road_monsters.gd" id="1_room"]
 [ext_resource type="Script" path="res://game/rooms/road_monsters/hotspots/hotspot_passing_cars.gd" id="2_cars"]
@@ -9,14 +9,16 @@
 [ext_resource type="Script" path="res://game/rooms/road_monsters/hotspots/hotspot_leaking_pump.gd" id="7_pump"]
 [ext_resource type="Script" path="res://game/rooms/road_monsters/hotspots/hotspot_spark_source.gd" id="8_spark"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_walkable"]
-size = Vector2(1280, 200)
-
 [node name="RoomRoadMonsters" type="Node2D"]
 script = ExtResource("1_room")
 script_name = "RoadMonsters"
 width = 1280
 height = 720
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.3, 0.35, 0.4, 1)
 
 [node name="WalkableAreas" type="Node2D" parent="."]
 
@@ -36,69 +38,80 @@ position = Vector2(900, 200)
 script = ExtResource("2_cars")
 script_name = "PassingCars"
 description = "Passing Cars"
+clickable = true
+cursor = 1
 
-[node name="InteractionPolygon" type="CollisionShape2D" parent="Hotspots/PassingCars"]
-shape = SubResource("RectangleShape2D_walkable")
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/PassingCars"]
+polygon = PackedVector2Array(-100, -50, 100, -50, 100, 50, -100, 50)
 
 [node name="GasStation" type="Area2D" parent="Hotspots"]
 position = Vector2(300, 300)
 script = ExtResource("3_station")
 script_name = "GasStation"
 description = "Gas Station"
+clickable = true
+cursor = 1
 
-[node name="InteractionPolygon" type="CollisionShape2D" parent="Hotspots/GasStation"]
-shape = SubResource("RectangleShape2D_walkable")
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/GasStation"]
+polygon = PackedVector2Array(-100, -75, 100, -75, 100, 75, -100, 75)
 
 [node name="GasTruck" type="Area2D" parent="Hotspots"]
 position = Vector2(500, 400)
 script = ExtResource("4_truck")
 script_name = "GasTruck"
 description = "Gas Truck"
+clickable = true
+cursor = 1
 
-[node name="InteractionPolygon" type="CollisionShape2D" parent="Hotspots/GasTruck"]
-shape = SubResource("RectangleShape2D_walkable")
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/GasTruck"]
+polygon = PackedVector2Array(-75, -50, 75, -50, 75, 50, -75, 50)
 
 [node name="TrafficCones" type="Area2D" parent="Hotspots"]
 position = Vector2(700, 500)
 script = ExtResource("5_cones")
 script_name = "TrafficCones"
 description = "Traffic Cones"
+clickable = true
+cursor = 1
 
-[node name="InteractionPolygon" type="CollisionShape2D" parent="Hotspots/TrafficCones"]
-shape = SubResource("RectangleShape2D_walkable")
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/TrafficCones"]
+polygon = PackedVector2Array(-50, -30, 50, -30, 50, 30, -50, 30)
 
 [node name="DonutSign" type="Area2D" parent="Hotspots"]
 position = Vector2(250, 250)
 script = ExtResource("6_donut")
 script_name = "DonutSign"
 description = "Donut Sign"
+clickable = true
+cursor = 1
 
-[node name="InteractionPolygon" type="CollisionShape2D" parent="Hotspots/DonutSign"]
-shape = SubResource("RectangleShape2D_walkable")
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/DonutSign"]
+polygon = PackedVector2Array(-40, -40, 40, -40, 40, 40, -40, 40)
 
 [node name="LeakingPump" type="Area2D" parent="Hotspots"]
 position = Vector2(400, 450)
 script = ExtResource("7_pump")
 script_name = "LeakingPump"
 description = "Leaking Pump"
+clickable = true
+cursor = 1
 
-[node name="InteractionPolygon" type="CollisionShape2D" parent="Hotspots/LeakingPump"]
-shape = SubResource("RectangleShape2D_walkable")
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/LeakingPump"]
+polygon = PackedVector2Array(-30, -50, 30, -50, 30, 50, -30, 50)
 
 [node name="SparkSource" type="Area2D" parent="Hotspots"]
 position = Vector2(420, 430)
 script = ExtResource("8_spark")
 script_name = "SparkSource"
 description = "Spark Source"
+clickable = true
+cursor = 1
 
-[node name="InteractionPolygon" type="CollisionShape2D" parent="Hotspots/SparkSource"]
-shape = SubResource("RectangleShape2D_walkable")
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/SparkSource"]
+polygon = PackedVector2Array(-20, -20, 20, -20, 20, 20, -20, 20)
 
 [node name="Regions" type="Node2D" parent="."]
 
 [node name="Markers" type="Node2D" parent="."]
 
 [node name="Characters" type="Node2D" parent="."]
-
-[node name="Background" type="Sprite2D" parent="."]
-position = Vector2(640, 360)

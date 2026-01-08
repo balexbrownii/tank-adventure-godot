@@ -39,3 +39,33 @@ func _on_item_used(_item: PopochiuInventoryItem) -> void:
 
 
 #endregion
+
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await _on_right_click()
+
+
+func on_use() -> void:
+	await _on_click()
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	if TankVision.current_mode == TankVision.VisionMode.TANK:
+		await C.player.say("Sacred ring! Bestow your power upon me!")
+		await C.player.say("...it just smells like fried dough.")
+	else:
+		await C.player.say("It's a sign. It can't talk back.")
+
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I want the donuts, not the sign!")
+	await C.player.say("...although the sign IS pretty cool.")
+
+
+#endregion

@@ -41,3 +41,33 @@ func _on_item_used(_item: PopochiuInventoryItem) -> void:
 
 
 #endregion
+
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	var room = R.WantedCamp
+	var inspect = TankVision.get_inspect_text(room.vision_data["rock_pile"])
+	await C.player.say(inspect)
+
+
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I could throw these at something!")
+	await C.player.say("But I should probably pick one up first.")
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Hello, rock friends!")
+	await C.player.say("You're all very... solid. And dependable.")
+	await C.player.say("I appreciate that about you.")
+
+
+func on_pick_up() -> void:
+	await _on_click()
+
+
+#endregion

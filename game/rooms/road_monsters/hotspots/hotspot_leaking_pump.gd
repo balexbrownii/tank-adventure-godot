@@ -45,3 +45,33 @@ func _on_item_used(item: PopochiuInventoryItem) -> void:
 
 
 #endregion
+
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await _on_right_click()
+
+
+func on_use() -> void:
+	await _on_click()
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	if TankVision.current_mode == TankVision.VisionMode.TANK:
+		await C.player.say("Monster blood! Why do you bleed?")
+		await C.player.say("Is someone hurting you?")
+	else:
+		await C.player.say("I'm talking to a gas pump. What am I doing?")
+
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I can't pick up a gas pump!")
+	await C.player.say("It's attached to the ground.")
+
+
+#endregion

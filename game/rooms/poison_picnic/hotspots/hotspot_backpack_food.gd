@@ -43,3 +43,33 @@ func _on_item_used(item: PopochiuInventoryItem) -> void:
 			await C.Tank.say("Mushrooms go IN my mouth, not ON more mushrooms.")
 		_:
 			await C.Tank.say("That won't make breakfast any better.")
+
+
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await _on_look()
+
+
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await _on_interact()
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Hello, adventure snacks!")
+	await C.player.say("Soon you will be inside me!")
+	await C.player.say("...that sounded weird.")
+
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await _on_interact()
+
+
+#endregion

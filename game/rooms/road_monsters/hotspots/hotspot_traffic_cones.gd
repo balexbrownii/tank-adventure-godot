@@ -39,7 +39,34 @@ func _on_item_used(_item: PopochiuInventoryItem) -> void:
 
 #endregion
 
-#region Public #####################################################################################
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await _on_right_click()
+
+
+func on_use() -> void:
+	await _on_click()
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	if TankVision.current_mode == TankVision.VisionMode.TANK:
+		await C.player.say("Oh wise totems, guide my path!")
+		await C.player.say("...they remain silent.")
+	else:
+		await C.player.say("They're traffic cones. They can't talk.")
+
+
+func on_pick_up() -> void:
+	await _on_click()
+
+
+#endregion
+
+#region Public Methods #####################################################################################
 ## Pick up the cones for inventory
 func pick_up_cones() -> void:
 	await E.queue([

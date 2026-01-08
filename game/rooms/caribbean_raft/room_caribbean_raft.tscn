@@ -9,94 +9,110 @@
 [ext_resource type="Script" path="res://game/rooms/caribbean_raft/hotspots/hotspot_life_jacket.gd" id="7_life_jacket"]
 [ext_resource type="Script" path="res://game/rooms/caribbean_raft/hotspots/hotspot_case_file.gd" id="8_case_file"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_default"]
-size = Vector2(150, 100)
-
 [node name="RoomCaribbeanRaft" type="Node2D"]
 script = ExtResource("1_room")
 script_name = "CaribbeanRaft"
-room_width = 640
-room_height = 360
+width = 1280
+height = 720
 
-[node name="Background" type="Sprite2D" parent="."]
-position = Vector2(320, 180)
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.1, 0.15, 0.3, 1)
+
+[node name="WalkableAreas" type="Node2D" parent="."]
+
+[node name="Raft" type="Node2D" parent="WalkableAreas"]
+position = Vector2(640, 500)
+
+[node name="Perimeter" type="NavigationRegion2D" parent="WalkableAreas/Raft"]
+
+[node name="Props" type="Node2D" parent="."]
 
 [node name="Hotspots" type="Node2D" parent="."]
 
 [node name="HotspotFogWall" type="Area2D" parent="Hotspots"]
-position = Vector2(100, 180)
+position = Vector2(100, 360)
 script = ExtResource("2_fog_wall")
 script_name = "FogWall"
 description = "Fog Wall"
+clickable = true
 cursor = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotFogWall"]
-shape = SubResource("RectangleShape2D_default")
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/HotspotFogWall"]
+polygon = PackedVector2Array(-80, -200, 80, -200, 80, 200, -80, 200)
 
 [node name="HotspotMoon" type="Area2D" parent="Hotspots"]
-position = Vector2(480, 60)
+position = Vector2(960, 120)
 script = ExtResource("3_moon")
 script_name = "Moon"
 description = "Moon"
+clickable = true
 cursor = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotMoon"]
-shape = SubResource("RectangleShape2D_default")
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/HotspotMoon"]
+polygon = PackedVector2Array(-60, -60, 60, -60, 60, 60, -60, 60)
 
 [node name="HotspotStars" type="Area2D" parent="Hotspots"]
-position = Vector2(320, 50)
+position = Vector2(640, 100)
 script = ExtResource("4_stars")
 script_name = "Stars"
 description = "Stars"
+clickable = true
 cursor = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotStars"]
-shape = SubResource("RectangleShape2D_default")
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/HotspotStars"]
+polygon = PackedVector2Array(-200, -80, 200, -80, 200, 80, -200, 80)
 
 [node name="HotspotSoundCues" type="Area2D" parent="Hotspots"]
-position = Vector2(540, 180)
+position = Vector2(1080, 360)
 script = ExtResource("5_sound_cues")
 script_name = "SoundCues"
 description = "Sound Cues"
+clickable = true
 cursor = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotSoundCues"]
-shape = SubResource("RectangleShape2D_default")
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/HotspotSoundCues"]
+polygon = PackedVector2Array(-80, -150, 80, -150, 80, 150, -80, 150)
 
 [node name="HotspotOar" type="Area2D" parent="Hotspots"]
-position = Vector2(250, 280)
+position = Vector2(500, 560)
 script = ExtResource("6_oar")
 script_name = "Oar"
 description = "Oar"
+clickable = true
 cursor = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotOar"]
-shape = SubResource("RectangleShape2D_default")
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/HotspotOar"]
+polygon = PackedVector2Array(-60, -30, 60, -30, 60, 30, -60, 30)
 
 [node name="HotspotLifeJacket" type="Area2D" parent="Hotspots"]
-position = Vector2(400, 250)
+position = Vector2(800, 500)
 script = ExtResource("7_life_jacket")
 script_name = "LifeJacket"
 description = "Life Jacket"
+clickable = true
 cursor = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotLifeJacket"]
-shape = SubResource("RectangleShape2D_default")
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/HotspotLifeJacket"]
+polygon = PackedVector2Array(-50, -40, 50, -40, 50, 40, -50, 40)
 
 [node name="HotspotCaseFile" type="Area2D" parent="Hotspots"]
-position = Vector2(180, 320)
+position = Vector2(360, 640)
 script = ExtResource("8_case_file")
 script_name = "CaseFile"
 description = "Case File"
+clickable = true
 cursor = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotCaseFile"]
-shape = SubResource("RectangleShape2D_default")
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/HotspotCaseFile"]
+polygon = PackedVector2Array(-40, -30, 40, -30, 40, 30, -40, 30)
 
 [node name="Characters" type="Node2D" parent="."]
 
-[node name="Props" type="Node2D" parent="."]
+[node name="Regions" type="Node2D" parent="."]
 
 [node name="Markers" type="Node2D" parent="."]
 
-[node name="Regions" type="Node2D" parent="."]
+[node name="TankStart" type="Marker2D" parent="Markers"]
+position = Vector2(640, 520)

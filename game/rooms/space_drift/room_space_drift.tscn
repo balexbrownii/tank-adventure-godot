@@ -7,11 +7,16 @@
 [ext_resource type="Script" path="res://game/rooms/space_drift/hotspots/hotspot_donut_scent_trail.gd" id="5_donut"]
 [ext_resource type="Script" path="res://game/rooms/space_drift/hotspots/hotspot_case_file_overlay.gd" id="6_case_file"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_walkable"]
-size = Vector2(1920, 200)
-
 [node name="RoomSpaceDrift" type="Node2D"]
 script = ExtResource("1_room")
+script_name = "SpaceDrift"
+width = 1920
+height = 1080
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.02, 0.02, 0.08, 1)
 
 [node name="WalkableAreas" type="Node2D" parent="."]
 
@@ -24,42 +29,65 @@ script = ExtResource("1_room")
 [node name="Hotspots" type="Node2D" parent="."]
 
 [node name="HotspotEarth" type="Area2D" parent="Hotspots"]
-position = Vector2(200, 400)
+position = Vector2(300, 600)
 script = ExtResource("2_earth")
+script_name = "Earth"
+description = "Earth"
+clickable = true
+cursor = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotEarth"]
-shape = SubResource("RectangleShape2D_walkable")
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/HotspotEarth"]
+polygon = PackedVector2Array(-150, -150, 150, -150, 150, 150, -150, 150)
 
 [node name="HotspotStarfield" type="Area2D" parent="Hotspots"]
-position = Vector2(960, 100)
+position = Vector2(960, 200)
 script = ExtResource("3_starfield")
+script_name = "Starfield"
+description = "Starfield"
+clickable = true
+cursor = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotStarfield"]
-shape = SubResource("RectangleShape2D_walkable")
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/HotspotStarfield"]
+polygon = PackedVector2Array(-400, -150, 400, -150, 400, 150, -400, 150)
 
 [node name="HotspotFloatingDebris" type="Area2D" parent="Hotspots"]
-position = Vector2(1400, 300)
+position = Vector2(1400, 400)
 script = ExtResource("4_debris")
+script_name = "FloatingDebris"
+description = "Floating Debris"
+clickable = true
+cursor = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotFloatingDebris"]
-shape = SubResource("RectangleShape2D_walkable")
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/HotspotFloatingDebris"]
+polygon = PackedVector2Array(-100, -80, 100, -80, 100, 80, -100, 80)
 
 [node name="HotspotDonutScentTrail" type="Area2D" parent="Hotspots"]
-position = Vector2(600, 500)
+position = Vector2(700, 700)
 script = ExtResource("5_donut")
+script_name = "DonutScentTrail"
+description = "Donut Scent Trail"
+clickable = true
+cursor = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotDonutScentTrail"]
-shape = SubResource("RectangleShape2D_walkable")
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/HotspotDonutScentTrail"]
+polygon = PackedVector2Array(-80, -50, 80, -50, 80, 50, -80, 50)
 
 [node name="HotspotCaseFileOverlay" type="Area2D" parent="Hotspots"]
-position = Vector2(1200, 500)
+position = Vector2(1200, 800)
 script = ExtResource("6_case_file")
+script_name = "CaseFileOverlay"
+description = "Case File"
+clickable = true
+cursor = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotCaseFileOverlay"]
-shape = SubResource("RectangleShape2D_walkable")
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/HotspotCaseFileOverlay"]
+polygon = PackedVector2Array(-60, -80, 60, -80, 60, 80, -60, 80)
 
 [node name="Regions" type="Node2D" parent="."]
 
 [node name="Markers" type="Node2D" parent="."]
+
+[node name="TankStart" type="Marker2D" parent="Markers"]
+position = Vector2(960, 540)
 
 [node name="Characters" type="Node2D" parent="."]

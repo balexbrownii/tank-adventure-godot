@@ -51,3 +51,33 @@ func _on_item_used(item: PopochiuInventoryItem) -> void:
 
 
 #endregion
+
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await _on_right_click()
+
+
+func on_use() -> void:
+	await _on_click()
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	if TankVision.current_mode == TankVision.VisionMode.TANK:
+		await C.player.say("Little fire spirit! Do you want to be free?")
+		await C.player.say("Blink once for yes, twice for no!")
+		await C.player.say("...it just keeps sparking.")
+	else:
+		await C.player.say("I'm not going to talk to exposed wiring.")
+
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Grab sparking wires? That's a bad idea even for me!")
+
+
+#endregion

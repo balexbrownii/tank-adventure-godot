@@ -31,3 +31,33 @@ func _on_item_used(_item: PopochiuInventoryItem) -> void:
 
 
 #endregion
+
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	var room = R.WerewolfChase
+	var inspect = TankVision.get_inspect_text(room.vision_data["vine_tripline"])
+	await C.player.say(inspect)
+
+
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await _on_click()
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Why are you trying to trip me, vine?!")
+	await C.player.say("I thought we were friends!")
+
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("No time to untangle vines! THE WOLF!")
+
+
+#endregion

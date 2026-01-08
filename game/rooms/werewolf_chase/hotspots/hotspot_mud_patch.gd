@@ -38,3 +38,33 @@ func _on_item_used(_item: PopochiuInventoryItem) -> void:
 
 
 #endregion
+
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	var room = R.WerewolfChase
+	var inspect = TankVision.get_inspect_text(room.vision_data["mud_patch"])
+	await C.player.say(inspect)
+
+
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await _on_click()
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Hello mud! You look... squishy!")
+	await C.player.say("And delicious! Like forest chocolate!")
+
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await _on_click()
+
+
+#endregion

@@ -38,3 +38,33 @@ func _on_look() -> void:
 
 func _on_item_used(item: PopochiuInventoryItem) -> void:
 	await C.Tank.say("I should just pick a path and GO!")
+
+
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await _on_look()
+
+
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await _on_interact()
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Paths! Which way leads to adventure?")
+	await C.player.say("...all of them? Excellent!")
+
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I can't pick up a trail fork!")
+	await C.player.say("I can only WALK them!")
+
+
+#endregion

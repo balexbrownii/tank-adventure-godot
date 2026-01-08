@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b7m8vn4k6qyxa"]
+[gd_scene load_steps=7 format=3 uid="uid://b7m8vn4k6qyxa"]
 
 [ext_resource type="Script" path="res://game/rooms/poison_picnic/room_poison_picnic.gd" id="1_room"]
 [ext_resource type="Script" path="res://game/rooms/poison_picnic/hotspots/hotspot_rock_seat.gd" id="2_rock_seat"]
@@ -7,11 +7,16 @@
 [ext_resource type="Script" path="res://game/rooms/poison_picnic/hotspots/hotspot_trail_fork.gd" id="5_trail_fork"]
 [ext_resource type="Script" path="res://game/rooms/poison_picnic/hotspots/hotspot_birds_overhead.gd" id="6_birds_overhead"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_default"]
-size = Vector2(150, 100)
-
 [node name="RoomPoisonPicnic" type="Node2D"]
 script = ExtResource("1_room")
+script_name = "PoisonPicnic"
+width = 1280
+height = 720
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.2, 0.25, 0.15, 1)
 
 [node name="WalkableAreas" type="Node2D" parent="."]
 
@@ -26,37 +31,57 @@ script = ExtResource("1_room")
 [node name="HotspotRockSeat" type="Area2D" parent="Hotspots"]
 position = Vector2(320, 280)
 script = ExtResource("2_rock_seat")
+script_name = "RockSeat"
+description = "Rock Seat"
+clickable = true
+cursor = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotRockSeat"]
-shape = SubResource("RectangleShape2D_default")
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/HotspotRockSeat"]
+polygon = PackedVector2Array(-75, -50, 75, -50, 75, 50, -75, 50)
 
 [node name="HotspotBackpackFood" type="Area2D" parent="Hotspots"]
 position = Vector2(350, 260)
 script = ExtResource("3_backpack_food")
+script_name = "BackpackFood"
+description = "Backpack Food"
+clickable = true
+cursor = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotBackpackFood"]
-shape = SubResource("RectangleShape2D_default")
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/HotspotBackpackFood"]
+polygon = PackedVector2Array(-75, -50, 75, -50, 75, 50, -75, 50)
 
 [node name="HotspotSapSmear" type="Area2D" parent="Hotspots"]
 position = Vector2(450, 200)
 script = ExtResource("4_sap_smear")
+script_name = "SapSmear"
+description = "Sap Smear"
+clickable = true
+cursor = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotSapSmear"]
-shape = SubResource("RectangleShape2D_default")
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/HotspotSapSmear"]
+polygon = PackedVector2Array(-75, -50, 75, -50, 75, 50, -75, 50)
 
 [node name="HotspotTrailFork" type="Area2D" parent="Hotspots"]
 position = Vector2(550, 300)
 script = ExtResource("5_trail_fork")
+script_name = "TrailFork"
+description = "Trail Fork"
+clickable = true
+cursor = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotTrailFork"]
-shape = SubResource("RectangleShape2D_default")
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/HotspotTrailFork"]
+polygon = PackedVector2Array(-75, -50, 75, -50, 75, 50, -75, 50)
 
 [node name="HotspotBirdsOverhead" type="Area2D" parent="Hotspots"]
 position = Vector2(300, 80)
 script = ExtResource("6_birds_overhead")
+script_name = "BirdsOverhead"
+description = "Birds Overhead"
+clickable = true
+cursor = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotBirdsOverhead"]
-shape = SubResource("RectangleShape2D_default")
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/HotspotBirdsOverhead"]
+polygon = PackedVector2Array(-75, -50, 75, -50, 75, 50, -75, 50)
 
 [node name="Regions" type="Node2D" parent="."]
 

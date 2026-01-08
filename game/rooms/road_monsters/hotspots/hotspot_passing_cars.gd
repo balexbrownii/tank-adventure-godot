@@ -36,6 +36,39 @@ func _on_item_used(item: PopochiuInventoryItem) -> void:
 
 #endregion
 
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await _on_right_click()
+
+
+func on_use() -> void:
+	await _on_click()
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	if TankVision.current_mode == TankVision.VisionMode.TANK:
+		await C.player.say("HEY MONSTERS! STOP EATING PEOPLE!")
+		await C.player.say("...they're not listening.")
+	else:
+		await C.player.say("I can't talk to cars.")
+
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	if TankVision.current_mode == TankVision.VisionMode.TANK:
+		await C.player.say("I'll pick up a monster!")
+		await _on_click()
+	else:
+		await C.player.say("I can't pick up a moving car!")
+
+
+#endregion
+
 #region Private ####################################################################################
 func _tank_vision_interaction() -> void:
 	# In Tank Vision, offer the heroic (dumb) option

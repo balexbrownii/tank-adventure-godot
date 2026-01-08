@@ -42,3 +42,36 @@ func _on_item_used(_item: PopochiuInventoryItem) -> void:
 
 
 #endregion
+
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await _on_right_click()
+
+
+func on_use() -> void:
+	await _on_click()
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	if TankVision.current_mode == TankVision.VisionMode.TANK:
+		await C.player.say("Oh great queen monster!")
+		await C.player.say("Please spare me!")
+		await C.player.say("...she's not responding.")
+	else:
+		await C.player.say("It's a truck. Trucks don't talk.")
+
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	if TankVision.current_mode == TankVision.VisionMode.TANK:
+		await C.player.say("I'm strong but I'm not THAT strong!")
+	else:
+		await C.player.say("Even I can't lift a fuel truck.")
+
+
+#endregion

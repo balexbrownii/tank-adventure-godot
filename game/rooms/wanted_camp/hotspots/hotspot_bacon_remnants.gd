@@ -37,3 +37,31 @@ func _on_item_used(_item: PopochiuInventoryItem) -> void:
 
 
 #endregion
+
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	var room = R.WantedCamp
+	var inspect = TankVision.get_inspect_text(room.vision_data["bacon_remnants"])
+	await C.player.say(inspect)
+
+
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I can't use crumbs like that.")
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Dear crumbs, you were once part of something beautiful.")
+	await C.player.say("Rest now, little bacon bits.")
+
+
+func on_pick_up() -> void:
+	await _on_click()
+
+
+#endregion

@@ -44,3 +44,34 @@ func _on_item_used(item: PopochiuInventoryItem) -> void:
 			])
 		_:
 			await C.Tank.say("The sky friends don't want that.")
+
+
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await _on_look()
+
+
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await _on_interact()
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("HELLO SKY FRIENDS!")
+	await C.player.say("*waves enthusiastically*")
+	await C.player.say("Are you coming to my breakfast party?!")
+
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I can't catch birds!")
+	await C.player.say("They're too high up and also my friends!")
+
+
+#endregion

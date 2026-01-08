@@ -42,3 +42,33 @@ func _on_item_used(item: PopochiuInventoryItem) -> void:
 			room.state.took_chalk = true  # Prevent re-doing
 		_:
 			await C.Tank.say("I don't think that needs flavor sauce.")
+
+
+#region Public ####################################################################################
+func on_look_at() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await _on_look()
+
+
+func on_use() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await _on_interact()
+
+
+func on_talk_to() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("Hey there, sticky stuff!")
+	await C.player.say("You'd taste great on food!")
+
+
+func on_pick_up() -> void:
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I need something to collect it with.")
+	await C.player.say("Can't just grab handfuls of sticky sap!")
+
+
+#endregion
