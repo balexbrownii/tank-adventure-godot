@@ -30,8 +30,10 @@ func on_look_at() -> void:
 func on_use() -> void:
 	await C.player.walk_to_clicked()
 	await C.player.face_clicked()
-	await C.player.say("I check if the boat has keys.")
-	await C.player.say("Hmm, we might need to hotwire it...")
+	await C.player.say("All aboard! Next stop: FLORIDA!")
+	await C.player.say("Pig steers. Mr. Snuggles looks majestic.")
+	await C.player.say("And I provide the MUSCLE!")
+	E.goto_room("FloridaAirport")
 
 
 func on_talk_to() -> void:

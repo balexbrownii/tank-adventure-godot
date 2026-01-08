@@ -30,8 +30,10 @@ func on_look_at() -> void:
 func on_use() -> void:
 	await C.player.walk_to_clicked()
 	await C.player.face_clicked()
-	await C.player.say("I try to push the fog away.")
-	await C.player.say("It just swirls around my hand.")
+	await C.player.say("Wait! I see something through the fog!")
+	await C.player.say("LAND! It's Puerto Rico!")
+	await C.player.say("WE MADE IT!")
+	E.goto_room("PuertoRico")
 
 
 func on_talk_to() -> void:

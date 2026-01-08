@@ -28,7 +28,7 @@ func _on_interact() -> void:
 		])
 
 	# Transition to next room
-	E.goto_room("RoadCrossing")
+	E.goto_room("RoadMonsters")
 
 
 func _on_look() -> void:

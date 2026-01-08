@@ -32,6 +32,22 @@ func on_use() -> void:
 	await C.player.face_clicked()
 	await C.player.say("I strap myself to the cargo!")
 	await C.player.say("Click! Now I won't fly around!")
+	await E.queue([
+		"*BZZZT* 'Attention passengers, brace for impact!'",
+		"Tank: That doesn't sound good...",
+		"Pig: HOLD ON TO SOMETHIN'!",
+		"*The plane shakes violently*",
+		"Tank: I feel warm! Is that normal?!",
+		"",
+		"*CRASH*",
+		"",
+		"TO BE CONTINUED...",
+		"",
+		"Thanks for playing Tank's Great Adventure!",
+		"Season 2: Book Two coming soon!",
+	])
+	# Game ends here - could return to menu or credits
+	await G.show_system_text("THE END - Thanks for playing!")
 
 
 func on_talk_to() -> void:

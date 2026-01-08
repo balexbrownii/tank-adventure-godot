@@ -42,7 +42,8 @@ func on_use() -> void:
 	await C.player.walk_to_clicked()
 	await C.player.face_clicked()
 	await C.player.say("I need to jump in! Escape the wolf!")
-	await _on_click()
+	await C.player.say("GERONIMOOOO!")
+	E.goto_room("DitchHideout")
 
 
 func on_talk_to() -> void:

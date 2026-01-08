@@ -30,8 +30,9 @@ func on_look_at() -> void:
 func on_use() -> void:
 	await C.player.walk_to_clicked()
 	await C.player.face_clicked()
-	await C.player.say("I splash in the water!")
-	await C.player.say("Hehe! Salty!")
+	await C.player.say("The raft is ready! Mr. Snuggles has his life jacket!")
+	await C.player.say("Time to set sail! ADVENTURE AWAITS!")
+	E.goto_room("CaribbeanRaft")
 
 
 func on_talk_to() -> void:

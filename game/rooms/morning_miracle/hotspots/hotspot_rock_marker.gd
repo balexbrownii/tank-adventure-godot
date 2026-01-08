@@ -30,8 +30,9 @@ func on_look_at() -> void:
 func on_use() -> void:
 	await C.player.walk_to_clicked()
 	await C.player.face_clicked()
-	await C.player.say("I pat the rock.")
-	await C.player.say("Solid! You're a good rock!")
+	await C.player.say("Time to keep moving!")
+	await C.player.say("I'm hungry... maybe I can find food ahead!")
+	E.goto_room("PoisonPicnic")
 
 
 func on_talk_to() -> void:

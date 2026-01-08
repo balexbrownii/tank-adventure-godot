@@ -51,7 +51,16 @@ func on_look_at() -> void:
 
 
 func on_use() -> void:
-	await _on_click()
+	await C.player.walk_to_clicked()
+	await C.player.face_clicked()
+	await C.player.say("I'll throw something at the queen monster!")
+	await C.player.say("TAKE THIS!")
+	await E.queue([
+		"*KABOOOOOM*",
+		"Tank is launched into the air by the explosion!",
+		"Tank: WHEEEEEEEEEEE!",
+	])
+	E.goto_room("SpaceDrift")
 
 
 func on_talk_to() -> void:

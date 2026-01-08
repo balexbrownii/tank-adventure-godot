@@ -42,12 +42,9 @@ func on_look_at() -> void:
 func on_use() -> void:
 	await C.player.walk_to_clicked()
 	await C.player.face_clicked()
-	var room = R.WantedCamp
-	if room.state.soldiers_arrived:
-		await C.player.say("Time to escape!")
-		# This would trigger the escape sequence
-	else:
-		await C.player.say("I should gather supplies before heading out.")
+	await C.player.say("Time to follow this path!")
+	await C.player.say("Adventure awaits!")
+	E.goto_room("WerewolfChase")
 
 
 func on_talk_to() -> void:

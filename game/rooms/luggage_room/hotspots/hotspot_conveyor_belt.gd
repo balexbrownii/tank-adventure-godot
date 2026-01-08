@@ -30,8 +30,14 @@ func on_look_at() -> void:
 func on_use() -> void:
 	await C.player.walk_to_clicked()
 	await C.player.face_clicked()
-	await C.player.say("I hop on the belt!")
-	await C.player.say("Wheee! This is faster than walking!")
+	await C.player.say("We're all in the suitcase! It's cozy!")
+	await C.player.say("Here we go!")
+	await E.queue([
+		"The suitcase gets loaded onto the plane",
+		"Tank: It's dark in here!",
+		"Pig: Quiet! We're almost there!",
+	])
+	E.goto_room("PlaneHold")
 
 
 func on_talk_to() -> void:

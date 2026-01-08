@@ -31,7 +31,9 @@ func on_use() -> void:
 	await C.player.walk_to_clicked()
 	await C.player.face_clicked()
 	await C.player.say("I try the handle...")
-	await C.player.say("It's locked. Need to find another way!")
+	await C.player.say("*CRACK* Oops, I broke the lock.")
+	await C.player.say("Well, it's open now!")
+	E.goto_room("LuggageRoom")
 
 
 func on_talk_to() -> void:

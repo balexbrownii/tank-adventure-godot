@@ -30,8 +30,9 @@ func on_look_at() -> void:
 func on_use() -> void:
 	await C.player.walk_to_clicked()
 	await C.player.face_clicked()
-	await C.player.say("I lean against the tree.")
-	await C.player.say("Ahh, nice and shady!")
+	await C.player.say("Let's make camp here!")
+	await C.player.say("Pig agrees. Mr. Snuggles blinks approvingly!")
+	E.goto_room("OakTreeCamp")
 
 
 func on_talk_to() -> void:

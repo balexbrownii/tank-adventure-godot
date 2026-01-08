@@ -32,6 +32,8 @@ func on_use() -> void:
 	await C.player.face_clicked()
 	await C.player.say("I hop on the motorcycle!")
 	await C.player.say("VROOOOM! Time to ride!")
+	await C.player.say("Off to find some friends!")
+	E.goto_room("PigDeerCrossing")
 
 
 func on_talk_to() -> void:

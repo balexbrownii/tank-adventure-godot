@@ -30,8 +30,15 @@ func on_look_at() -> void:
 func on_use() -> void:
 	await C.player.walk_to_clicked()
 	await C.player.face_clicked()
-	await C.player.say("I reach toward Earth!")
-	await C.player.say("Still too far away... Need to get closer!")
+	await C.player.say("I'll SWIM toward Earth!")
+	await C.player.say("Swimming in space... is that possible?")
+	await C.player.say("Only one way to find out!")
+	await E.queue([
+		"Tank starts 'swimming' toward Earth",
+		"Tank: I'm getting warmer... REALLY warm!",
+		"Tank: I'M ON FIRE! THIS IS FINE!",
+	])
+	E.goto_room("ReentryFire")
 
 
 func on_talk_to() -> void:
