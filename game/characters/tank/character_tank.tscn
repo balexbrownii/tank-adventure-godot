@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dte0k62okq15s"]
 
 [ext_resource type="Script" uid="uid://k5svss21uq22" path="res://game/characters/tank/character_tank.gd" id="1_gv7os"]
-[ext_resource type="Texture2D" uid="uid://b33mclkeybaee" path="res://assets/images/characters/tank.png" id="2_3f20q"]
+[ext_resource type="Texture2D" uid="uid://b33mclkeybaee" path="res://assets/images/characters/tank_single.png" id="2_3f20q"]
 
 [node name="CharacterTank" type="Area2D"]
 script = ExtResource("1_gv7os")
