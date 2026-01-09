@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://cy6m4nrtqwx2b"]
+[gd_scene load_steps=13 format=3 uid="uid://cy6m4nrtqwx2b"]
 
 [ext_resource type="Script" path="res://game/rooms/wanted_camp/room_wanted_camp.gd" id="1_room"]
+[ext_resource type="PackedScene" uid="uid://dte0k62okq15s" path="res://game/characters/tank/character_tank.tscn" id="11_tank"]
 [ext_resource type="Script" path="res://game/rooms/wanted_camp/hotspots/hotspot_wanted_poster.gd" id="2_wanted_poster"]
 [ext_resource type="Script" path="res://game/rooms/wanted_camp/hotspots/hotspot_campfire.gd" id="3_campfire"]
 [ext_resource type="Script" path="res://game/rooms/wanted_camp/hotspots/hotspot_backpack.gd" id="4_backpack"]
@@ -133,3 +134,7 @@ polygon = PackedVector2Array(-75, -50, 75, -50, 75, 50, -75, 50)
 position = Vector2(640, 500)
 
 [node name="Characters" type="Node2D" parent="."]
+
+[node name="CharacterTank" parent="Characters" instance=ExtResource("11_tank")]
+position = Vector2(640, 500)
+metadata/EDITOR_TMP_COPY_OF = "Tank"

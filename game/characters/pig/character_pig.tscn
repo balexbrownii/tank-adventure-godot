@@ -19,6 +19,8 @@ polygon = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0)
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_sprite")
+hframes = 4
+frame = 0
 
 [node name="InteractionPolygon" type="CollisionPolygon2D" parent="."]
 visible = false
